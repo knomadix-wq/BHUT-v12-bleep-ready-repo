@@ -5,7 +5,9 @@ const labels = [
   { name: "SHELTER PRESS", url: "https://shelterpress.bandcamp.com/music" },
   { name: "LATENCY", url: "https://latencyrecordings.bandcamp.com/music" },
   { name: "EDITIONS MEGO", url: "https://editionsmego.bandcamp.com/music" },
-  { name: "RASTER", url: "https://raster-raster.bandcamp.com/music" },
+  { name: "PAN", url: "https://p-a-n.bandcamp.com/music" },
+  { name: "SUBTEXT", url: "https://subtextrecordings.bandcamp.com/music" },
+  { name: "BLACK TRUFFLE", url: "https://blacktruffle.bandcamp.com/music" },
 ];
 const normalise = (value) => value.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 const existing = JSON.parse(await readFile("data/label-watchlist.json", "utf8").catch(() => '{"releases":[]}'));
@@ -63,11 +65,23 @@ try {
       await spotifyPage.goto(`https://open.spotify.com/search/${query}/albums`, {
         waitUntil: "domcontentloaded", timeout: 30_000,
       });
-      const albumLink = spotifyPage.locator('a[href*="/album/"]').first();
-      await albumLink.waitFor({ state: "attached", timeout: 15_000 });
-      const spotifyId = (await albumLink.getAttribute("href"))?.match(/\/album\/([^/?]+)/)?.[1];
-      if (!spotifyId) throw new Error("Spotify returned no album ID");
-      const cover = await spotifyArtwork(spotifyId, release.title);
+      const albumLinks = spotifyPage.locator('a[href*="/album/"]');
+      await albumLinks.first().waitFor({ state: "attached", timeout: 15_000 });
+      const spotifyIds = [...new Set((await albumLinks.evaluateAll((links) =>
+        links.map((link) => link.getAttribute("href")?.match(/\/album\/([^/?]+)/)?.[1]).filter(Boolean),
+      )).slice(0, 8))];
+      let spotifyId;
+      let cover;
+      for (const candidateId of spotifyIds) {
+        try {
+          cover = await spotifyArtwork(candidateId, release.title);
+          spotifyId = candidateId;
+          break;
+        } catch {
+          // Spotify commonly ranks an artist's similarly named release first; try the next result.
+        }
+      }
+      if (!spotifyId || !cover) throw new Error("Spotify returned no verified album match");
       resolved.push({ ...release, spotifyId, cover });
     } catch (error) {
       console.warn(`Skipped ${release.source}: ${release.artist} — ${release.title}: ${error.message}`);

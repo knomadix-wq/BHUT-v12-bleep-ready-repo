@@ -15,8 +15,16 @@
       "url": "https://editionsmego.bandcamp.com/music"
     },
     {
-      "name": "RASTER",
-      "url": "https://raster-raster.bandcamp.com/music"
+      "name": "PAN",
+      "url": "https://p-a-n.bandcamp.com/music"
+    },
+    {
+      "name": "SUBTEXT",
+      "url": "https://subtextrecordings.bandcamp.com/music"
+    },
+    {
+      "name": "BLACK TRUFFLE",
+      "url": "https://blacktruffle.bandcamp.com/music"
     }
   ],
   "releases": [
@@ -27,6 +35,30 @@
       "url": "https://shelterpress.bandcamp.com/album/sub-re",
       "spotifyId": "1kDaNdOJtTm68CcbNJJPXV",
       "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0261c3e7bda596f7a0473ed3f5"
+    },
+    {
+      "artist": "upsammy & Valentina Magaletti",
+      "title": "Seismo",
+      "source": "PAN",
+      "url": "https://p-a-n.bandcamp.com/album/seismo",
+      "spotifyId": "2K5yO5Gr7ZhjhMfW3SFSFq",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0238159d4e18e0242c157241a0"
+    },
+    {
+      "artist": "bela",
+      "title": "Korean Love Sonnets",
+      "source": "SUBTEXT",
+      "url": "https://subtextrecordings.bandcamp.com/album/korean-love-sonnets",
+      "spotifyId": "3WE8pSItlg896MLbUwsubC",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02df5599577723c767915bd0b1"
+    },
+    {
+      "artist": "Cities Aviv",
+      "title": "EVEN COLDER SPRING",
+      "source": "BLACK TRUFFLE",
+      "url": "https://blacktruffle.bandcamp.com/album/even-colder-spring",
+      "spotifyId": "4zqz0CmtPzxWriY0bTdvxg",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028b4bbb83b851988fc930cc3a"
     }
   ]
 }
