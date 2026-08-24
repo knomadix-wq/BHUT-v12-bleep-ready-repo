@@ -496,11 +496,11 @@ abstract class AndroidAutoCallback(
             }
 
             HISTORY -> {
-                val items = historyRepository?.getByExtension(extId) ?: emptyList()
+                val items = historyRepository?.getHistory()?.first()?.take(50) ?: emptyList()
                 LibraryResult.ofItemList(
                     ImmutableList.copyOf(items.mapNotNull { entity ->
                         val con = if (entity.context is Radio) null else entity.context
-                        entity.track?.toItem(context, extId, con)
+                        entity.track?.toItem(context, entity.extensionId, con)
                     }),
                     null
                 )
