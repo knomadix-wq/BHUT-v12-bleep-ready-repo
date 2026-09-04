@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-28T21:58:12.180Z",
+  "updatedAt": "2026-09-04T09:29:50.373Z",
   "source": "https://bleep.com/weekly-roundup?lang=en_GB",
   "releases": [
     {
@@ -7,56 +7,35 @@
       "title": "Pure Devotion",
       "section": "Record of the Month",
       "spotifyId": "0DS9OxHBt693YOs3TDira2",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0258e6ed619438202bb108ec6f"
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0258e6ed619438202bb108ec6f"
     },
     {
-      "artist": "Eartheater",
-      "title": "Heavenly Body: If I'm The Bottle You’re The Message",
-      "section": "Release of the Week",
-      "spotifyId": "6NjXeIwjKdVEkJHvom1m3x",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b08416ae39812896e94b8ae8"
-    },
-    {
-      "artist": "Lusine",
-      "title": "Sensorimotor",
+      "artist": "Mort Garson",
+      "title": "Mother Earth's Plantasia",
       "section": "Featured Releases",
-      "spotifyId": "4HZOLGYdJmO9sRuePcSjoh",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e022f9d01a09e20f11c7709b2a6"
+      "spotifyId": "0NJRPgK15C8qoLuQv1hChv",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028f06939f22ae1590f569c644"
     },
     {
-      "artist": "Lusine",
-      "title": "A Certain Distance",
+      "artist": "Klara Lewis",
+      "title": "Opening",
       "section": "Featured Releases",
-      "spotifyId": "46mWSylF7wmYKSACYkkjNf",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024e8efb1234063c9015a3f4d3"
+      "spotifyId": "2A5pQEn7L2DgcKzMyfEKVo",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02b4c9254994758b20941278f7"
     },
     {
-      "artist": "Floating Points, San Francisco Ballet Orchestra",
-      "title": "Mere Mortals",
+      "artist": "LP  Download",
+      "title": "Angelo Badalamenti",
       "section": "Featured Releases",
-      "spotifyId": "5JWvyPjFyevnStpAe6vMuU",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d29699a86f26f0e1df161d16"
+      "spotifyId": "0l9CVBCpn9rp6UcpG6gTOM",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b7e16b9282dba6917acd5e86"
     },
     {
-      "artist": "A Certain Ratio",
-      "title": "The Joy of Sextet",
-      "section": "Featured Releases",
-      "spotifyId": "0QfRPzDlYwfhVB75znGV7a",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0261d674d5b0714971a3909cc4"
-    },
-    {
-      "artist": "A Certain Ratio",
-      "title": "Force Majeure",
-      "section": "Featured Releases",
-      "spotifyId": "1MauxYyPX1NtQke6i9lCRy",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0279d75da0290baceb29b1808c"
-    },
-    {
-      "artist": "HTRK",
-      "title": "Work (Work, Work)",
-      "section": "Featured Releases",
-      "spotifyId": "6CttISvAf7Vd8fk2wc4njb",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d7c5fb00dc28197d50794ece"
+      "artist": "Windy & Carl with Optigan Conservatory",
+      "title": "Windy & Carl Meet Optigan Conservatory",
+      "section": "Featured Albums",
+      "spotifyId": "379AseOtupJxepu3frTo8Z",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f0cf7868d35daff0c6181712"
     }
   ]
 }
