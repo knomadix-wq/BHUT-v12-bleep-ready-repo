@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-04T09:29:50.373Z",
+  "updatedAt": "2026-09-11T09:30:16.037Z",
   "source": "https://bleep.com/weekly-roundup?lang=en_GB",
   "releases": [
     {
@@ -7,35 +7,56 @@
       "title": "Pure Devotion",
       "section": "Record of the Month",
       "spotifyId": "0DS9OxHBt693YOs3TDira2",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0258e6ed619438202bb108ec6f"
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0258e6ed619438202bb108ec6f"
     },
     {
-      "artist": "Mort Garson",
-      "title": "Mother Earth's Plantasia",
+      "artist": "Bonobo",
+      "title": "Distance in Static",
+      "section": "Release of the Week",
+      "spotifyId": "2FMGW8WrG0BE0ZimHbHw2M",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0281d8d9b70b5bddff1c9ba58e"
+    },
+    {
+      "artist": "Boards of Canada",
+      "title": "Inferno",
       "section": "Featured Releases",
-      "spotifyId": "0NJRPgK15C8qoLuQv1hChv",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028f06939f22ae1590f569c644"
+      "spotifyId": "0mu3EvWYfNwBfISSg0q03p",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c0588d9dcd8bd9e7a7845844"
     },
     {
-      "artist": "Klara Lewis",
-      "title": "Opening",
+      "artist": "Eduard Artemyev / Vyacheslav Ovchinnikov",
+      "title": "Tarkovsky",
       "section": "Featured Releases",
-      "spotifyId": "2A5pQEn7L2DgcKzMyfEKVo",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02b4c9254994758b20941278f7"
+      "spotifyId": "1nIByENffG9ws6ZJ5t0xC0",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0273d25c5bf1f8fe675fff804e"
     },
     {
-      "artist": "LP  Download",
-      "title": "Angelo Badalamenti",
+      "artist": "Haruomi Hosono",
+      "title": "Yours Sincerely",
       "section": "Featured Releases",
-      "spotifyId": "0l9CVBCpn9rp6UcpG6gTOM",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b7e16b9282dba6917acd5e86"
+      "spotifyId": "2DtAm3khT9GqoYOJCM9vas",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0299634c2737d442c3b89d8a3b"
     },
     {
-      "artist": "Windy & Carl with Optigan Conservatory",
-      "title": "Windy & Carl Meet Optigan Conservatory",
+      "artist": "Ezra Collective",
+      "title": "Here Because of Hope",
+      "section": "Featured Releases",
+      "spotifyId": "4BKNpqrUgWxpA1d8u5e95j",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e026d02e8be17bfe4eb4afb2141"
+    },
+    {
+      "artist": "Foodman",
+      "title": "HIKARIGASASHIKOMU",
+      "section": "Featured Releases",
+      "spotifyId": "44bdKoxkAhHsxRw4Sxs03w",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cbf8f721b6320a4aab9c9fc3"
+    },
+    {
+      "artist": "Maxime Denuc",
+      "title": "Club Imperiale",
       "section": "Featured Albums",
-      "spotifyId": "379AseOtupJxepu3frTo8Z",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f0cf7868d35daff0c6181712"
+      "spotifyId": "4IavEHCAimewQSMoI6IGTJ",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bc8980d1f08286178a2ac750"
     }
   ]
 }
