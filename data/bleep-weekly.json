@@ -1,62 +1,76 @@
 {
-  "updatedAt": "2026-09-11T09:30:16.037Z",
+  "updatedAt": "2026-09-18T13:38:55.945Z",
   "source": "https://bleep.com/weekly-roundup?lang=en_GB",
   "releases": [
     {
-      "artist": "Overmono",
-      "title": "Pure Devotion",
+      "artist": "Actress",
+      "title": "Radical Frame",
       "section": "Record of the Month",
-      "spotifyId": "0DS9OxHBt693YOs3TDira2",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0258e6ed619438202bb108ec6f"
+      "spotifyId": "4bvfwACExnuV8cVqmTvneG",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f6f7b357a1dcf5b14298aa0c"
     },
     {
-      "artist": "Bonobo",
-      "title": "Distance in Static",
+      "artist": "Alva Noto, Ryuichi Sakamoto",
+      "title": "12 Conversations",
       "section": "Release of the Week",
-      "spotifyId": "2FMGW8WrG0BE0ZimHbHw2M",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0281d8d9b70b5bddff1c9ba58e"
+      "spotifyId": "6Q6jtfzYCMmUz3h8xBo3Tm",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0204ac7461985e986fb4166f8d"
     },
     {
-      "artist": "Boards of Canada",
-      "title": "Inferno",
+      "artist": "Hallucinator",
+      "title": "Landlocked",
       "section": "Featured Releases",
-      "spotifyId": "0mu3EvWYfNwBfISSg0q03p",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c0588d9dcd8bd9e7a7845844"
+      "spotifyId": "7Km8Qv9KIsMizy33DOPbV5",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021fefc6e53d01fc410f515076"
     },
     {
-      "artist": "Eduard Artemyev / Vyacheslav Ovchinnikov",
-      "title": "Tarkovsky",
+      "artist": "Telefon Tel Aviv",
+      "title": "Fahrenheit Fair Enough",
       "section": "Featured Releases",
-      "spotifyId": "1nIByENffG9ws6ZJ5t0xC0",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0273d25c5bf1f8fe675fff804e"
+      "spotifyId": "27teXombBxDGNa9f5jtOr2",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0236791f67431a395cebcce2f1"
     },
     {
-      "artist": "Haruomi Hosono",
-      "title": "Yours Sincerely",
+      "artist": "Lusine",
+      "title": "Melting Days",
       "section": "Featured Releases",
-      "spotifyId": "2DtAm3khT9GqoYOJCM9vas",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0299634c2737d442c3b89d8a3b"
+      "spotifyId": "1tLBaM7LWJkX1zi3K6wuLu",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02657114d1d3a2095667691912"
     },
     {
-      "artist": "Ezra Collective",
-      "title": "Here Because of Hope",
+      "artist": "DJ Shadow",
+      "title": "Endtroducing.....",
       "section": "Featured Releases",
-      "spotifyId": "4BKNpqrUgWxpA1d8u5e95j",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e026d02e8be17bfe4eb4afb2141"
+      "spotifyId": "4tUVkNYSFrrEqqrxBQW9PN",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c02294cf9b5ec88cd939a8a6"
     },
     {
-      "artist": "Foodman",
-      "title": "HIKARIGASASHIKOMU",
+      "artist": "Baauer",
+      "title": "U",
       "section": "Featured Releases",
-      "spotifyId": "44bdKoxkAhHsxRw4Sxs03w",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cbf8f721b6320a4aab9c9fc3"
+      "spotifyId": "7q301yxHP0Ct6EmfRO88FK",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0226f1007ce30b954f31a9a548"
     },
     {
-      "artist": "Maxime Denuc",
-      "title": "Club Imperiale",
+      "artist": "Daphni",
+      "title": "Sad Piano House / Cloudy (Kelbin Remixes)",
+      "section": "Featured Releases",
+      "spotifyId": "6S7g5c37if5FAFyiX8TmOf",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0261750021e5ec6178ada96fd3"
+    },
+    {
+      "artist": "K-LONE",
+      "title": "Have a few days off",
       "section": "Featured Albums",
-      "spotifyId": "4IavEHCAimewQSMoI6IGTJ",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bc8980d1f08286178a2ac750"
+      "spotifyId": "11PubMyNVBm1RYpNwfWjbo",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0209fc7ac56f1c8617800545c7"
+    },
+    {
+      "artist": "Tom Wheatley",
+      "title": "AGON (OST)",
+      "section": "Featured Albums",
+      "spotifyId": "2o2DsgJtUBNviya5YA9pqY",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02afac516966fa944298ba7153"
     }
   ]
 }
