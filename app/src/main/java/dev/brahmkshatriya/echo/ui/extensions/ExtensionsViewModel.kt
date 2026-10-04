@@ -24,7 +24,6 @@ import dev.brahmkshatriya.echo.ui.extensions.ExtensionInstallerBottomSheet.Compa
 import dev.brahmkshatriya.echo.ui.extensions.list.ExtensionListViewModel
 import dev.brahmkshatriya.echo.utils.AppUpdater.downloadUpdate
 import dev.brahmkshatriya.echo.utils.AppUpdater.getUpdateFileUrl
-import dev.brahmkshatriya.echo.utils.AppUpdater.updateApp
 import dev.brahmkshatriya.echo.utils.CacheUtils.getFromCache
 import dev.brahmkshatriya.echo.utils.CacheUtils.saveToCache
 import dev.brahmkshatriya.echo.utils.ContextUtils.cleanupTempApks
@@ -101,17 +100,11 @@ class ExtensionsViewModel(
         app.context.saveToCache("last_update_check", System.currentTimeMillis())
         activity.cleanupTempApks()
         message(app.context.getString(R.string.checking_for_extension_updates))
-        val appApk = updateApp(app)
         runCatching {
-            if (appApk != null) {
-                app.context.saveToCache("last_update_check", 0)
-                awaitInstallation(appApk).getOrThrow()
-            } else {
-                var anyUpdateFound = false
-                extensionLoader.all.value.forEach { if (updateExt(it)) anyUpdateFound = true }
-                if (!anyUpdateFound)
-                    message(app.context.getString(R.string.all_extensions_up_to_date))
-            }
+            var anyUpdateFound = false
+            extensionLoader.all.value.forEach { if (updateExt(it)) anyUpdateFound = true }
+            if (!anyUpdateFound)
+                message(app.context.getString(R.string.all_extensions_up_to_date))
         }.getOrElse { if (it is CancellationException) throw it; app.throwFlow.emit(it) }
     }
 

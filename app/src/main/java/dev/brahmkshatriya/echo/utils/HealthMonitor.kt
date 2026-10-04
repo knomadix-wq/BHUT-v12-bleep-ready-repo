@@ -26,7 +26,7 @@ class HealthMonitor(application: Application) {
     class ResumeIndexMismatchException(expectedId: String, actualId: String, index: Int, size: Int) :
         Exception("resume index/id mismatch: index=$index size=$size expected=$expectedId actual=$actualId")
 
-    private val prefs = application.getSharedPreferences("gladix_health_monitor", Context.MODE_PRIVATE)
+    private val prefs = application.getSharedPreferences("naga_health_monitor", Context.MODE_PRIVATE)
     private val memoryTimestamps = ConcurrentHashMap<String, Long>()
 
     fun report(exception: Exception, scope: Scope, cooldownMs: Long) {

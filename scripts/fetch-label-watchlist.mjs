@@ -91,12 +91,18 @@ try {
         }
       }
       if (!spotifyId || !cover) throw new Error("Spotify returned no verified album match");
-      resolved.push({ ...release, spotifyId, cover });
+      // Timestamp discovery rather than rewriting the working catalogue scraper around unreliable
+      // Bandcamp release-date markup. Existing entries retain their original timestamp.
+      resolved.push({ ...release, spotifyId, cover, publishedAt: new Date().toISOString() });
     } catch (error) {
       console.warn(`Skipped ${release.source}: ${release.artist} — ${release.title}: ${error.message}`);
     }
   }
-  const combined = [...new Map([...existingReleases, ...resolved].map((release) => [
+  const legacyDate = existing.updatedAt || existing.activatedAt || "";
+  const timestampedExisting = existingReleases.map((release) => ({
+    ...release, publishedAt: release.publishedAt || legacyDate,
+  }));
+  const combined = [...new Map([...timestampedExisting, ...resolved].map((release) => [
     `${release.spotifyId}|${release.source}`, release,
   ])).values()].slice(-40);
   if (!combined.length) throw new Error("Spotify produced no verified label-watchlist matches");

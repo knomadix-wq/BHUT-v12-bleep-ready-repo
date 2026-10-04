@@ -1,7 +1,9 @@
 import { chromium } from "playwright";
 import { mkdir, writeFile } from "node:fs/promises";
+import { bleepFridayUrl, latestFriday, publicationTimestamp } from "./curated-utils.mjs";
 
-const source = "https://bleep.com/weekly-roundup?lang=en_GB";
+const roundupFriday = latestFriday();
+const source = bleepFridayUrl();
 const verifiedSpotifyAlbums = new Map([
   ["topdown dialectic|false lp a", "1R570SkqASVYyKJJQAzV5v"],
 ]);
@@ -35,86 +37,33 @@ try {
   const page = await context.newPage();
   await page.goto(source, { waitUntil: "domcontentloaded", timeout: 90_000 });
   await page.waitForFunction(
-    () => document.body?.innerText.includes("Release of the Week"),
+    () => /Release of the Week|Featured Releases|Featured Albums/i.test(document.body?.innerText || ""),
     undefined,
     { timeout: 90_000 },
   );
 
-  const text = await page.locator("body").innerText();
-  const lines = text.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
-  const start = lines.findIndex((line) => /^Release of the Week$/i.test(line));
-  const endCandidate = lines.findIndex(
-    (line, index) => index > start && /^Download of the Week$/i.test(line),
-  );
-  if (start < 0) throw new Error("Bleep page has no Release of the Week section");
-  const end = endCandidate > start ? endCandidate : lines.length;
-
-  const releases = [];
-  const recordOfMonth = await page.getByRole("heading", {
-    name: "Record of the Month",
-    exact: true,
-  }).evaluate((heading) => {
-    const section = heading.parentElement;
-    return {
-      artist: section?.querySelector("dd.artist")?.textContent?.trim() || "",
-      title: section?.querySelector("dd.release-title")?.textContent?.trim() || "",
-      section: "Record of the Month",
-    };
-  }).catch(() => null);
-  if (recordOfMonth?.artist && recordOfMonth?.title) releases.push(recordOfMonth);
-
-  const featuredStart = lines.findIndex(
-    (line, index) => index > start && /^Featured Releases$/i.test(line),
-  );
-
-  // The live Bleep page renders the lead item as artist, title, label, date.
-  if (featuredStart > start + 2) {
-    releases.push({
-      artist: lines[start + 1],
-      title: lines[start + 2],
-      section: "Release of the Week",
-    });
-  }
-
-  // Featured releases are rendered as repeated artist, title, label triplets.
-  if (featuredStart > start) {
-    const featuredEndCandidate = lines.findIndex(
-      (line, index) => index > featuredStart && /^View More$/i.test(line),
-    );
-    const featuredEnd = featuredEndCandidate > featuredStart ? featuredEndCandidate : end;
-    const featuredLines = lines
-      .slice(featuredStart + 1, featuredEnd)
-      .filter((line) => !/^Unavailable$/i.test(line));
-    for (let i = 0; i + 2 < featuredLines.length; i += 3) {
-      releases.push({
-        artist: featuredLines[i],
-        title: featuredLines[i + 1],
-        section: "Featured Releases",
-      });
-    }
-  }
-
-  const featuredAlbumsStart = lines.findIndex(
-    (line, index) => index > start && /^Featured Albums$/i.test(line),
-  );
-  if (featuredAlbumsStart > start) {
-    const featuredAlbumsEndCandidate = lines.findIndex(
-      (line, index) => index > featuredAlbumsStart && /^View More$/i.test(line),
-    );
-    const featuredAlbumsEnd = featuredAlbumsEndCandidate > featuredAlbumsStart
-      ? featuredAlbumsEndCandidate
-      : end;
-    const featuredAlbumLines = lines
-      .slice(featuredAlbumsStart + 1, featuredAlbumsEnd)
-      .filter((line) => !/^Unavailable$/i.test(line));
-    for (let i = 0; i + 2 < featuredAlbumLines.length; i += 3) {
-      releases.push({
-        artist: featuredAlbumLines[i],
-        title: featuredAlbumLines[i + 1],
-        section: "Featured Albums",
-      });
-    }
-  }
+  // Only accept Bleep's structured roundup metadata. Generic card/body text includes format and
+  // purchase controls (for example "LP Download"), which must never be treated as an artist.
+  const releases = await page.evaluate(() => {
+    // Store-wide Record of the Month cards are promotions, not weekly-roundup content.
+    const sectionNames = /^(Release of the Week|Featured Releases|Featured Albums)$/i;
+    const formatOnly = /^(LP|CD|Vinyl|Cassette|Download|MP3|FLAC)(\s+(LP|CD|Vinyl|Cassette|Download|MP3|FLAC))*$/i;
+    return [...document.querySelectorAll("dd.artist")].map((artistNode) => {
+      let card = artistNode.parentElement;
+      while (card && !card.querySelector("dd.release-title")) card = card.parentElement;
+      const titleNode = card?.querySelector("dd.release-title");
+      let previous = card;
+      let section = "";
+      while (previous && !section) {
+        const headings = [...previous.querySelectorAll?.("h1,h2,h3,h4,h5,h6") || []];
+        section = headings.map((node) => node.textContent?.trim() || "").find((text) => sectionNames.test(text)) || "";
+        previous = previous.previousElementSibling || previous.parentElement;
+      }
+      const artist = artistNode.textContent?.trim() || "";
+      const title = titleNode?.textContent?.trim() || "";
+      return section && artist && title && !formatOnly.test(artist) ? { artist, title, section } : null;
+    }).filter(Boolean);
+  });
 
   const unique = [...new Map(
     releases.map((item) => [`${item.artist.toLowerCase()}|${item.title.toLowerCase()}`, item]),
@@ -122,8 +71,7 @@ try {
     .filter((item) => !excludedReleases.has(`${item.artist.toLowerCase()}|${item.title.toLowerCase()}`))
     .slice(0, 12);
   if (!unique.length) {
-    console.error("Bleep section preview:", lines.slice(start, Math.min(start + 80, end)).join(" | "));
-    throw new Error("Bleep page produced no releases; keeping the last good feed");
+    throw new Error(`Bleep Friday roundup ${source} produced no structured releases; keeping the last good feed`);
   }
 
   const spotifyPage = await context.newPage();
@@ -135,7 +83,7 @@ try {
     try {
       if (verifiedId) {
         const cover = await spotifyArtwork(verifiedId, release.title);
-        resolved.push({ ...release, spotifyId: verifiedId, cover });
+        resolved.push({ ...release, spotifyId: verifiedId, cover, publishedAt: publicationTimestamp(roundupFriday) });
         console.log(`Used verified Spotify album for ${release.artist} — ${release.title}`);
         continue;
       }
@@ -153,7 +101,7 @@ try {
       }
 
       const cover = await spotifyArtwork(spotifyId, release.title);
-      resolved.push({ ...release, spotifyId, cover });
+      resolved.push({ ...release, spotifyId, cover, publishedAt: publicationTimestamp(roundupFriday) });
       console.log(`Resolved ${release.artist} — ${release.title} to ${spotifyId}`);
     } catch (error) {
       console.warn(`Skipped ${release.artist} — ${release.title}: ${error.message}`);

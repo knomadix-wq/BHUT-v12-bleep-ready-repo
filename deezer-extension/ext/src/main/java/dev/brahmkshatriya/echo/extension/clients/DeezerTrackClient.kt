@@ -154,8 +154,10 @@ class DeezerTrackClient(private val deezerExtension: DeezerExtension, private va
                 )
             )
             var resolved: Streamable? = null
-            for (attempt in 0..1) {
-                if (attempt > 0) delay(2000L)
+            for (attempt in 0..2) {
+                // The Deezer URL service can be cold on the first request. Recover inside this one
+                // playback request instead of leaking two failures to the player/user first.
+                if (attempt > 0) delay(if (attempt == 1) 750L else 1_500L)
                 // Deliberate best-effort retry: the per-attempt cause is logged above; the loop retries and
                 // ends in the "not available after retries" throw. Rethrowing/chaining would change that
                 // retry control flow. Suppressing Detekt SwallowedException here.
@@ -168,7 +170,7 @@ class DeezerTrackClient(private val deezerExtension: DeezerExtension, private va
                 } catch (e: Exception) {
                     // Retry on next attempt; log the real per-attempt cause so it isn't lost behind the
                     // generic "not available after retries" throw below (token/stream-resolution path).
-                    println("GladixDeezer loadStreamableMedia attempt $attempt failed id=$trackId q=$quality: ${e.message}")
+                    println("GladixDeezer loadStreamableMedia attempt ${attempt + 1}/3 failed id=$trackId q=$quality: ${e.message}")
                 }
             }
             resolved ?: throw Exception("Track not available after retries: $trackId")

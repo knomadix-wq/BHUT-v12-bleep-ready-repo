@@ -205,6 +205,9 @@ class StreamableMediaSource(
 
         private val loader = StreamableLoader(app, extensions.music, downloadFlow, healthMonitor)
 
+        fun prefetch(mediaItem: MediaItem, currentMediaItem: MediaItem) =
+            loader.prefetch(mediaItem, currentMediaItem, scope)
+
         val dataSourceFactory = StreamableDataSource.Factory(app.context)
         val streamableResolver = StreamableResolver(app.context, state.servers)
 

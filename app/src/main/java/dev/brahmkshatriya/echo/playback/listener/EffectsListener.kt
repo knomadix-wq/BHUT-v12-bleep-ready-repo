@@ -11,6 +11,7 @@ import androidx.annotation.OptIn
 import androidx.core.content.edit
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
+import androidx.media3.common.MediaMetadata
 import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
 import androidx.media3.common.Timeline
@@ -94,15 +95,24 @@ class EffectsListener(
         if (!skipForAlbum) scheduleFadeOut()
     }
 
-    private fun applyGain(mediaItem: MediaItem?) {
+    fun applyGain(mediaItem: MediaItem?) {
         val gainDb = runCatching {
             mediaItem?.track?.extras?.get("GAIN")?.toFloatOrNull()
         }.getOrNull()
         audioEffectsProcessor.setTrackGain(gainDb, mediaItem?.mediaId)
     }
 
+    override fun onMediaMetadataChanged(mediaMetadata: MediaMetadata) {
+        // The transition initially carries the Spotify stub. Its Deezer GAIN arrives asynchronously
+        // when the stream is resolved, so re-apply here against the now-loaded current MediaItem.
+        applyGain(exoPlayer.currentMediaItem)
+    }
+
     override fun onTimelineChanged(timeline: Timeline, reason: Int) {
-        if (reason == Player.TIMELINE_CHANGE_REASON_SOURCE_UPDATE) scheduleFadeOut()
+        if (reason == Player.TIMELINE_CHANGE_REASON_SOURCE_UPDATE) {
+            applyGain(exoPlayer.currentMediaItem)
+            scheduleFadeOut()
+        }
     }
 
     override fun onPositionDiscontinuity(

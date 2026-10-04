@@ -97,6 +97,11 @@ class PlayerService : MediaLibraryService() {
 
     private val extensionLoader by inject<ExtensionLoader>()
     private val extensions by lazy { extensionLoader }
+    private val mediaSourceFactory by lazy {
+        StreamableMediaSource.Factory(
+            app, scope, state, extensions, cache, downloadFlow, mediaChangeFlow, healthMonitor
+        )
+    }
     private val exoPlayer by lazy { createExoplayer(this.audioEffectsProcessor) }
 
     private var mediaSession: MediaLibrarySession? = null
@@ -171,17 +176,18 @@ class PlayerService : MediaLibraryService() {
 
     private val audioEffectsProcessor by lazy {
         AudioEffectsProcessor().apply {
-            // One-time migration: force normalization off for all existing users.
-            // Safe to re-enable by clearing normalization_force_disabled_v1 from prefs.
-            if (!app.settings.getBoolean("normalization_force_disabled_v1", false)) {
+            // V36 makes provider ReplayGain normalization a NAGA default. Migrate once so installs that
+            // inherited the old hidden forced-off value receive the new behaviour, while later user
+            // choices remain respected.
+            if (!app.settings.getBoolean("normalization_default_enabled_v2", false)) {
                 app.settings.edit {
-                    putBoolean(LOUDNESS_NORMALIZATION, false)
-                    putBoolean("normalization_force_disabled_v1", true)
+                    putBoolean(LOUDNESS_NORMALIZATION, true)
+                    putBoolean("normalization_default_enabled_v2", true)
                 }
             }
             crossfadeEnabled = app.settings.getBoolean(CROSSFADE_ENABLED, false)
             crossfadeDurationMs = app.settings.getInt(CROSSFADE_DURATION, 2) * 1000
-            normalizationEnabled = app.settings.getBoolean(LOUDNESS_NORMALIZATION, false)
+            normalizationEnabled = false
         }
     }
 
@@ -190,7 +196,7 @@ class PlayerService : MediaLibraryService() {
         when (key) {
             SKIP_SILENCE -> exoPlayer.skipSilenceEnabled = prefs.getBoolean(key, true)
             LOUDNESS_NORMALIZATION -> {
-                audioEffectsProcessor.normalizationEnabled = prefs.getBoolean(key, false)
+                audioEffectsProcessor.normalizationEnabled = prefs.getBoolean(key, true)
                 effects.updateNormalizationSettings()
             }
             CROSSFADE_ENABLED -> {
@@ -237,7 +243,12 @@ class PlayerService : MediaLibraryService() {
 
         val player = ShufflePlayer(exoPlayer, ::mapAaError)
         scope.launch(Dispatchers.Main) {
-            mediaChangeFlow.collect { (o, n) -> player.onMediaItemChanged(o, n) }
+            mediaChangeFlow.collect { (o, n) ->
+                // This is the authoritative resolved Deezer item; unlike ExoPlayer's public current
+                // MediaItem it contains the provider GAIN added during Spotify -> Deezer resolution.
+                effects.applyGain(n)
+                player.onMediaItemChanged(o, n)
+            }
         }
 
         val callback = PlayerCallback(
@@ -262,6 +273,7 @@ class PlayerService : MediaLibraryService() {
                 fullQueueFlow = fullQueueFlow,
                 isAndroidAutoConnected = { isAndroidAutoConnected },
                 requestAudioFocus = { audioFocusListener.requestFocus() },
+                prefetch = { next, current -> mediaSourceFactory.prefetch(next, current) },
                 activeLoadCount = { state.activeLoadCount.get() },
                 // Clears the resumption marker once the queue lands (timeline non-empty) — the success
                 // clear for onPlaybackResumption; on Main, since Player.Listener fires on the app looper.
@@ -543,11 +555,7 @@ class PlayerService : MediaLibraryService() {
     ) = run {
         val audioOffloadPreferences = offloadPreferences()
 
-        val factory = StreamableMediaSource.Factory(
-            app, scope, state, extensions, cache, downloadFlow, mediaChangeFlow, healthMonitor
-        )
-
-        ExoPlayer.Builder(this, factory)
+        ExoPlayer.Builder(this, mediaSourceFactory)
             .setRenderersFactory(RenderersFactory(this, audioEffectsProcessor))
             .setHandleAudioBecomingNoisy(handleAudioBecomingNoisy)
             .setWakeMode(C.WAKE_MODE_NETWORK)
@@ -583,7 +591,7 @@ class PlayerService : MediaLibraryService() {
 
     companion object {
         const val CLOSE_PLAYER = "close_player"
-        private const val ACTION_CLEAR_QUEUE = "dev.rschwertley.gladix.auto.CLEAR_QUEUE"
+        private const val ACTION_CLEAR_QUEUE = "dev.rschwertley.naga.CLEAR_QUEUE"
         const val SKIP_SILENCE = "skip_silence"
         const val LOUDNESS_NORMALIZATION = "loudness_normalization"
         const val CROSSFADE_ENABLED = "crossfade_enabled"

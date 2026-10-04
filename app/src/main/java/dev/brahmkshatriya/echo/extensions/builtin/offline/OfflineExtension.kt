@@ -76,7 +76,7 @@ class OfflineExtension(
             name = "Offline",
             description = "An extension for all your downloaded files.",
             version = "v${BuildConfig.VERSION_CODE}",
-            author = "BHUT",
+            author = "NAGA",
             icon = R.drawable.ic_offline.toResourceImageHolder(),
         )
     }

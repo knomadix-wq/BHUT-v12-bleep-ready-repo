@@ -61,7 +61,7 @@ class SettingsOtherFragment : BaseSettingsFragment() {
                     val contract = ActivityResultContracts.CreateDocument("application/json")
                     requireActivity().registerActivityResultLauncher(contract) { uri ->
                         uri?.let { context.exportSettings(it) }
-                    }.launch("echo-settings.json")
+                    }.launch("naga-settings.json")
                     true
                 }
             }

@@ -1,8 +1,8 @@
-# BHUT: Music Player
+# NAGA: Music Player
 
 A personal fork of [Echo](https://github.com/brahmkshatriya/echo) — an extension-based music player for Android — with enhanced Android Auto support, bundled Deezer integration, and various stability and UX improvements.
 
-> **Note:** BHUT is a personal project and is not affiliated with any content providers, streaming services, or the original Echo developers. This application hosts zero content. The user is responsible for managing their own sources and complying with applicable terms of service.
+> **Note:** NAGA is a personal project and is not affiliated with any content providers, streaming services, or the original Echo developers. This application hosts zero content. The user is responsible for managing their own sources and complying with applicable terms of service.
 
 ---
 
@@ -11,7 +11,7 @@ A personal fork of [Echo](https://github.com/brahmkshatriya/echo) — an extensi
 ### Android Auto
 - Full browse tree support — Home, Search, and Library tabs load correctly per extension
 - Search returns real results from Deezer
-- Voice search support via Google Assistant ("Hey Google, play X on BHUT")
+- Voice search support via Google Assistant ("Hey Google, play X on NAGA")
 - Queue view in Now Playing screen
 - Shuffle and Repeat buttons in Now Playing controls
 - Auto-pause when disconnecting from car
@@ -26,14 +26,14 @@ A personal fork of [Echo](https://github.com/brahmkshatriya/echo) — an extensi
 
 ### Bundled Deezer Extension
 - Deezer is included out of the box — no separate extension install required
-- Spotify catalogue access and account login are built directly into BHUT — no second APK or extension install required
+- Spotify catalogue access and account login are built directly into NAGA — no second APK or extension install required
 - Additional optional extensions can still be installed on top
 - Paginated artist albums, top tracks, and related artists (full catalog, not just first page)
 
 ### Audio
 - Track Fade — configurable volume fade between tracks (1–12 seconds)
 - Accessible directly from Audio Effects sheet while listening
-- Fixed audio focus — other players pause when BHUT starts playing, BHUT pauses when others start playing
+- Fixed audio focus — other players pause when NAGA starts playing, NAGA pauses when others start playing
 - Buffering watchdog — 8s retry then skip instead of hanging forever
 - Deezer quality fallback fixed: FLAC → 320kbps → 128kbps (was skipping 320)
 - Retry loop with backoff for transient Deezer shared server failures
@@ -76,27 +76,27 @@ A personal fork of [Echo](https://github.com/brahmkshatriya/echo) — an extensi
 
 ## Installation
 
-Build the single BHUT APK using the included GitHub Actions workflow, or install the included locally validated debug APK. You may need to allow installation from unknown sources in your device settings.
+Build the single NAGA APK using the included GitHub Actions workflow, or install the included locally validated debug APK. You may need to allow installation from unknown sources in your device settings.
 
 **To build from source:**
 1. Clone this repository
 2. Open in Android Studio
 3. Build and run on your Android device
 
-To install optional extensions, download their `.eapk` files from the Echo community and open them on your device — BHUT will offer to install them. Spotify does not require this step.
+To install optional extensions, download their `.eapk` files from the Echo community and open them on your device — NAGA will offer to install them. Spotify does not require this step.
 
 ### Recommended Extensions
 
-**[Last.fm Scrobbler](https://github.com/rebelonion/echo-lastfm)** — Scrobbles your listening history to Last.fm in real time. Install the `.eapk` from that repo, open it on your device, and sign in with your Last.fm account. Once connected, every track you play in BHUT is logged to your Last.fm profile automatically.
+**[Last.fm Scrobbler](https://github.com/rebelonion/echo-lastfm)** — Scrobbles your listening history to Last.fm in real time. Install the `.eapk` from that repo, open it on your device, and sign in with your Last.fm account. Once connected, every track you play in NAGA is logged to your Last.fm profile automatically.
 
-**[EchoDown](https://github.com/LuftVerbot/echo-echodown-extension)** — Adds download capability to BHUT. Once installed, open any track, album, or playlist, tap the menu, and select Download. Supports quality selection and tags downloads with artist, album, and lyrics metadata. Install code: `echodown`.
+**[EchoDown](https://github.com/LuftVerbot/echo-echodown-extension)** — Adds download capability to NAGA. Once installed, open any track, album, or playlist, tap the menu, and select Download. Supports quality selection and tags downloads with artist, album, and lyrics metadata. Install code: `echodown`.
 
 
 ---
 
 ## Credits
 
-BHUT is built on top of [Echo](https://github.com/brahmkshatriya/echo) by [brahmkshatriya](https://github.com/brahmkshatriya). All core architecture, extension system, and base functionality are their work. Please support the original project.
+NAGA is built on top of [Echo](https://github.com/brahmkshatriya/echo) by [brahmkshatriya](https://github.com/brahmkshatriya). All core architecture, extension system, and base functionality are their work. Please support the original project.
 
 The bundled Deezer extension is based on [echo-deezer-extension](https://github.com/LuftVerbot/echo-deezer-extension) by LuftVerbot.
 
@@ -104,4 +104,4 @@ The bundled Deezer extension is based on [echo-deezer-extension](https://github.
 
 ## Disclaimer
 
-BHUT is intended for personal use only. The developer is not liable for any misuse or legal issues arising from its use. This application hosts zero content — all content is sourced from user-configured extensions and external services.
+NAGA is intended for personal use only. The developer is not liable for any misuse or legal issues arising from its use. This application hosts zero content — all content is sourced from user-configured extensions and external services.

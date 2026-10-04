@@ -35,6 +35,9 @@ try {
     undefined,
     { timeout: 90_000 },
   );
+  const publishedAt = await page.locator('meta[property="article:published_time"], time[datetime]')
+    .first().evaluate((node) => node.getAttribute("content") || node.getAttribute("datetime"))
+    .catch(() => null) || new Date().toISOString();
 
   const lines = (await page.locator("body").innerText())
     .split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
@@ -83,7 +86,7 @@ try {
       const spotifyId = href?.match(/\/album\/([^/?]+)/)?.[1];
       if (!spotifyId) throw new Error("Spotify returned no album ID");
       const cover = await spotifyArtwork(spotifyId, release.title);
-      resolved.push({ ...release, spotifyId, cover });
+      resolved.push({ ...release, spotifyId, cover, publishedAt: new Date(publishedAt).toISOString() });
     } catch (error) {
       console.warn(`Skipped ${release.artist} — ${release.title}: ${error.message}`);
     }

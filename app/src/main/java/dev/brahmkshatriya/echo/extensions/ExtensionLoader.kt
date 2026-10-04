@@ -31,6 +31,7 @@ import dev.brahmkshatriya.echo.extensions.ExtensionUtils.get
 import dev.brahmkshatriya.echo.extensions.ExtensionUtils.getOrThrow
 import dev.brahmkshatriya.echo.extensions.ExtensionUtils.inject
 import dev.brahmkshatriya.echo.extensions.builtin.offline.OfflineExtension
+import dev.brahmkshatriya.echo.extensions.builtin.download.NagaDownloadExtension
 import dev.brahmkshatriya.echo.extensions.builtin.unified.UnifiedExtension
 import dev.brahmkshatriya.echo.extensions.builtin.spotifydeezer.SpotifyDeezerBridgeExtension
 import dev.brahmkshatriya.echo.extension.DeezerExtension
@@ -119,13 +120,14 @@ class ExtensionLoader(
             id = "spotify",
             name = "Spotify",
             version = "built-in-v27",
-            description = "Spotify catalogue, library, and account login for BHUT.",
+            description = "Spotify catalogue, library, and account login for NAGA.",
             author = "Echo",
             icon = "https://static-00.iconduck.com/assets.00/spotify-icon-512x512-6qhm38iz.png".toImageHolder(),
             isEnabled = true,
         ) to lazy { SpotifyExtension() },
         SpotifyDeezerBridgeExtension.metadata to lazy { SpotifyDeezerBridgeExtension() },
         OfflineExtension.metadata to lazy { OfflineExtension(app.context) },
+        NagaDownloadExtension.metadata to lazy { NagaDownloadExtension(app.context) },
 //        TestExtension.metadata to lazy { TestExtension() },
     )
 

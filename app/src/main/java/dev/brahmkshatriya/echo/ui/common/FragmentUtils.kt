@@ -144,7 +144,7 @@ object FragmentUtils {
         val uri = intent.data
         when (uri?.scheme) {
             "echo" -> runCatching { openItemFragmentFromUri(uri) }
-            "gladix" -> {
+            "naga" -> {
                 if (uri.host == "pair") {
                     val code = uri.getQueryParameter("code").orEmpty()
                     openFragment<TvPairingFragment>(null, TvPairingFragment.getBundle(code))
@@ -193,4 +193,3 @@ object FragmentUtils {
         }
     }
 }
-

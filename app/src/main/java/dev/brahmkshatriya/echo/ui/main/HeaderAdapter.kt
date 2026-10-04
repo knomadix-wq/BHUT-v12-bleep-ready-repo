@@ -64,7 +64,11 @@ class HeaderAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = with(holder.binding) {
         super.onBindViewHolder(holder, position)
         val context = root.context
-        title.text = extension?.name ?: context.getString(R.string.app_name)
+        title.text = if (extension?.id == "spotify-deezer") {
+            context.getString(R.string.app_name)
+        } else {
+            extension?.name ?: context.getString(R.string.app_name)
+        }
         extensions.loadBigIcon(extension?.metadata?.icon, R.drawable.ic_extension_32dp)
         extensionsCont.setLoopedLongClick(
             viewModel.extensionLoader.music.value.filter { it.isEnabled },

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-    android:gravity="fill"
-    android:src="@drawable/bhut_makara" />
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:inset="10dp">
+    <bitmap
+        android:gravity="fill"
+        android:src="@drawable/naga_logo" />
+</inset>

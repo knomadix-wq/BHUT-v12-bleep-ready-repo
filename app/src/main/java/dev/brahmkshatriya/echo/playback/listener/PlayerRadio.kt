@@ -34,6 +34,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+internal fun shouldAutoStartRadio(
+    hasCurrentItem: Boolean,
+    repeatMode: Int,
+    hasNextItem: Boolean,
+): Boolean = hasCurrentItem && repeatMode == REPEAT_MODE_OFF && !hasNextItem
+
 class PlayerRadio(
     private val app: App,
     private val scope: CoroutineScope,
@@ -177,12 +183,12 @@ class PlayerRadio(
 
     private suspend fun startRadio() {
         if (!autoStartRadio) return
-        val shouldNotStart = withContext(Dispatchers.Main) {
+        val shouldStart = withContext(Dispatchers.Main) {
             player.run {
-                currentMediaItem == null || repeatMode != REPEAT_MODE_OFF || hasNextMediaItem()
+                shouldAutoStartRadio(currentMediaItem != null, repeatMode, hasNextMediaItem())
             }
         }
-        if (shouldNotStart) return
+        if (!shouldStart) return
         when (val state = stateFlow.value) {
             is PlayerState.Radio.Loading -> {}
             is PlayerState.Radio.Empty -> loadPlaylist()
@@ -254,4 +260,3 @@ class PlayerRadio(
         if (isTv && playbackState == Player.STATE_ENDED) scope.launch { tvDriveRadio(atEnd = true) }
     }
 }
-

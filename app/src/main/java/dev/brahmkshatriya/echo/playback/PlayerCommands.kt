@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.session.CommandButton
 import androidx.media3.session.SessionCommand
 import dev.brahmkshatriya.echo.R
@@ -12,6 +13,8 @@ import dev.brahmkshatriya.echo.playback.MediaItemUtils.isLiked
 object PlayerCommands {
     val likeCommand = SessionCommand("liked", Bundle.EMPTY)
     val unlikeCommand = SessionCommand("unliked", Bundle.EMPTY)
+    val saveCommand = SessionCommand("save_to_library", Bundle.EMPTY)
+    val removeSavedCommand = SessionCommand("remove_from_library", Bundle.EMPTY)
     val repeatCommand = SessionCommand("repeat", Bundle.EMPTY)
     val repeatOffCommand = SessionCommand("repeat_off", Bundle.EMPTY)
     val repeatOneCommand = SessionCommand("repeat_one", Bundle.EMPTY)
@@ -43,6 +46,31 @@ object PlayerCommands {
                 .setDisplayName(context.getString(R.string.unlike))
                 .setCustomIconResId(R.drawable.ic_favorite_filled_20dp)
                 .setSessionCommand(unlikeCommand)
+                .build()
+
+    @UnstableApi
+    fun getSaveButton(context: Context, saved: Boolean) =
+        if (!saved)
+            CommandButton.Builder(CommandButton.ICON_HEART_UNFILLED)
+                .setDisplayName(context.getString(R.string.save_to_library))
+                .setCustomIconResId(R.drawable.ic_favorite_20dp)
+                .setSessionCommand(saveCommand)
+                .setSlots(
+                    CommandButton.SLOT_FORWARD_SECONDARY,
+                    CommandButton.SLOT_BACK_SECONDARY,
+                    CommandButton.SLOT_OVERFLOW,
+                )
+                .build()
+        else
+            CommandButton.Builder(CommandButton.ICON_HEART_FILLED)
+                .setDisplayName(context.getString(R.string.remove_from_library))
+                .setCustomIconResId(R.drawable.ic_favorite_filled_20dp)
+                .setSessionCommand(removeSavedCommand)
+                .setSlots(
+                    CommandButton.SLOT_FORWARD_SECONDARY,
+                    CommandButton.SLOT_BACK_SECONDARY,
+                    CommandButton.SLOT_OVERFLOW,
+                )
                 .build()
 
     fun getShuffleButton(context: Context, shuffleEnabled: Boolean): CommandButton =

@@ -106,6 +106,7 @@ class ExtensionInstallerBottomSheet : BottomSheetDialogFragment() {
         binding.installationTypeTitle.isVisible = isSupported
         binding.installationTypeGroup.isVisible = isSupported
         binding.installationTypeSummary.isVisible = isSupported
+        binding.installationTypeSummary.setText(R.string.installation_type_summary_naga)
         binding.installationTypeLinks.isVisible = isSupported
         binding.installationTypeWarning.isVisible = false
 

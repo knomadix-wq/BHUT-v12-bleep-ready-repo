@@ -251,7 +251,15 @@ abstract class AndroidAutoCallback(
         }
         return Futures.immediateFuture(
             LibraryResult.ofItem(
-                browsableItem(ROOT, "", browsable = false),
+                browsableItem(
+                    ROOT,
+                    context.getString(R.string.android_auto_app_name),
+                    context.getString(R.string.app_tagline),
+                    browsable = false,
+                    artWorkUri = Uri.parse(
+                        "android.resource://${context.packageName}/${R.drawable.naga_logo}"
+                    )
+                ),
                 null
             )
         )

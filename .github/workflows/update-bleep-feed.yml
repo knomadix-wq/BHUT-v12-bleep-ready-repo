@@ -10,8 +10,17 @@ on:
       - "scripts/fetch-boomkat-weekly.mjs"
       - "scripts/fetch-bandcamp-electronic.mjs"
       - "scripts/fetch-label-watchlist.mjs"
+      - "scripts/fetch-stereogum-aotw.mjs"
+      - "scripts/fetch-twgeema-monthly.mjs"
+      - "scripts/fetch-aoty-electronic.mjs"
+      - "scripts/aoty-utils.mjs"
   schedule:
-    - cron: "17 9 * * 5"
+    # Retry through Friday because Bleep does not always publish at the same hour.
+    - cron: "17 9,12,15,18 * * 5"
+    # Stereogum Album of the Week normally publishes on Tuesday.
+    - cron: "17 18 * * 2"
+    # Reveal the current Twgeema chart at two Spotify-matched albums per day.
+    - cron: "37 18 * * *"
 
 permissions:
   contents: write
@@ -31,6 +40,7 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Fetch Bleep roundup
         run: node scripts/fetch-bleep-weekly.mjs
+        continue-on-error: true
       - name: Fetch Boomkat roundup
         run: node scripts/fetch-boomkat-weekly.mjs
         continue-on-error: true
@@ -40,14 +50,23 @@ jobs:
       - name: Fetch experimental label watchlist
         run: node scripts/fetch-label-watchlist.mjs
         continue-on-error: true
+      - name: Fetch Stereogum Album of the Week
+        run: node scripts/fetch-stereogum-aotw.mjs
+        continue-on-error: true
+      - name: Fetch Twgeema monthly electronic chart
+        run: node scripts/fetch-twgeema-monthly.mjs
+        continue-on-error: true
+      - name: Fetch Album of the Year electronic recommendations
+        run: node scripts/fetch-aoty-electronic.mjs
+        continue-on-error: true
       - name: Commit updated feed
         run: |
-          if git diff --quiet -- data/bleep-weekly.json data/boomkat-weekly.json data/bandcamp-electronic.json data/label-watchlist.json; then
+          if git diff --quiet -- data/bleep-weekly.json data/boomkat-weekly.json data/bandcamp-electronic.json data/label-watchlist.json data/stereogum-aotw.json data/twgeema-monthly.json data/aoty-electronic.json; then
             echo "Feed is unchanged"
             exit 0
           fi
-          git config user.name "BHUT Feed Bot"
+          git config user.name "NAGA Feed Bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/bleep-weekly.json data/boomkat-weekly.json data/bandcamp-electronic.json data/label-watchlist.json
+          git add data/bleep-weekly.json data/boomkat-weekly.json data/bandcamp-electronic.json data/label-watchlist.json data/stereogum-aotw.json data/twgeema-monthly.json data/aoty-electronic.json
           git commit -m "Update curated weekly feeds"
           git push

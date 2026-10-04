@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A dedicated transparent, safely inset splash drawable. Keeping the raster inside this
+     drawable prevents Android's splash icon mask from treating the PNG canvas as a full tile. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:inset="18dp">
+    <bitmap
+        android:antialias="true"
+        android:filter="true"
+        android:gravity="fill"
+        android:src="@drawable/naga_logo" />
+</inset>

@@ -40,6 +40,9 @@ try {
   if (!href) throw new Error("Bandcamp Daily supplied no current electronic article");
   const source = new URL(href, indexUrl).href;
   await page.goto(source, { waitUntil: "domcontentloaded", timeout: 90_000 });
+  const publishedAt = await page.locator('meta[property="article:published_time"], time[datetime]')
+    .first().evaluate((node) => node.getAttribute("content") || node.getAttribute("datetime"))
+    .catch(() => null) || new Date().toISOString();
 
   const picks = await page.locator("h3").evaluateAll((headings) => headings.map((heading) => {
     const artist = heading.textContent?.trim() || "";
@@ -78,7 +81,7 @@ try {
       }
       if (!spotifyId) throw new Error("Spotify returned no album ID");
       const cover = await spotifyArtwork(spotifyId, pick.title);
-      resolved.push({ ...pick, spotifyId, cover });
+      resolved.push({ ...pick, spotifyId, cover, publishedAt: new Date(publishedAt).toISOString() });
     } catch (error) {
       console.warn(`Skipped ${pick.artist} — ${pick.title}: ${error.message}`);
     }

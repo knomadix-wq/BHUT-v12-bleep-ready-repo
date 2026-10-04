@@ -16,17 +16,21 @@ import androidx.media3.datasource.HttpDataSource
 import androidx.media3.session.MediaLibraryService.MediaLibrarySession
 import dev.brahmkshatriya.echo.R
 import dev.brahmkshatriya.echo.common.clients.LikeClient
+import dev.brahmkshatriya.echo.common.clients.SaveClient
 import dev.brahmkshatriya.echo.common.models.Message
 import dev.brahmkshatriya.echo.extensions.ExtensionLoader
 import dev.brahmkshatriya.echo.extensions.exceptions.ExtensionNotFoundException
+import dev.brahmkshatriya.echo.extensions.ExtensionUtils.getAs
 import dev.brahmkshatriya.echo.extensions.ExtensionUtils.getExtension
 import dev.brahmkshatriya.echo.extensions.ExtensionUtils.isClient
 import dev.brahmkshatriya.echo.playback.MediaItemUtils
 import dev.brahmkshatriya.echo.playback.MediaItemUtils.extensionId
 import dev.brahmkshatriya.echo.playback.MediaItemUtils.isLoaded
 import dev.brahmkshatriya.echo.playback.MediaItemUtils.retries
+import dev.brahmkshatriya.echo.playback.MediaItemUtils.track
 import dev.brahmkshatriya.echo.playback.PlayerCommands.getLikeButton
 import dev.brahmkshatriya.echo.playback.PlayerCommands.getRepeatButton
+import dev.brahmkshatriya.echo.playback.PlayerCommands.getSaveButton
 import dev.brahmkshatriya.echo.playback.PlayerCommands.getShuffleButton
 import dev.brahmkshatriya.echo.playback.PlayerState
 import dev.brahmkshatriya.echo.playback.ResumptionUtils
@@ -66,6 +70,7 @@ class PlayerEventListener(
     private val fullQueueFlow: MutableStateFlow<List<MediaItem>>,
     private val isAndroidAutoConnected: () -> Boolean = { false },
     private val requestAudioFocus: () -> Unit = {},
+    private val prefetch: (next: MediaItem, current: MediaItem) -> Unit = { _, _ -> },
     // Live PlayerState.activeLoadCount (>0 ⇒ a stream resolution is in flight). Wired from
     // PlayerService where PlayerState is in scope; this listener is not given PlayerState directly.
     private val activeLoadCount: () -> Int = { 0 },
@@ -183,15 +188,34 @@ class PlayerEventListener(
 
     private fun updateCustomLayout() = scope.launch(Dispatchers.Main) {
         val item = player.currentMediaItem ?: return@launch
-        val supportsLike = withContext(Dispatchers.IO) {
-            extensions.music.getExtension(item.extensionId)?.isClient<LikeClient>() ?: false
+        val (supportsLike, savedToLibrary) = withContext(Dispatchers.IO) {
+            val extension = extensions.music.getExtension(item.extensionId)
+            val supportsLike = extension?.isClient<LikeClient>() ?: false
+            val saved = if (extension?.isClient<SaveClient>() == true && item.track.isSaveable) {
+                extension.getAs<SaveClient, Boolean> {
+                    isItemSaved(item.track)
+                }.getOrNull()
+            } else null
+            supportsLike to saved
         }
+        if (player.currentMediaItem?.mediaId != item.mediaId) return@launch
         val commandButtons = listOfNotNull(
+            // Save is the primary NAGA custom action. Keep it first as well as explicitly slotted so
+            // Android Auto puts it on Now Playing instead of behind the overflow menu.
+            savedToLibrary?.let { getSaveButton(context, it) },
             getShuffleButton(context, player.shuffleModeEnabled),
             getRepeatButton(context, player.repeatMode),
             getLikeButton(context, item).takeIf { supportsLike }
         )
-        session.setCustomLayout(commandButtons)
+        session.setMediaButtonPreferences(commandButtons)
+    }
+
+    private fun prefetchNextTrack() {
+        val current = player.currentMediaItem ?: return
+        val nextIndex = player.currentMediaItemIndex + 1
+        if (nextIndex in 0 until player.mediaItemCount) {
+            prefetch(player.getMediaItemAt(nextIndex), current)
+        }
     }
 
     // Forces AA's now-playing MediaMetadataCompat to re-sync to the live current after an advance whose
@@ -233,6 +257,7 @@ class PlayerEventListener(
     override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
         if (mediaItem == null) return  // fired on player.release() with index=0; don't overwrite saved position
         updateCustomLayout()
+        prefetchNextTrack()
         // Persist the current index so cold-start restore seeks to the correct track. mediaItem is the
         // new current item.
         val fullIndex = player.currentMediaItemIndex
@@ -270,7 +295,10 @@ class PlayerEventListener(
         // connected. Re-push so the full layout (incl. the like button the synchronous onConnect seed
         // couldn't include) reaches the connected controller instead of being lost in the connect race.
         // updateCustomLayout no-ops when currentMediaItem is null, so an empty timeline here is safe.
-        if (reason == Player.TIMELINE_CHANGE_REASON_PLAYLIST_CHANGED) updateCustomLayout()
+        if (reason == Player.TIMELINE_CHANGE_REASON_PLAYLIST_CHANGED) {
+            updateCustomLayout()
+            prefetchNextTrack()
+        }
         if ((session.player as? ShufflePlayer)?.isRearranging != true) {
             scheduleSaveQueue()
             if (reason == Player.TIMELINE_CHANGE_REASON_PLAYLIST_CHANGED) {
@@ -316,6 +344,7 @@ class PlayerEventListener(
             bufferingWatchdog = null
         }
         if (playbackState == Player.STATE_READY) {
+            prefetchNextTrack()
             resetConsecutiveSkips()
             // A track resolved successfully — the queue is not all-dead (removed-extension tracks never reach
             // READY). Suppresses the removed-extension exhaustion message for any queue that played anything.

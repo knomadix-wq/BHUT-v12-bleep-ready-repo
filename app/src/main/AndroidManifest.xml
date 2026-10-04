@@ -51,10 +51,13 @@
     </queries>
 
     <application
+        android:allowBackup="false"
         android:name=".MainApplication"
         android:appCategory="audio"
         android:banner="@drawable/tv_banner"
         android:enableOnBackInvokedCallback="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
@@ -63,6 +66,9 @@
         android:theme="@style/Default"
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
+        <meta-data
+            android:name="androidx.car.app.TintableAttributionIcon"
+            android:resource="@drawable/ic_launcher_monochrome" />
         <receiver
             android:name=".widget.WidgetVertical"
             android:exported="false"
@@ -134,7 +140,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="gladix" />
+                <data android:scheme="naga" />
             </intent-filter>
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
@@ -214,6 +220,7 @@
             android:name=".playback.PlayerService"
             android:exported="true"
             android:foregroundServiceType="mediaPlayback"
+            android:label="@string/android_auto_app_name"
             tools:ignore="ExportedService">
             <intent-filter>
                 <action android:name="androidx.media3.session.MediaLibraryService" />

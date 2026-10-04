@@ -374,7 +374,7 @@ class LoginFragment : Fragment() {
 
             val charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
             val code = (1..6).map { charset[kotlin.random.Random.nextInt(charset.length)] }.joinToString("")
-            val qrUrl = "gladix://pair?code=$code"
+            val qrUrl = "naga://pair?code=$code"
 
             lifecycleScope.launch {
                 runCatching {

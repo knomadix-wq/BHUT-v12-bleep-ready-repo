@@ -19,7 +19,9 @@ import dev.brahmkshatriya.echo.playback.MediaItemUtils.backgroundIndex
 import dev.brahmkshatriya.echo.playback.MediaItemUtils.downloaded
 import dev.brahmkshatriya.echo.playback.MediaItemUtils.extensionId
 import dev.brahmkshatriya.echo.playback.MediaItemUtils.isLoaded
+import dev.brahmkshatriya.echo.playback.MediaItemUtils.retries
 import dev.brahmkshatriya.echo.playback.MediaItemUtils.serverIndex
+import dev.brahmkshatriya.echo.playback.MediaItemUtils.sourceIndex
 import dev.brahmkshatriya.echo.playback.MediaItemUtils.state
 import dev.brahmkshatriya.echo.playback.MediaItemUtils.subtitleIndex
 import dev.brahmkshatriya.echo.playback.MediaItemUtils.track
@@ -27,6 +29,9 @@ import dev.brahmkshatriya.echo.playback.exceptions.TrackUnavailableException
 import dev.brahmkshatriya.echo.ui.media.MediaHeaderAdapter.Companion.playableString
 import dev.brahmkshatriya.echo.utils.HealthMonitor
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.StateFlow
@@ -34,6 +39,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
 import java.io.File
+import java.util.concurrent.ConcurrentHashMap
 
 class StreamableLoader(
     private val app: App,
@@ -41,7 +47,64 @@ class StreamableLoader(
     private val downloadFlow: StateFlow<List<Downloader.Info>>,
     private val healthMonitor: HealthMonitor,
 ) {
-    suspend fun load(mediaItem: MediaItem) = withContext(Dispatchers.IO) {
+    private val prepared = ConcurrentHashMap<String, Deferred<Pair<MediaItem, Result<Streamable.Media.Server>>>>()
+
+    private fun key(mediaItem: MediaItem) = listOf(
+        mediaItem.extensionId,
+        mediaItem.mediaId,
+        mediaItem.serverIndex,
+        mediaItem.sourceIndex,
+        mediaItem.retries,
+    ).joinToString(":")
+
+    private fun getOrStart(mediaItem: MediaItem, scope: CoroutineScope): Deferred<Pair<MediaItem, Result<Streamable.Media.Server>>> {
+        val key = key(mediaItem)
+        prepared[key]?.let { return it }
+        val created = scope.async(Dispatchers.IO, start = CoroutineStart.LAZY) {
+            loadUncached(mediaItem)
+        }
+        val selected = prepared.putIfAbsent(key, created) ?: created.also { job ->
+            job.invokeOnCompletion { cause ->
+                if (cause != null) prepared.remove(key, job)
+            }
+            job.start()
+        }
+        return selected
+    }
+
+    fun prefetch(mediaItem: MediaItem, currentMediaItem: MediaItem, scope: CoroutineScope) {
+        // Keep this deliberately bounded to the next item. Resolved Deezer URLs are short-lived,
+        // so resolving a whole queue would both waste traffic and risk handing playback stale URLs.
+        // Retain the current item's completed entry until its MediaSource consumes it: transition and
+        // next-prefetch callbacks can race just ahead of prepareSourceInternal.
+        val retainedKeys = setOf(key(currentMediaItem), key(mediaItem))
+        prepared.entries.removeAll { it.value.isCompleted && it.key !in retainedKeys }
+        if (prepared.size >= 2 || prepared.containsKey(key(mediaItem))) return
+        Log.d("GladixPlayback", "prefetch start: ${mediaItem.mediaId}")
+        getOrStart(mediaItem, scope).invokeOnCompletion { cause ->
+            Log.d(
+                "GladixPlayback",
+                if (cause == null) "prefetch ready: ${mediaItem.mediaId}"
+                else "prefetch failed: ${mediaItem.mediaId}: ${cause.message}",
+            )
+        }
+    }
+
+    suspend fun load(mediaItem: MediaItem): Pair<MediaItem, Result<Streamable.Media.Server>> {
+        val key = key(mediaItem)
+        val preparedLoad = prepared[key]
+        if (preparedLoad != null) {
+            Log.d("GladixPlayback", "prefetch hit: ${mediaItem.mediaId}")
+            return try {
+                preparedLoad.await()
+            } finally {
+                prepared.remove(key, preparedLoad)
+            }
+        }
+        return loadUncached(mediaItem)
+    }
+
+    private suspend fun loadUncached(mediaItem: MediaItem) = withContext(Dispatchers.IO) {
         val startMs = System.currentTimeMillis()
         try {
             withTimeout(30_000) {

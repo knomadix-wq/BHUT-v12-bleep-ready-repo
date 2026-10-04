@@ -4,12 +4,7 @@ package dev.brahmkshatriya.echo.utils
 
 import android.content.Context
 import android.os.Build
-import dev.brahmkshatriya.echo.BuildConfig
-import dev.brahmkshatriya.echo.R
 import dev.brahmkshatriya.echo.common.helpers.ContinuationCallback.Companion.await
-import dev.brahmkshatriya.echo.common.models.Message
-import dev.brahmkshatriya.echo.di.App
-import dev.brahmkshatriya.echo.utils.ContextUtils.appVersion
 import dev.brahmkshatriya.echo.utils.ContextUtils.getTempFile
 import dev.brahmkshatriya.echo.utils.Serializer.toData
 import kotlinx.coroutines.Dispatchers
@@ -19,53 +14,8 @@ import kotlinx.serialization.Serializable
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.File
-import java.util.zip.ZipFile
 
 object AppUpdater {
-
-    private val client = OkHttpClient()
-
-    @Suppress("KotlinConstantConditions")
-    suspend fun updateApp(app: App): File? {
-        val messageFlow = app.messageFlow
-        val githubRepo = app.context.getString(R.string.app_github_repo)
-        val appType = BuildConfig.BUILD_TYPE
-        val version = appVersion()
-
-        val url = runCatching {
-            when (appType) {
-                "stable" -> {
-                    val currentVersion = version.substringBefore('_')
-                    val updateUrl = "https://api.github.com/repos/$githubRepo/releases"
-                    getGithubUpdateUrl(currentVersion, updateUrl, client) ?: return null
-                }
-
-                "nightly" -> {
-                    val hash = version.substringBefore("(").substringAfter('_')
-                    val id = getGithubWorkflowId(hash, githubRepo, client) ?: return null
-                    "https://nightly.link/$githubRepo/actions/runs/$id/artifact.zip"
-                }
-
-                else -> return null
-            }
-        }.getOrElse {
-            return null
-        }
-
-        messageFlow.emit(
-            Message(
-                app.context.run {
-                    getString(R.string.downloading_update_for_x, getString(R.string.app_name))
-                }
-            )
-        )
-        return runCatching {
-            val download = downloadUpdate(app.context, url, client).getOrThrow()
-            if (appType == "stable") download else unzipApk(download)
-        }.getOrElse {
-            return null
-        }
-    }
 
     private val githubRegex = Regex("https://api\\.github\\.com/repos/([^/]*)/([^/]*)/")
     // Matches a github.com BROWSER url and captures user/repo from the first two path segments:
@@ -75,7 +25,8 @@ object AppUpdater {
     suspend fun getGithubUpdateUrl(
         currentVersion: String,
         updateUrl: String,
-        client: OkHttpClient
+        client: OkHttpClient,
+        requiredAssetPrefix: String? = null,
     ) = run {
         val (user, repo) = githubRegex.find(updateUrl)?.destructured
             ?: throw Exception("Invalid Github URL")
@@ -88,29 +39,22 @@ object AppUpdater {
         }.getOrElse {
             throw Exception("Failed to fetch latest release", it)
         }
-        if (res.tagName != currentVersion) {
+        if (!res.tagName.equals(currentVersion, ignoreCase = true)) {
             res.assets.sortedByDescending {
                 it.name.contains(Build.SUPPORTED_ABIS.first())
             }.firstOrNull {
-                it.name.endsWith("apk")
-            }?.browserDownloadUrl ?: throw Exception("No EApk assets found")
+                it.name.endsWith(".apk", ignoreCase = true) &&
+                    (requiredAssetPrefix == null ||
+                        it.name.startsWith(requiredAssetPrefix, ignoreCase = true))
+            }?.browserDownloadUrl ?: if (requiredAssetPrefix != null) {
+                // The repository still contains historical Gladix releases. Never offer one to NAGA.
+                null
+            } else {
+                throw Exception("No EApk assets found")
+            }
         } else {
             null
         }
-    }
-
-    private suspend fun getGithubWorkflowId(
-        hash: String,
-        githubRepo: String,
-        client: OkHttpClient
-    ) = runCatching {
-        val url =
-            "https://api.github.com/repos/$githubRepo/actions/workflows/nightly.yml/runs?per_page=1&conclusion=success"
-        val request = Request.Builder().url(url).build()
-        client.newCall(request).await().body.string().toData<GithubRunsResponse>().getOrThrow()
-            .workflowRuns.firstOrNull { it.sha.take(7) != hash }?.id
-    }.getOrElse {
-        throw Exception("Failed to fetch workflow ID", it)
     }
 
     @Serializable
@@ -129,19 +73,6 @@ object AppUpdater {
         )
     }
 
-    @Serializable
-    data class GithubRunsResponse(
-        @SerialName("workflow_runs")
-        val workflowRuns: List<Run>
-    ) {
-        @Serializable
-        data class Run(
-            val id: Long,
-            @SerialName("head_sha")
-            val sha: String,
-        )
-    }
-
     suspend fun downloadUpdate(
         context: Context,
         url: String,
@@ -152,22 +83,6 @@ object AppUpdater {
         val file = context.getTempFile()
         res.use { input -> file.outputStream().use { output -> input.copyTo(output) } }
         file
-    }
-
-    private fun unzipApk(file: File): File {
-        val zipFile = ZipFile(file)
-        val apkFile = File.createTempFile("temp", ".apk", file.parentFile!!)
-        zipFile.use { zip ->
-            val apkEntry = zip.entries().asSequence().firstOrNull {
-                !it.isDirectory && it.name.endsWith(".apk")
-            } ?: throw Exception("No APK file found in the zip")
-            zip.getInputStream(apkEntry).use { input ->
-                apkFile.outputStream().use { output ->
-                    input.copyTo(output)
-                }
-            }
-        }
-        return apkFile
     }
 
     suspend fun getUpdateFileUrl(

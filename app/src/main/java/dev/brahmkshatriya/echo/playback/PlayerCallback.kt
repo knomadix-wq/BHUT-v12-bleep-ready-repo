@@ -34,6 +34,7 @@ import dev.brahmkshatriya.echo.common.clients.ArtistClient
 import dev.brahmkshatriya.echo.common.clients.LikeClient
 import dev.brahmkshatriya.echo.common.clients.PlaylistClient
 import dev.brahmkshatriya.echo.common.clients.RadioClient
+import dev.brahmkshatriya.echo.common.clients.SaveClient
 import dev.brahmkshatriya.echo.common.clients.TrackClient
 import dev.brahmkshatriya.echo.common.helpers.PagedData
 import dev.brahmkshatriya.echo.common.models.Album
@@ -144,6 +145,7 @@ class PlayerCallback(
         val sessionCommands = with(PlayerCommands) {
             MediaSession.ConnectionResult.DEFAULT_SESSION_AND_LIBRARY_COMMANDS.buildUpon()
                 .add(likeCommand).add(unlikeCommand).add(repeatCommand).add(repeatOffCommand)
+                .add(saveCommand).add(removeSavedCommand)
                 .add(repeatOneCommand).add(shuffleCommand).add(shuffleOffCommand)
                 .add(radioCommand).add(trackRadioCommand).add(sleepTimer)
                 .add(playCommand).add(addToQueueCommand).add(addToNextCommand)
@@ -158,7 +160,7 @@ class PlayerCallback(
             // after track 2. No current item is needed, so this is safe before the queue is restored
             // (currentMediaItem may be null here). The like button needs async extension IO → deferred to
             // the post-resumption push in PlayerEventListener.onTimelineChanged.
-            .setCustomLayout(
+            .setMediaButtonPreferences(
                 with(PlayerCommands) {
                     listOf(
                         getShuffleButton(context, session.player.shuffleModeEnabled),
@@ -179,6 +181,8 @@ class PlayerCallback(
         when (customCommand) {
             likeCommand -> onSetRating(session, controller, ThumbRating(true))
             unlikeCommand -> onSetRating(session, controller, ThumbRating())
+            saveCommand -> setLibrarySaved(session, true)
+            removeSavedCommand -> setLibrarySaved(session, false)
             repeatOffCommand -> setRepeat(player, Player.REPEAT_MODE_OFF)
             repeatOneCommand -> setRepeat(player, Player.REPEAT_MODE_ONE)
             repeatCommand -> setRepeat(player, Player.REPEAT_MODE_ALL)
@@ -298,6 +302,45 @@ class PlayerCallback(
     private fun setShuffle(player: Player, enabled: Boolean) = run {
         player.shuffleModeEnabled = enabled
         Futures.immediateFuture(SessionResult(RESULT_SUCCESS))
+    }
+
+    private fun setLibrarySaved(
+        session: MediaSession,
+        shouldSave: Boolean,
+    ) = scope.future {
+        val item = session.player.with { currentMediaItem }
+            ?: return@future SessionResult(SessionError.ERROR_UNKNOWN)
+        val track = item.track
+        if (!track.isSaveable) {
+            return@future SessionResult(SessionError.ERROR_NOT_SUPPORTED)
+        }
+        val extension = extensions.music.getExtensionOrThrow(item.extensionId)
+        val result = extension.getAs<SaveClient, Any?> {
+            saveToLibrary(track, shouldSave)
+        }
+        result.getOrElse {
+            if (it is CancellationException) throw it
+            throwableFlow.emit(PlayerException(item, it))
+            return@future SessionResult(SessionError.ERROR_UNKNOWN)
+        }
+
+        // Toggle only the bookmark in place. Rebuilding the complete custom layout while Android Auto's
+        // overflow panel is open can make the controller abandon Now Playing and jump back to browse.
+        val toggled = with(PlayerCommands) {
+            val replacement = getSaveButton(context, shouldSave)
+            val current = session.mediaButtonPreferences
+            if (current.any { it.sessionCommand == saveCommand || it.sessionCommand == removeSavedCommand }) {
+                current.map {
+                    if (it.sessionCommand == saveCommand || it.sessionCommand == removeSavedCommand)
+                        replacement else it
+                }
+            } else listOf(replacement) + current
+        }
+        session.setMediaButtonPreferences(toggled)
+        SessionResult(
+            RESULT_SUCCESS,
+            Bundle().apply { putBoolean("savedToLibrary", shouldSave) },
+        )
     }
 
 

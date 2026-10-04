@@ -141,7 +141,7 @@ class SettingsBottomSheet : BottomSheetDialogFragment(R.layout.dialog_settings) 
             text = version
             setOnClickListener {
                 val info = buildString {
-                    appendLine("BHUT Version: $version")
+                    appendLine("NAGA Version: $version")
                     appendLine("Device: $BRAND $DEVICE")
                     appendLine("Architecture: ${getArch()}")
                     appendLine("OS Version: $CODENAME $RELEASE ($SDK_INT)")

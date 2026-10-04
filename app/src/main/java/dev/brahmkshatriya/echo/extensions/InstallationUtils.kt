@@ -23,6 +23,12 @@ import kotlin.coroutines.resume
 
 object InstallationUtils {
 
+    // PackageManager's legacy EXTRA_INSTALL_RESULT reports these stable platform values, but their
+    // symbolic fields are hidden from the public SDK. Local names keep the resulting message precise.
+    private const val INSTALL_FAILED_ALREADY_EXISTS = -1
+    private const val INSTALL_FAILED_UPDATE_INCOMPATIBLE = -7
+    private const val INSTALL_FAILED_VERSION_DOWNGRADE = -25
+
     suspend fun installApp(activity: FragmentActivity, file: File) {
         val contentUri = FileProvider.getUriForFile(
             activity, "${activity.packageName}.provider", file
@@ -36,8 +42,25 @@ object InstallationUtils {
         }
         val it = activity.waitForResult(installIntent)
         if (it.resultCode == Activity.RESULT_OK) return
-        val result = it.data?.extras?.getInt("android.intent.extra.INSTALL_RESULT")
-        throw Exception("Please uninstall the existing extension first. Error Code: $result")
+        if (it.resultCode == Activity.RESULT_CANCELED && it.data == null)
+            throw CancellationException("Extension installation cancelled by user")
+        val result = it.data?.extras?.getInt(
+            "android.intent.extra.INSTALL_RESULT",
+            Int.MIN_VALUE
+        )?.takeIf { status -> status != Int.MIN_VALUE }
+        val reason = when (result) {
+            INSTALL_FAILED_UPDATE_INCOMPATIBLE ->
+                "The installed package has a different signature"
+            INSTALL_FAILED_VERSION_DOWNGRADE ->
+                "Android blocked a version downgrade"
+            INSTALL_FAILED_ALREADY_EXISTS ->
+                "The package already exists"
+            else -> "Android could not install the extension"
+        }
+        throw Exception(
+            "$reason (resultCode=${it.resultCode}" +
+                (result?.let { status -> ", status=$status" } ?: "") + ")"
+        )
     }
 
     suspend fun installFile(

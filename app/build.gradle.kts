@@ -40,13 +40,13 @@ android {
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "dev.rschwertley.gladix.auto"
+        applicationId = "dev.rschwertley.naga"
         minSdk = 24
         targetSdk = 37
-        // V27 shipped as versionCode 39. Keep numbered BHUT packages monotonically installable
+        // V27 shipped as versionCode 39. Keep numbered packages monotonically installable
         // even when a distributed repo archive no longer contains the original Git history.
-        versionCode = 41
-        versionName = "BHUT_V29"
+        versionCode = 10
+        versionName = "NAGA_V54"
         // True only when google-services.json is present. Compile-time constant used to guard
         // every Firebase call site so no-JSON builds never load the (compileOnly) Firebase classes.
         buildConfigField("boolean", "HAS_FIREBASE", "$hasGoogleServices")
@@ -54,7 +54,8 @@ android {
 
     signingConfigs {
         getByName("debug") {
-            val localDebugKeystore = System.getenv("BHUT_DEBUG_KEYSTORE")
+            val localDebugKeystore = System.getenv("NAGA_DEBUG_KEYSTORE")
+                ?: System.getenv("BHUT_DEBUG_KEYSTORE")
             if (!localDebugKeystore.isNullOrBlank()) {
                 storeFile = file(localDebugKeystore)
             }

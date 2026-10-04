@@ -69,14 +69,24 @@ fun Sections.toShelves(
     token: String? = null,
 ): List<Shelf> {
     return items?.mapNotNull { item ->
-        item.data ?: return@mapNotNull null
-        if (item.data.typename == Sections.Typename.BrowseRelatedSectionData)
+        val data = item.data ?: return@mapNotNull null
+        val sectionType = data.typename
+        if (sectionType == Sections.Typename.Unknown) {
+            System.err.println(
+                "SpotifyHome: skipping unknown section typename=${data.rawTypename} " +
+                    "sectionTypename=${item.typename} uri=${item.uri} " +
+                    "targetLocation=${item.targetLocation} title=${data.title?.transformedLabel} " +
+                    "itemCount=${item.sectionItems?.items?.size}"
+            )
+            return@mapNotNull null
+        }
+        if (sectionType == Sections.Typename.BrowseRelatedSectionData)
             return@mapNotNull item.toCategory(queries, cropCovers)
 
         val uri = item.uri ?: return@mapNotNull null
-        val title = item.data.title?.transformedLabel ?: emptyTitle ?: ""
-        val subtitle = item.data.subtitle?.transformedLabel
-        when (item.data.typename) {
+        val title = data.title?.transformedLabel ?: emptyTitle ?: ""
+        val subtitle = data.subtitle?.transformedLabel
+        when (sectionType) {
             null -> null
             Sections.Typename.BrowseGenericSectionData ->
                 Shelf.Lists.Items(
@@ -132,6 +142,7 @@ fun Sections.toShelves(
             Sections.Typename.HomeRecentlyPlayedSectionData -> null
             Sections.Typename.HomeNativeAdsSectionData -> null
             Sections.Typename.HomeYourDJSectionData -> null
+            Sections.Typename.Unknown -> null
         }
     }!!
 }

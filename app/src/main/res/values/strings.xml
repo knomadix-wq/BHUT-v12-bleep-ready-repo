@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name" translatable="false">BHUT</string>
+    <string name="app_name" translatable="false">NAGA</string>
     <string name="app_tagline" translatable="false">Music Beneath the Surface</string>
+    <string name="android_auto_app_name" translatable="false">NAGA</string>
     <string name="app_github_repo" translatable="false">rschwertley/gladix</string>
     <string name="okay">Okay</string>
     <string name="cancel">Cancel</string>
@@ -165,14 +166,15 @@
     <string name="version">Version</string>
     <string name="select_language">Select Language</string>
     <string name="system">System</string>
-    <string name="check_for_updates">Check for Updates</string>
-    <string name="check_for_updates_summary">Look for new updates of both app and extensions, when you open the app.</string>
+    <string name="check_for_updates">Check Extension Updates</string>
+    <string name="check_for_updates_summary">Look for third-party extension updates when you open NAGA. NAGA itself never updates automatically.</string>
 
     <string name="install">Install</string>
     <string name="app">App</string>
     <string name="file">File</string>
     <string name="installation_type">Installation Type</string>
-    <string name="installation_type_summary">App installation will allow the following links to open in BHUT:</string>
+    <string name="installation_type_summary">App installation will allow the following links to open in NAGA:</string>
+    <string name="installation_type_summary_naga" translatable="false">App installation will allow the following links to open in NAGA:</string>
     <string name="installation_type_warning">Not available if you install the extension as a File.</string>
     <string name="could_not_find_the_file">Could not find the file.</string>
     <string name="extension_installer">Extension Installer</string>
@@ -258,11 +260,11 @@
     <string name="link_tv_device">Link TV Device</string>
     <string name="now_playing">Now Playing</string>
     <string name="coming_soon">Coming soon</string>
-    <string name="tv_pairing_title">Link BHUT on your phone</string>
+    <string name="tv_pairing_title">Link NAGA on your phone</string>
     <string name="tv_pairing_options_intro">Or enter the code another way:</string>
-    <string name="tv_pairing_option_1">1. Scan the QR code above to open BHUT on your phone</string>
-    <string name="tv_pairing_option_2">2. Open BHUT on your phone → Settings → Deezer → Link TV Device → enter the code</string>
-    <string name="tv_pairing_option_3">3. Visit rschwertley.github.io/gladix/pair.html and enter the code</string>
+    <string name="tv_pairing_option_1">1. Scan the QR code above to open NAGA on your phone</string>
+    <string name="tv_pairing_option_2">2. Open NAGA on your phone → Settings → Deezer → Link TV Device → enter the code</string>
+    <string name="tv_pairing_option_3">3. Open the NAGA pairing page in a browser and enter the code</string>
     <string name="tv_pairing_waiting">Waiting for phone confirmation…</string>
     <string name="tv_pairing_expired">Code expired</string>
     <string name="tv_pairing_expires_in">Expires in: %1$ds</string>

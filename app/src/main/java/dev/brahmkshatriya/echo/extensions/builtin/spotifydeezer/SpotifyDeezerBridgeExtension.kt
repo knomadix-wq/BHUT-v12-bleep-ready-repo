@@ -1,5 +1,6 @@
 package dev.brahmkshatriya.echo.extensions.builtin.spotifydeezer
 
+import dev.brahmkshatriya.echo.BuildConfig
 import dev.brahmkshatriya.echo.common.MusicExtension
 import dev.brahmkshatriya.echo.common.clients.*
 import dev.brahmkshatriya.echo.common.models.*
@@ -47,6 +48,8 @@ class SpotifyDeezerBridgeExtension :
 
     companion object {
         const val ID = "spotify-deezer"
+        private val CURRENT_BUILD_LABEL =
+            BuildConfig.VERSION_NAME.substringAfterLast('_', BuildConfig.VERSION_NAME)
         val metadata = Metadata(
             className = "dev.brahmkshatriya.echo.extensions.builtin.spotifydeezer.SpotifyDeezerBridgeExtension",
             path = "",
@@ -54,18 +57,19 @@ class SpotifyDeezerBridgeExtension :
             type = ExtensionType.MUSIC,
             id = ID,
             name = "Spotify → Deezer MP3",
-            version = "v29",
+            version = "v40",
             description = "Spotify browsing with Deezer MP3 playback, lyrics, curated editorial and experimental-label picks, and the latest NTS archives.",
-            author = "BHUT",
+            author = "NAGA",
             isEnabled = true,
         )
 
         /** Session cache modelled on Meld's provider-match cache pattern. */
         private val spotifyToDeezer = ConcurrentHashMap<String, String>()
         private const val DIRECT_DEEZER_ITEM = "bridge_direct_deezer"
-        private const val DEEZER_RADIO = "bridge_deezer_radio"
+        private const val SPOTIFY_RADIO = "bridge_spotify_radio"
         private const val NTS_ITEM = "bridge_nts_archive"
         private const val NTS_TOKEN = "bridge_nts_token"
+        private const val NTS_RADIO_QUERY = "bridge_nts_radio_query"
         private const val NTS_LATEST_URL = "https://www.nts.live/latest"
         private const val NTS_CACHE_TTL_MS = 15L * 60 * 1000
         private const val LRCLIB_SEARCH_URL = "https://lrclib.net/api/search"
@@ -77,6 +81,12 @@ class SpotifyDeezerBridgeExtension :
             "https://raw.githubusercontent.com/knomadix-wq/BHUT-v12-bleep-ready-repo/main/data/bandcamp-electronic.json"
         private const val LABEL_WATCHLIST_FEED_URL =
             "https://raw.githubusercontent.com/knomadix-wq/BHUT-v12-bleep-ready-repo/main/data/label-watchlist.json"
+        private const val STEREOGUM_AOTW_FEED_URL =
+            "https://raw.githubusercontent.com/knomadix-wq/BHUT-v12-bleep-ready-repo/main/data/stereogum-aotw.json"
+        private const val TWGEEMA_FEED_URL =
+            "https://raw.githubusercontent.com/knomadix-wq/BHUT-v12-bleep-ready-repo/main/data/twgeema-monthly.json"
+        private const val AOTY_ELECTRONIC_FEED_URL =
+            "https://raw.githubusercontent.com/knomadix-wq/BHUT-v12-bleep-ready-repo/main/data/aoty-electronic.json"
         private const val AU_FRESH_FINDS_ID = "spotify:playlist:37i9dQZF1DX8pdK1PVpBQz"
         private val bleepHttp = OkHttpClient()
     }
@@ -88,6 +98,9 @@ class SpotifyDeezerBridgeExtension :
     private var cachedBoomkatReleases: List<BleepRelease>? = null
     private var cachedBandcampReleases: List<BleepRelease>? = null
     private var cachedLabelReleases: List<BleepRelease>? = null
+    private var cachedStereogumReleases: List<BleepRelease>? = null
+    private var cachedTwgeemaReleases: List<BleepRelease>? = null
+    private var cachedAotyReleases: List<BleepRelease>? = null
     private val ntsFeedMutex = Mutex()
     private var cachedNtsEpisodes: List<Track>? = null
     private var cachedNtsAtMs = 0L
@@ -110,19 +123,32 @@ class SpotifyDeezerBridgeExtension :
     }
 
     override suspend fun loadHomeFeed(): Feed<Shelf> {
-        val spotifyFeed = client<HomeFeedClient>("spotify").loadHomeFeed()
-        return Feed(spotifyFeed.tabs) { tab ->
-            val spotifyData = spotifyFeed.getPagedData(tab)
-            val curatedShelf = buildCuratedShelf()
+        // Keep NAGA's own shelves alive if Spotify sends a malformed experimental home response.
+        val spotifyFeed = runCatching { client<HomeFeedClient>("spotify").loadHomeFeed() }
+            .onFailure { println("NAGA Spotify home unavailable: ${it.message}") }
+            .getOrNull()
+        return Feed(spotifyFeed?.tabs.orEmpty()) { tab ->
+            val spotifyData = spotifyFeed?.let { feed ->
+                runCatching { feed.getPagedData(tab) }
+                    .onFailure { println("NAGA Spotify home tab unavailable: ${it.message}") }
+                    .getOrNull()
+            }
+            val curatedShelf = runCatching { buildCuratedShelf() }
+                .onFailure { println("NAGA Curated: ${it.message}") }
+                .getOrNull()
             val localShelf = runCatching { withTimeoutOrNull(8_000) { buildAustralianLocalShelf() } }
-                .onFailure { println("BHUT Australian local releases: ${it.message}") }
+                .onFailure { println("NAGA Australian local releases: ${it.message}") }
                 .getOrNull()
             val ntsShelf = runCatching { withTimeoutOrNull(8_000) { buildNtsShelf() } }
-                .onFailure { println("BHUT NTS: ${it.message}") }
+                .onFailure { println("NAGA NTS: ${it.message}") }
                 .getOrNull()
-            spotifyData.copy(
+            Feed.Data(
                 pagedData = PagedData.Single {
-                    val spotifyShelves = spotifyData.pagedData.loadAll()
+                    val spotifyShelves = spotifyData?.let { data ->
+                        runCatching { data.pagedData.loadAll() }
+                            .onFailure { println("NAGA Spotify shelves skipped: ${it.message}") }
+                            .getOrDefault(emptyList())
+                    }.orEmpty()
                         .filterNot(::removeSpotifyHomeShelf)
                         .mapNotNull(::withoutSpotifyRadio)
                     val (releaseRadar, withoutRadar) = takeStandaloneShelf(
@@ -143,6 +169,8 @@ class SpotifyDeezerBridgeExtension :
                         localShelf,
                     ) + remaining
                 },
+                buttons = spotifyData?.buttons,
+                background = spotifyData?.background,
             )
         }
     }
@@ -239,39 +267,65 @@ class SpotifyDeezerBridgeExtension :
         val spotifyId: String,
         val cover: String?,
         val sources: Set<String> = setOf("BLEEP"),
+        val publishedAt: String = "",
+        val editorialOrder: Int = Int.MAX_VALUE,
     )
 
     private suspend fun buildCuratedShelf(): Shelf.Lists.Items? {
         val bleep = runCatching { withTimeoutOrNull(5_000) { fetchBleepWeeklyReleases() } }
-            .onFailure { println("BHUT Bleep live feed: ${it.message}; using V27 fallback") }
+            .onFailure { println("NAGA Bleep live feed: ${it.message}; using V27 fallback") }
             .getOrNull()
             .orEmpty()
             .ifEmpty { fallbackBleepReleases() }
         val boomkat = runCatching { withTimeoutOrNull(5_000) { fetchBoomkatWeeklyReleases() } }
-            .onFailure { println("BHUT Boomkat feed: ${it.message}; using V27 fallback") }
+            .onFailure { println("NAGA Boomkat feed: ${it.message}; using V27 fallback") }
             .getOrNull()
             .orEmpty()
             .ifEmpty { fallbackBoomkatReleases() }
         val bandcamp = runCatching { withTimeoutOrNull(5_000) { fetchBandcampReleases() } }
-            .onFailure { println("BHUT Bandcamp Daily feed: ${it.message}; using V27 fallback") }
+            .onFailure { println("NAGA Bandcamp Daily feed: ${it.message}; using V27 fallback") }
             .getOrNull()
             .orEmpty()
             .ifEmpty { fallbackBandcampReleases() }
         val labels = runCatching { withTimeoutOrNull(5_000) { fetchLabelWatchlistReleases() } }
-            .onFailure { println("BHUT label watchlist feed: ${it.message}; using V27 baseline") }
+            .onFailure { println("NAGA label watchlist feed: ${it.message}; using V27 baseline") }
             .getOrNull()
             .orEmpty()
             .ifEmpty { fallbackLabelReleases() }
-        val releases = (bleep + boomkat + bandcamp + labels).fold(linkedMapOf<String, BleepRelease>()) { merged, release ->
+        val stereogum = runCatching { withTimeoutOrNull(5_000) { fetchStereogumReleases() } }
+            .onFailure { println("NAGA Stereogum AOTW feed: ${it.message}; retaining other curated sources") }
+            .getOrNull()
+            .orEmpty()
+            .ifEmpty { fallbackStereogumReleases() }
+        val twgeema = runCatching { withTimeoutOrNull(5_000) { fetchTwgeemaReleases() } }
+            .onFailure { println("NAGA Twgeema feed: ${it.message}; retaining other curated sources") }
+            .getOrNull().orEmpty()
+            .ifEmpty { fallbackTwgeemaReleases() }
+        val aoty = runCatching { withTimeoutOrNull(5_000) { fetchAotyReleases() } }
+            .onFailure { println("NAGA Album of the Year feed: ${it.message}; retaining other curated sources") }
+            .getOrNull().orEmpty()
+        val releases = (bleep + boomkat + bandcamp + labels + stereogum + twgeema + aoty)
+            .mapIndexed { index, release -> release.copy(editorialOrder = index) }
+            .fold(linkedMapOf<String, BleepRelease>()) { merged, release ->
             val key = release.spotifyId.ifBlank { norm(release.artist) + "|" + norm(release.title) }
             val existing = merged[key]
-            merged[key] = existing?.copy(sources = existing.sources + release.sources) ?: release
+            merged[key] = existing?.copy(
+                sources = existing.sources + release.sources,
+                publishedAt = maxOf(existing.publishedAt, release.publishedAt),
+                editorialOrder = minOf(existing.editorialOrder, release.editorialOrder),
+            ) ?: release
             merged
-        }.values.toList()
+        }.values.sortedWith(
+            // Compare publication dates, not scraper refresh times within the same day.
+            compareByDescending<BleepRelease> { it.publishedAt.take(10) }
+                .thenBy { it.editorialOrder }
+        )
         val albums = releases.map { release ->
             Album(
                 id = "spotify:album:${release.spotifyId}",
-                title = release.title,
+                // Curated cards are for artist discovery: show Artist + Label in the two visible
+                // text rows. The Spotify album ID remains the navigation/playback target.
+                title = release.artist,
                 subtitle = release.sources.sorted().joinToString(" · "),
                 cover = release.cover?.takeIf { it.isNotBlank() }?.toImageHolder(),
                 artists = listOf(
@@ -289,9 +343,9 @@ class SpotifyDeezerBridgeExtension :
         if (albums.isEmpty()) return null
         return Shelf.Lists.Items(
             id = "bhut-curated-weekly",
-            title = "CURATED • V29",
+            title = "CURATED • $CURRENT_BUILD_LABEL",
             list = albums,
-            subtitle = "Bleep · Boomkat · Bandcamp Daily · independent experimental labels",
+            subtitle = "Bleep · Boomkat · Bandcamp Daily · Stereogum AOTW · Twgeema · Album of the Year · independent experimental labels",
         )
     }
 
@@ -300,13 +354,15 @@ class SpotifyDeezerBridgeExtension :
             cachedBleepReleases?.let { return@withLock it }
             val request = Request.Builder()
                 .url(BLEEP_FEED_URL)
-                .header("User-Agent", "BHUT/15")
+                .header("User-Agent", "NAGA/15")
                 .build()
             val json = bleepHttp.newCall(request).await().use { response ->
                 if (!response.isSuccessful) error("Bleep feed HTTP ${response.code}")
                 response.body.string()
             }
-            val items = JSONObject(json).optJSONArray("releases")
+            val root = JSONObject(json)
+            val feedDate = root.optString("updatedAt")
+            val items = root.optJSONArray("releases")
             val releases = buildList {
                 if (items == null) return@buildList
                 for (i in 0 until items.length()) {
@@ -315,8 +371,13 @@ class SpotifyDeezerBridgeExtension :
                     val title = item.optString("title").trim()
                     val spotifyId = item.optString("spotifyId").trim()
                     val cover = item.optString("cover").trim().takeIf { it.isNotBlank() }
-                    if (artist.isNotBlank() && title.isNotBlank() && spotifyId.isNotBlank()) {
-                        add(BleepRelease(artist, title, spotifyId, cover))
+                    val section = item.optString("section").trim()
+                    val isRoundupContent = section.isBlank() ||
+                        section.equals("Release of the Week", true) ||
+                        section.equals("Featured Releases", true) ||
+                        section.equals("Featured Albums", true)
+                    if (isRoundupContent && artist.isNotBlank() && title.isNotBlank() && spotifyId.isNotBlank()) {
+                        add(BleepRelease(artist, title, spotifyId, cover, publishedAt = item.optString("publishedAt", feedDate)))
                     }
                 }
             }
@@ -330,12 +391,14 @@ class SpotifyDeezerBridgeExtension :
     private suspend fun fetchBoomkatWeeklyReleases(): List<BleepRelease> = bleepFeedMutex.withLock {
         cachedBoomkatReleases?.let { return@withLock it }
         val json = bleepHttp.newCall(
-            Request.Builder().url(BOOMKAT_FEED_URL).header("User-Agent", "BHUT/27").build()
+            Request.Builder().url(BOOMKAT_FEED_URL).header("User-Agent", "NAGA/27").build()
         ).await().use { response ->
             if (!response.isSuccessful) error("Boomkat feed HTTP ${response.code}")
             response.body.string()
         }
-        val items = JSONObject(json).optJSONArray("releases")
+        val root = JSONObject(json)
+        val feedDate = root.optString("updatedAt")
+        val items = root.optJSONArray("releases")
         val releases = buildList {
             if (items == null) return@buildList
             for (i in 0 until items.length()) {
@@ -345,7 +408,7 @@ class SpotifyDeezerBridgeExtension :
                 val spotifyId = item.optString("spotifyId").trim()
                 val cover = item.optString("cover").trim().takeIf(String::isNotBlank)
                 if (artist.isNotBlank() && title.isNotBlank() && spotifyId.isNotBlank()) {
-                    add(BleepRelease(artist, title, spotifyId, cover, setOf("BOOMKAT")))
+                    add(BleepRelease(artist, title, spotifyId, cover, setOf("BOOMKAT"), item.optString("publishedAt", feedDate)))
                 }
             }
         }.distinctBy { it.spotifyId }.take(12)
@@ -356,12 +419,14 @@ class SpotifyDeezerBridgeExtension :
     private suspend fun fetchBandcampReleases(): List<BleepRelease> = bleepFeedMutex.withLock {
         cachedBandcampReleases?.let { return@withLock it }
         val json = bleepHttp.newCall(
-            Request.Builder().url(BANDCAMP_FEED_URL).header("User-Agent", "BHUT/27").build()
+            Request.Builder().url(BANDCAMP_FEED_URL).header("User-Agent", "NAGA/27").build()
         ).await().use { response ->
             if (!response.isSuccessful) error("Bandcamp feed HTTP ${response.code}")
             response.body.string()
         }
-        val items = JSONObject(json).optJSONArray("releases")
+        val root = JSONObject(json)
+        val feedDate = root.optString("updatedAt")
+        val items = root.optJSONArray("releases")
         val releases = buildList {
             if (items == null) return@buildList
             for (i in 0 until items.length()) {
@@ -371,7 +436,7 @@ class SpotifyDeezerBridgeExtension :
                 val spotifyId = item.optString("spotifyId").trim()
                 val cover = item.optString("cover").trim().takeIf(String::isNotBlank)
                 if (artist.isNotBlank() && title.isNotBlank() && spotifyId.isNotBlank()) {
-                    add(BleepRelease(artist, title, spotifyId, cover, setOf("BANDCAMP DAILY")))
+                    add(BleepRelease(artist, title, spotifyId, cover, setOf("BANDCAMP DAILY"), item.optString("publishedAt", feedDate)))
                 }
             }
         }.distinctBy { it.spotifyId }.take(12)
@@ -382,12 +447,14 @@ class SpotifyDeezerBridgeExtension :
     private suspend fun fetchLabelWatchlistReleases(): List<BleepRelease> = bleepFeedMutex.withLock {
         cachedLabelReleases?.let { return@withLock it }
         val json = bleepHttp.newCall(
-            Request.Builder().url(LABEL_WATCHLIST_FEED_URL).header("User-Agent", "BHUT/27").build()
+            Request.Builder().url(LABEL_WATCHLIST_FEED_URL).header("User-Agent", "NAGA/27").build()
         ).await().use { response ->
             if (!response.isSuccessful) error("Label watchlist feed HTTP ${response.code}")
             response.body.string()
         }
-        val items = JSONObject(json).optJSONArray("releases")
+        val root = JSONObject(json)
+        val feedDate = root.optString("updatedAt")
+        val items = root.optJSONArray("releases")
         val releases = buildList {
             if (items == null) return@buildList
             for (i in 0 until items.length()) {
@@ -398,7 +465,7 @@ class SpotifyDeezerBridgeExtension :
                 val cover = item.optString("cover").trim().takeIf(String::isNotBlank)
                 val source = item.optString("source").trim().takeIf(String::isNotBlank) ?: continue
                 if (artist.isNotBlank() && title.isNotBlank() && spotifyId.isNotBlank()) {
-                    add(BleepRelease(artist, title, spotifyId, cover, setOf(source)))
+                    add(BleepRelease(artist, title, spotifyId, cover, setOf(source), item.optString("publishedAt", feedDate)))
                 }
             }
         }.distinctBy { it.spotifyId + "|" + it.sources.first() }.take(32)
@@ -406,9 +473,116 @@ class SpotifyDeezerBridgeExtension :
         releases
     }
 
+    private suspend fun fetchStereogumReleases(): List<BleepRelease> = bleepFeedMutex.withLock {
+        cachedStereogumReleases?.let { return@withLock it }
+        val json = bleepHttp.newCall(
+            Request.Builder().url(STEREOGUM_AOTW_FEED_URL).header("User-Agent", "NAGA/47").build()
+        ).await().use { response ->
+            if (!response.isSuccessful) error("Stereogum AOTW feed HTTP ${response.code}")
+            response.body.string()
+        }
+        val root = JSONObject(json)
+        val feedDate = root.optString("updatedAt")
+        val items = root.optJSONArray("releases")
+        val releases = buildList {
+            if (items == null) return@buildList
+            for (i in 0 until items.length()) {
+                val item = items.optJSONObject(i) ?: continue
+                val artist = item.optString("artist").trim()
+                val title = item.optString("title").trim()
+                val spotifyId = item.optString("spotifyId").trim()
+                val cover = item.optString("cover").trim().takeIf(String::isNotBlank)
+                if (artist.isNotBlank() && title.isNotBlank() && spotifyId.isNotBlank()) {
+                    add(BleepRelease(artist, title, spotifyId, cover, setOf("STEREOGUM AOTW"), item.optString("publishedAt", feedDate)))
+                }
+            }
+        }.distinctBy { it.spotifyId }.take(52)
+        cachedStereogumReleases = releases
+        releases
+    }
+
+    private suspend fun fetchTwgeemaReleases(): List<BleepRelease> = bleepFeedMutex.withLock {
+        cachedTwgeemaReleases?.let { return@withLock it }
+        val json = bleepHttp.newCall(Request.Builder().url(TWGEEMA_FEED_URL).header("User-Agent", "NAGA/48").build())
+            .await().use { response ->
+                if (!response.isSuccessful) error("Twgeema feed HTTP ${response.code}")
+                response.body.string()
+            }
+        val root = JSONObject(json)
+        val feedDate = root.optString("updatedAt")
+        val items = root.optJSONArray("releases")
+        val releases = buildList {
+            if (items == null) return@buildList
+            for (i in 0 until items.length()) {
+                val item = items.optJSONObject(i) ?: continue
+                val artist = item.optString("artist").trim()
+                val title = item.optString("title").trim()
+                val spotifyId = item.optString("spotifyId").trim()
+                val rank = item.optInt("rank", i + 1)
+                val cover = item.optString("cover").trim().takeIf(String::isNotBlank)
+                if (artist.isNotBlank() && title.isNotBlank() && spotifyId.isNotBlank()) {
+                    add(BleepRelease(artist, title, spotifyId, cover, setOf("TWGEEMA #$rank"), item.optString("publishedAt", feedDate), rank))
+                }
+            }
+        }.distinctBy { it.spotifyId }.take(10)
+        cachedTwgeemaReleases = releases
+        releases
+    }
+
+    private suspend fun fetchAotyReleases(): List<BleepRelease> = bleepFeedMutex.withLock {
+        cachedAotyReleases?.let { return@withLock it }
+        val json = bleepHttp.newCall(
+            Request.Builder().url(AOTY_ELECTRONIC_FEED_URL).header("User-Agent", "NAGA/54").build()
+        ).await().use { response ->
+            if (!response.isSuccessful) error("Album of the Year feed HTTP ${response.code}")
+            response.body.string()
+        }
+        val root = JSONObject(json)
+        val feedDate = root.optString("updatedAt")
+        val items = root.optJSONArray("releases")
+        val releases = buildList {
+            if (items == null) return@buildList
+            for (i in 0 until items.length()) {
+                val item = items.optJSONObject(i) ?: continue
+                val artist = item.optString("artist").trim()
+                val title = item.optString("title").trim()
+                val spotifyId = item.optString("spotifyId").trim()
+                val cover = item.optString("cover").trim().takeIf(String::isNotBlank)
+                if (artist.isNotBlank() && title.isNotBlank() && spotifyId.isNotBlank()) {
+                    add(BleepRelease(artist, title, spotifyId, cover, setOf("ALBUM OF THE YEAR"), item.optString("publishedAt", feedDate)))
+                }
+            }
+        }.distinctBy { it.spotifyId }.take(60)
+        cachedAotyReleases = releases
+        releases
+    }
+
     private fun fallbackBleepReleases() = listOf(
         BleepRelease("Topdown Dialectic", "False LP A", "1R570SkqASVYyKJJQAzV5v", "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02f62e019a91013abe13fbc838"),
         BleepRelease("Phoebe Bridgers", "Lost Weekend", "2NSzwyYvQvdOQAoEjrlw9c", "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0225a647ace83ba32770ab5d0f"),
+    )
+
+    private fun fallbackStereogumReleases() = listOf(
+        BleepRelease(
+            "This Is Lorelei",
+            "The Singer in My Band",
+            "24cxezS5U9YTFapgKpYG16",
+            "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c456875e0df6d8195f4b5545",
+            setOf("STEREOGUM AOTW"),
+            "2026-09-08T14:05:00.000Z",
+        ),
+    )
+
+    private fun fallbackTwgeemaReleases() = listOf(
+        BleepRelease(
+            "Lusine",
+            "Melting Days",
+            "1tLBaM7LWJkX1zi3K6wuLu",
+            null,
+            setOf("TWGEEMA #4"),
+            "2026-09-15T12:00:00.000Z",
+            4,
+        ),
     )
 
     private fun fallbackBoomkatReleases() = listOf(
@@ -509,7 +683,7 @@ class SpotifyDeezerBridgeExtension :
         if (episodes.isEmpty()) return null
         return Shelf.Lists.Items(
             id = "bhut-nts-latest",
-            title = "NTS Latest Archives • V29",
+            title = "NTS Latest Archives • $CURRENT_BUILD_LABEL",
             list = episodes,
             subtitle = "Newest playable mixes from the NTS archive",
         )
@@ -523,7 +697,7 @@ class SpotifyDeezerBridgeExtension :
             bleepHttp.newCall(
                 Request.Builder()
                     .url("$NTS_LATEST_URL?bhut_refresh=$now")
-                    .header("User-Agent", "BHUT/28")
+                    .header("User-Agent", "NAGA/28")
                     .header("Cache-Control", "no-cache")
                     .build()
             ).await().use { response ->
@@ -564,7 +738,16 @@ class SpotifyDeezerBridgeExtension :
                     ?.toImageHolder()
                 val date = episode.optString("broadcastDateFormatted").trim()
                 val location = episode.optString("location_long").trim()
-                val streamExtras = mapOf(NTS_ITEM to "true", NTS_TOKEN to token)
+                val genres = episode.optJSONArray("genres")?.let { values ->
+                    (0 until values.length()).mapNotNull { index ->
+                        values.optJSONObject(index)?.optString("value")?.takeIf { it.isNotBlank() }
+                    }
+                }.orEmpty()
+                val streamExtras = mapOf(
+                    NTS_ITEM to "true",
+                    NTS_TOKEN to token,
+                    NTS_RADIO_QUERY to ntsRadioSearchQuery(title, genres),
+                )
                 add(
                     Track(
                         id = "nts:$show/$alias",
@@ -582,14 +765,10 @@ class SpotifyDeezerBridgeExtension :
                             )
                         ),
                         subtitle = listOf(date, location).filter { it.isNotBlank() }.joinToString(" • "),
-                        genres = episode.optJSONArray("genres")?.let { genres ->
-                            (0 until genres.length()).mapNotNull { index ->
-                                genres.optJSONObject(index)?.optString("value")?.takeIf { it.isNotBlank() }
-                            }
-                        }.orEmpty(),
+                        genres = genres,
                         extras = streamExtras,
                         streamables = listOf(Streamable.server(source, 2, "NTS Archive", streamExtras)),
-                        isRadioSupported = false,
+                        isRadioSupported = true,
                         isSaveable = false,
                         isLikeable = false,
                         isHideable = false,
@@ -634,7 +813,7 @@ class SpotifyDeezerBridgeExtension :
         val json = bleepHttp.newCall(
             Request.Builder()
                 .url("$LRCLIB_SEARCH_URL?$query")
-                .header("User-Agent", "BHUT/28 (Android lyrics client)")
+                .header("User-Agent", "NAGA/28 (Android lyrics client)")
                 .build()
         ).await().use { response ->
             if (!response.isSuccessful) error("LRCLIB lyrics HTTP ${response.code}")
@@ -691,8 +870,25 @@ class SpotifyDeezerBridgeExtension :
     override suspend fun loadSearchFeed(query: String): Feed<Shelf> =
         client<SearchFeedClient>("spotify").loadSearchFeed(query)
 
-    override suspend fun loadLibraryFeed(): Feed<Shelf> =
-        client<LibraryFeedClient>("spotify").loadLibraryFeed()
+    override suspend fun loadLibraryFeed(): Feed<Shelf> {
+        val spotifyLibrary = client<LibraryFeedClient>("spotify").loadLibraryFeed()
+        return spotifyLibrary.copy { tab ->
+            val data = spotifyLibrary.getPagedData(tab)
+            data.copy(
+                pagedData = data.pagedData.map { result ->
+                    result.getOrThrow().filterNot { it.isSpotifyOwnedPlaylist() }
+                }
+            )
+        }
+    }
+
+    private fun Shelf.isSpotifyOwnedPlaylist(): Boolean {
+        val playlist = (this as? Shelf.Item)?.media as? Playlist ?: return false
+        return playlist.authors.any { author ->
+            author.id.equals("spotify:user:spotify", ignoreCase = true) ||
+                author.name.equals("Spotify", ignoreCase = true)
+        }
+    }
 
     override suspend fun loadPlaylist(playlist: Playlist): Playlist =
         client<PlaylistClient>("spotify").loadPlaylist(playlist)
@@ -842,50 +1038,41 @@ class SpotifyDeezerBridgeExtension :
         )
     }
 
-    /**
-     * Continue a Spotify-origin queue through Gladix's bundled Deezer radio implementation.
-     * The final Spotify item is translated only to its already-successful Deezer match; the
-     * recommendations returned from Deezer remain native Deezer items for playback.
-     */
+    /** Keep Spotify as the recommendation engine; NAGA still resolves its returned tracks via Deezer. */
     override suspend fun radio(item: EchoMediaItem, context: EchoMediaItem?): Radio {
-        val track = item as? Track ?: error("BHUT radio requires a track seed")
-        val spotifyId = track.extras["bridge_spotify_id"] ?: track.id
-        val deezerId = track.extras["bridge_deezer_id"]
-            ?: spotifyToDeezer[spotifyId]
-            ?: error("No successful Deezer match is available for ${track.title}")
-        val deezerSeed = track.copy(
-            id = deezerId,
-            extras = track.extras + mapOf(
-                DIRECT_DEEZER_ITEM to "true",
-                "bridge_deezer_id" to deezerId,
-            ),
+        val track = item as? Track ?: error("NAGA radio requires a track seed")
+        val radioSeed = if (track.extras[NTS_ITEM] == "true") {
+            findSpotifyRadioSeed(track.extras[NTS_RADIO_QUERY].orEmpty())
+        } else track
+        val spotifyId = radioSeed.extras["bridge_spotify_id"] ?: radioSeed.id
+        val spotifySeed = radioSeed.copy(id = spotifyId)
+        val spotifyContext = context?.let {
+            runCatching { it.spotifyFacing() }.getOrElse { _ -> it }
+        }
+        val spotifyRadio = client<RadioClient>("spotify").radio(spotifySeed, spotifyContext)
+        return spotifyRadio.copy(
+            extras = spotifyRadio.extras + mapOf(SPOTIFY_RADIO to "true"),
         )
-        val deezerRadio = client<DeezerExtension>("deezer").radio(deezerSeed, null)
-        return deezerRadio.copy(
-            extras = deezerRadio.extras + mapOf(DEEZER_RADIO to "true"),
-        )
+    }
+
+    private suspend fun findSpotifyRadioSeed(query: String): Track {
+        require(query.isNotBlank()) { "NTS episode supplied no Spotify radio search terms" }
+        val shelves = client<SearchFeedClient>("spotify").loadSearchFeed(query).loadAll()
+        return shelves.firstNotNullOfOrNull { shelf ->
+            when (shelf) {
+                is Shelf.Item -> shelf.media as? Track
+                is Shelf.Lists.Tracks -> shelf.list.firstOrNull()
+                is Shelf.Lists.Items -> shelf.list.filterIsInstance<Track>().firstOrNull()
+                else -> null
+            }
+        } ?: error("Spotify found no radio seed for NTS episode: $query")
     }
 
     override suspend fun loadRadio(radio: Radio): Radio = radio
 
     override suspend fun loadTracks(radio: Radio): Feed<Track> {
-        require(radio.extras[DEEZER_RADIO] == "true") { "Unknown BHUT radio" }
-        val feed = client<DeezerExtension>("deezer").loadTracks(radio)
-        return Feed(feed.tabs) { tab ->
-            val data = feed.getPagedData(tab)
-            data.copy(
-                pagedData = data.pagedData.map { result ->
-                    result.getOrThrow().map { track ->
-                        track.copy(
-                            extras = track.extras + mapOf(
-                                DIRECT_DEEZER_ITEM to "true",
-                                "bridge_deezer_id" to track.id,
-                            ),
-                        )
-                    }
-                },
-            )
-        }
+        require(radio.extras[SPOTIFY_RADIO] == "true") { "Unknown NAGA radio" }
+        return client<RadioClient>("spotify").loadTracks(radio)
     }
 
     private suspend fun resolveViaDeezer(source: Track, deezer: DeezerExtension): Track? {
