@@ -1,41 +1,76 @@
 {
-  "updatedAt": "2026-08-22T07:42:02.565Z",
+  "updatedAt": "2026-10-02T15:52:14.420Z",
   "source": "https://bleep.com/weekly-roundup?lang=en_GB",
   "releases": [
     {
-      "artist": "Overmono",
-      "title": "Pure Devotion",
+      "artist": "Actress",
+      "title": "Radical Frame",
       "section": "Record of the Month",
-      "spotifyId": "0DS9OxHBt693YOs3TDira2",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0258e6ed619438202bb108ec6f"
+      "spotifyId": "4bvfwACExnuV8cVqmTvneG",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f6f7b357a1dcf5b14298aa0c"
     },
     {
-      "artist": "Tyondai Braxton",
-      "title": "Splayed Werks",
+      "artist": "Jon Hassell",
+      "title": "Music Is Invisible (Pentimento Volume Three)",
       "section": "Release of the Week",
-      "spotifyId": "3gralcjkI8QCnIgCmlJ6RP",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024636e0e93d9897bea8868c2c"
+      "spotifyId": "7y6nrogjpYO43Z0V1Gdlq8",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e021663c519f75c0cefe924af3f"
     },
     {
-      "artist": "Ghost Dubs",
-      "title": "Damaged",
+      "artist": "⣎⡇ꉺლ༽இ•̛)ྀ◞ ༎ຶ ༽ৣৢ؞ৢ؞ؖ ꉺლ",
+      "title": "O◉☼ྀ",
       "section": "Featured Releases",
-      "spotifyId": "4cOgqlDJG3cspeuIErIXh3",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e025ac0fee4d0e7daf6e2cdc683"
+      "spotifyId": "6OxEdoTceemiC0d7GgdXEz",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0202c4e76b6017ba6091d58e11"
     },
     {
-      "artist": "Severed Heads",
-      "title": "Cuisine (With Piscatorial)",
+      "artist": "Various Artists",
+      "title": "Auntie Aubrey's Excursions Beyond The Call Of Duty Pt. 3 (The Orb Remix Project)",
       "section": "Featured Releases",
-      "spotifyId": "25mFGUi5VVyqtdyEvK3XqJ",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e025db34c2c1659914fa3ec6caf"
+      "spotifyId": "7HolmjCEWgxxkAqwZoHbBK",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a1e33ac14d28092abec6a7a2"
     },
     {
-      "artist": "Felicia Atkinson & Christina Vantzou",
-      "title": "Reflections Vol. 3: Water Poems",
+      "artist": "Swans",
+      "title": "Newly Sentient Being",
+      "section": "Featured Releases",
+      "spotifyId": "4LnDRDnUMPhh51vyqN45hA",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02699ef1ec86355fdf1668ca96"
+    },
+    {
+      "artist": "Kaitlyn Aurelia Smith",
+      "title": "RUIN: It's Not Just Music",
+      "section": "Featured Releases",
+      "spotifyId": "1sYKpHvzVmZxcc2RxiVOk0",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e023ed89caeb6fb407b5bef97d3"
+    },
+    {
+      "artist": "Vanishing Twin",
+      "title": "Archives",
+      "section": "Featured Releases",
+      "spotifyId": "4Ljv5I3EQtAZtSw0wZxkob",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02787772bfe16950fbfe145193"
+    },
+    {
+      "artist": "Helen",
+      "title": "Linda's Head",
       "section": "Featured Albums",
-      "spotifyId": "3OWKy0zcaRmi0mx4XCLTOF",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02f47b2cbda0f690a5cc74baac"
+      "spotifyId": "2wB9detc1PQGC8MmHmQEPg",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02706ed40347d60a9876111635"
+    },
+    {
+      "artist": "Maria W Horn",
+      "title": "Melting Pillars of Snow",
+      "section": "Featured Albums",
+      "spotifyId": "6hnBPFkeCokEbke3GtRmzI",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c1fc5709c7633f68a2ed8666"
+    },
+    {
+      "artist": "Lustmord & Dave Lombardo",
+      "title": "The Pulse Of Atoms",
+      "section": "Featured Albums",
+      "spotifyId": "15UE2YLhIC78kZBWO2ygoh",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020f0d28a1a1123b18ea3fea46"
     }
   ]
 }
