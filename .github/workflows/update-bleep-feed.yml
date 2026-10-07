@@ -28,7 +28,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -38,6 +38,22 @@ jobs:
         run: |
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
+      # Run and publish AOTY before the slower label watchlist. A timeout in an
+      # unrelated scraper must never leave this feed empty again.
+      - name: Fetch Album of the Year electronic recommendations
+        run: node scripts/fetch-aoty-electronic.mjs
+        continue-on-error: true
+      - name: Publish Album of the Year feed
+        run: |
+          if git diff --quiet -- data/aoty-electronic.json; then
+            echo "AOTY feed is unchanged"
+            exit 0
+          fi
+          git config user.name "NAGA Feed Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/aoty-electronic.json
+          git commit -m "Update AOTY electronic feed"
+          git push
       - name: Fetch Bleep roundup
         run: node scripts/fetch-bleep-weekly.mjs
         continue-on-error: true
@@ -56,17 +72,14 @@ jobs:
       - name: Fetch Twgeema monthly electronic chart
         run: node scripts/fetch-twgeema-monthly.mjs
         continue-on-error: true
-      - name: Fetch Album of the Year electronic recommendations
-        run: node scripts/fetch-aoty-electronic.mjs
-        continue-on-error: true
       - name: Commit updated feed
         run: |
-          if git diff --quiet -- data/bleep-weekly.json data/boomkat-weekly.json data/bandcamp-electronic.json data/label-watchlist.json data/stereogum-aotw.json data/twgeema-monthly.json data/aoty-electronic.json; then
+          if git diff --quiet -- data/bleep-weekly.json data/boomkat-weekly.json data/bandcamp-electronic.json data/label-watchlist.json data/stereogum-aotw.json data/twgeema-monthly.json; then
             echo "Feed is unchanged"
             exit 0
           fi
           git config user.name "NAGA Feed Bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/bleep-weekly.json data/boomkat-weekly.json data/bandcamp-electronic.json data/label-watchlist.json data/stereogum-aotw.json data/twgeema-monthly.json data/aoty-electronic.json
+          git add data/bleep-weekly.json data/boomkat-weekly.json data/bandcamp-electronic.json data/label-watchlist.json data/stereogum-aotw.json data/twgeema-monthly.json
           git commit -m "Update curated weekly feeds"
           git push
