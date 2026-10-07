@@ -23,7 +23,7 @@ export function parseAotyRow({ artist, title, text, url }, now = new Date()) {
 }
 
 export function selectDailyAdditions(candidates, previous, limit = 2) {
-  const key = (item) => item.url || item.artist + "\\u0000" + item.title;
+  const key = (item) => item.url || item.artist + "::" + item.title;
   const known = new Set(previous.map(key));
   return candidates.filter((item) => !known.has(key(item))).slice(0, limit);
 }
