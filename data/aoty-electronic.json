@@ -1,5 +1,19 @@
 {
-  "updatedAt": null,
+  "updatedAt": "2026-10-07T00:00:00.000Z",
   "source": "https://www.albumoftheyear.org/genre/6-electronic/recent/",
-  "releases": []
+  "releases": [
+    {
+      "artist": "Tinashe",
+      "title": "Popstar",
+      "url": "https://www.albumoftheyear.org/album/1919866-tinashe-popstar.php",
+      "type": "LP",
+      "criticScore": 83,
+      "criticReviews": 10,
+      "releasedAt": "2026-09-25T00:00:00.000Z",
+      "spotifyId": "06CjF89lLSSiVWXujVVtQs",
+      "cover": "https://i.scdn.co/image/ab67616d00001e02f8dc54881b35310061266cdf",
+      "source": "ALBUM OF THE YEAR",
+      "publishedAt": "2026-10-07T00:00:00.000Z"
+    }
+  ]
 }
