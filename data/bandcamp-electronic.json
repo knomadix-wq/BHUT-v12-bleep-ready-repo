@@ -1,12 +1,13 @@
 {
-  "updatedAt": "2026-09-25T14:40:54.694Z",
-  "source": "https://daily.bandcamp.com/best-electronic/the-best-electronic-music-on-bandcamp-july-2026",
+  "updatedAt": "2026-10-08T00:09:34.534Z",
+  "source": "https://daily.bandcamp.com/best-electronic/the-best-electronic-music-on-bandcamp-september-2026",
   "releases": [
     {
-      "artist": "PosthumanGang of 404",
-      "title": "Posthuman",
-      "spotifyId": "4pXNhewL3RtlwA8gUiVgGd",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02fa066f84f6fe93008eeb3d43"
+      "artist": "Jason Lindner x Currency AudioMoment Machine EP001",
+      "title": "Moment Machine",
+      "spotifyId": "5FSFzwuzYQCVJkNTfH7Nic",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c90908cd2993b0d03b5d56f0",
+      "publishedAt": "2026-10-02T17:28:49.000Z"
     }
   ]
 }

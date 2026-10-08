@@ -25,6 +25,42 @@
     {
       "name": "BLACK TRUFFLE",
       "url": "https://blacktruffle.bandcamp.com/music"
+    },
+    {
+      "name": "ORANGE MILK",
+      "url": "https://orangemilkrecords.bandcamp.com/music"
+    },
+    {
+      "name": "SAHKO",
+      "url": "https://sahkorecordings.bandcamp.com/music"
+    },
+    {
+      "name": "STROOM.TV",
+      "url": "https://stroomtv.bandcamp.com/music"
+    },
+    {
+      "name": "MUSCUT",
+      "url": "https://muscut.bandcamp.com/music"
+    },
+    {
+      "name": "FAITICHE",
+      "url": "https://faitiche.bandcamp.com/music"
+    },
+    {
+      "name": "KRAAK",
+      "url": "https://kraak.bandcamp.com/music"
+    },
+    {
+      "name": "KNEKELHUIS",
+      "url": "https://knekelhuis.bandcamp.com/music"
+    },
+    {
+      "name": "HAKUNA KULALA",
+      "url": "https://hakunakulala.bandcamp.com/music"
+    },
+    {
+      "name": "EFFICIENT SPACE",
+      "url": "https://efficientspace.bandcamp.com/music"
     }
   ],
   "releases": [
@@ -34,7 +70,8 @@
       "source": "SHELTER PRESS",
       "url": "https://shelterpress.bandcamp.com/album/sub-re",
       "spotifyId": "1kDaNdOJtTm68CcbNJJPXV",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0261c3e7bda596f7a0473ed3f5"
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0261c3e7bda596f7a0473ed3f5",
+      "publishedAt": "2026-08-22T00:00:00.000Z"
     },
     {
       "artist": "upsammy & Valentina Magaletti",
@@ -42,7 +79,8 @@
       "source": "PAN",
       "url": "https://p-a-n.bandcamp.com/album/seismo",
       "spotifyId": "2K5yO5Gr7ZhjhMfW3SFSFq",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0238159d4e18e0242c157241a0"
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0238159d4e18e0242c157241a0",
+      "publishedAt": "2026-08-22T00:00:00.000Z"
     },
     {
       "artist": "bela",
@@ -50,7 +88,8 @@
       "source": "SUBTEXT",
       "url": "https://subtextrecordings.bandcamp.com/album/korean-love-sonnets",
       "spotifyId": "3WE8pSItlg896MLbUwsubC",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02df5599577723c767915bd0b1"
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02df5599577723c767915bd0b1",
+      "publishedAt": "2026-08-22T00:00:00.000Z"
     },
     {
       "artist": "Cities Aviv",
@@ -58,7 +97,8 @@
       "source": "BLACK TRUFFLE",
       "url": "https://blacktruffle.bandcamp.com/album/even-colder-spring",
       "spotifyId": "4zqz0CmtPzxWriY0bTdvxg",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028b4bbb83b851988fc930cc3a"
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028b4bbb83b851988fc930cc3a",
+      "publishedAt": "2026-08-22T00:00:00.000Z"
     }
   ]
 }
