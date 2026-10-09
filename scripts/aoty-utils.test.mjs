@@ -5,12 +5,13 @@ import { parseAotyRow, selectDailyAdditions } from "./aoty-utils.mjs";
 const now = new Date("2026-09-24T12:00:00Z");
 const row = (text, title = "Good Album") => parseAotyRow({ artist: "Artist", title, text, url: "/" + title }, now);
 
-test("accepts a recent LP with a 79+ critic score", () => {
+test("accepts a recent LP with a critic score over 70", () => {
   assert.equal(row("Sep 18 • LP\n80\ncritic score\n(2)\n99\nuser score\n(900)").criticScore, 80);
   assert.equal(row("Sep 18 • LP\n90\ncritic score\n(1)").criticScore, 90);
 });
 test("ignores user scores and rejects low or excluded releases", () => {
-  assert.equal(row("Sep 18 • LP\n78\ncritic score\n(20)"), null);
+  assert.equal(row("Sep 18 • LP\n70\ncritic score\n(20)"), null);
+  assert.equal(row("Sep 18 • LP\n71\ncritic score\n(20)")?.criticScore, 71);
   assert.equal(row("Sep 18 • Remix\n90\ncritic score\n(5)"), null);
   assert.equal(row("Sep 10 • EP\n90\ncritic score\n(5)"), null);
 });

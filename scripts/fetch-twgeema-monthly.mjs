@@ -8,19 +8,22 @@ const oldFeed = JSON.parse(await readFile("data/twgeema-monthly.json", "utf8").c
 async function spotifyMatch(page, release) {
   const query = encodeURIComponent(`${release.artist} ${release.title}`);
   await page.goto(`https://open.spotify.com/search/${query}/albums`, { waitUntil: "domcontentloaded", timeout: 30_000 });
-  const link = page.locator('a[href*="/album/"]').first();
-  await link.waitFor({ state: "attached", timeout: 15_000 });
-  const spotifyId = (await link.getAttribute("href"))?.match(/\/album\/([^/?]+)/)?.[1];
-  if (!spotifyId) throw new Error("no Spotify album");
-  const response = await fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(`https://open.spotify.com/album/${spotifyId}`)}`);
-  if (!response.ok) throw new Error(`Spotify HTTP ${response.status}`);
-  const metadata = await response.json();
-  const actualTitle = normalise(metadata.title || "");
+  const links = page.locator('a[href*="/album/"]');
+  await links.first().waitFor({ state: "attached", timeout: 15_000 });
+  const spotifyIds = [...new Set((await links.evaluateAll((items) =>
+    items.map((item) => item.getAttribute("href")?.match(/\/album\/([^/?]+)/)?.[1]).filter(Boolean),
+  )).slice(0, 8))];
   const expectedTitle = normalise(release.title);
-  if (!actualTitle || (actualTitle !== expectedTitle && !actualTitle.includes(expectedTitle) && !expectedTitle.includes(actualTitle))) {
-    throw new Error(`wrong Spotify album: ${metadata.title || "unknown"}`);
+  for (const spotifyId of spotifyIds) {
+    const response = await fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(`https://open.spotify.com/album/${spotifyId}`)}`);
+    if (!response.ok) continue;
+    const metadata = await response.json();
+    const actualTitle = normalise(metadata.title || "");
+    if (actualTitle && (actualTitle === expectedTitle || actualTitle.includes(expectedTitle) || expectedTitle.includes(actualTitle))) {
+      return { ...release, spotifyId, cover: metadata.thumbnail_url };
+    }
   }
-  return { ...release, spotifyId, cover: metadata.thumbnail_url };
+  throw new Error("no verified Spotify album");
 }
 
 const browser = await chromium.launch({ headless: true });

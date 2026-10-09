@@ -8,7 +8,9 @@ export function parseAotyRow({ artist, title, text, url }, now = new Date()) {
   if (!/^(LP|EP)$/i.test(type)) return null;
   const criticScore = Number(critic[1]);
   const criticReviews = Number(critic[2].replaceAll(",", ""));
-  if (criticScore <= 78) return null;
+  // NAGA's discovery floor is deliberately inclusive of 71+ releases. A score of
+  // exactly 70 remains excluded so "over 70" cannot drift into "70 or higher".
+  if (criticScore <= 70) return null;
   let year = now.getUTCFullYear();
   let releasedAt = new Date(Date.UTC(year, MONTHS[release[1].slice(0, 1).toUpperCase() + release[1].slice(1, 3).toLowerCase()], Number(release[2])));
   if (releasedAt.getTime() > now.getTime() + 86_400_000) {
