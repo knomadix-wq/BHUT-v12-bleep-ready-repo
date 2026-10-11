@@ -14,6 +14,8 @@ on:
       - "scripts/fetch-twgeema-monthly.mjs"
       - "scripts/fetch-aoty-electronic.mjs"
       - "scripts/aoty-utils.mjs"
+      - "scripts/curated-utils.mjs"
+      - "scripts/curated-utils.test.mjs"
   schedule:
     # Retry through Friday because Bleep does not always publish at the same hour.
     - cron: "17 9,12,15,18 * * 5"
@@ -21,6 +23,10 @@ on:
     - cron: "17 18 * * 2"
     # Reveal the current Twgeema chart at two Spotify-matched albums per day.
     - cron: "37 18 * * *"
+
+concurrency:
+  group: curated-feed-update
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -41,35 +47,31 @@ jobs:
       # Run and publish AOTY before the slower label watchlist. A timeout in an
       # unrelated scraper must never leave this feed empty again.
       - name: Fetch Album of the Year electronic recommendations
+        id: aoty
         run: node scripts/fetch-aoty-electronic.mjs
         continue-on-error: true
-      - name: Publish Album of the Year feed
-        run: |
-          if git diff --quiet -- data/aoty-electronic.json; then
-            echo "AOTY feed is unchanged"
-            exit 0
-          fi
-          git config user.name "NAGA Feed Bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add data/aoty-electronic.json
-          git commit -m "Update AOTY electronic feed"
-          git push
       - name: Fetch Bleep roundup
+        id: bleep
         run: node scripts/fetch-bleep-weekly.mjs
         continue-on-error: true
       - name: Fetch Boomkat roundup
+        id: boomkat
         run: node scripts/fetch-boomkat-weekly.mjs
         continue-on-error: true
       - name: Fetch Bandcamp Daily electronic picks
+        id: bandcamp
         run: node scripts/fetch-bandcamp-electronic.mjs
         continue-on-error: true
       - name: Fetch experimental label watchlist
+        id: labels
         run: node scripts/fetch-label-watchlist.mjs
         continue-on-error: true
       - name: Fetch Stereogum Album of the Week
+        id: stereogum
         run: node scripts/fetch-stereogum-aotw.mjs
         continue-on-error: true
       - name: Fetch Twgeema monthly electronic chart
+        id: twgeema
         run: node scripts/fetch-twgeema-monthly.mjs
         continue-on-error: true
       - name: Commit updated feed
@@ -81,6 +83,7 @@ jobs:
             data/label-watchlist.json
             data/stereogum-aotw.json
             data/twgeema-monthly.json
+            data/aoty-electronic.json
           )
           existing_files=()
           for file in "${feed_files[@]}"; do
@@ -96,4 +99,38 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add -- "${existing_files[@]}"
           git commit -m "Update curated weekly feeds"
+          git pull --rebase origin main
           git push
+      - name: Report scraper health
+        if: always()
+        env:
+          AOTY: ${{ steps.aoty.outcome }}
+          BLEEP: ${{ steps.bleep.outcome }}
+          BOOMKAT: ${{ steps.boomkat.outcome }}
+          BANDCAMP: ${{ steps.bandcamp.outcome }}
+          LABELS: ${{ steps.labels.outcome }}
+          STEREOGUM: ${{ steps.stereogum.outcome }}
+          TWGEEMA: ${{ steps.twgeema.outcome }}
+        run: |
+          {
+            echo "## Curated scraper health"
+            echo "| Source | Result |"
+            echo "| --- | --- |"
+            echo "| Album of the Year | $AOTY |"
+            echo "| Bleep | $BLEEP |"
+            echo "| Boomkat | $BOOMKAT |"
+            echo "| Bandcamp Daily | $BANDCAMP |"
+            echo "| Label watchlist | $LABELS |"
+            echo "| Stereogum | $STEREOGUM |"
+            echo "| Twgeema | $TWGEEMA |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          # Bleep may legitimately be absent before Friday's edition is live,
+          # and AOTY currently blocks automated browsers. All other sources
+          # must be healthy; otherwise the workflow must not report success.
+          for result in "$BOOMKAT" "$BANDCAMP" "$LABELS" "$STEREOGUM" "$TWGEEMA"; do
+            if [[ "$result" != "success" ]]; then
+              echo "One or more required curated scrapers failed"
+              exit 1
+            fi
+          done
