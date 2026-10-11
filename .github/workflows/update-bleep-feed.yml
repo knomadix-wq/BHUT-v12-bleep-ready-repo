@@ -32,9 +32,9 @@ permissions:
   contents: write
 
 jobs:
-  update:
+  update-fast-feeds:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -96,11 +96,58 @@ jobs:
           git commit -m "Update curated weekly feeds"
           git pull --rebase origin main
           git push
+      - name: Report scraper health
+        if: always()
+        env:
+          AOTY: ${{ steps.aoty.outcome }}
+          BLEEP: ${{ steps.bleep.outcome }}
+          BOOMKAT: ${{ steps.boomkat.outcome }}
+          BANDCAMP: ${{ steps.bandcamp.outcome }}
+          STEREOGUM: ${{ steps.stereogum.outcome }}
+          TWGEEMA: ${{ steps.twgeema.outcome }}
+        run: |
+          {
+            echo "## Curated scraper health"
+            echo "| Source | Result |"
+            echo "| --- | --- |"
+            echo "| Album of the Year | $AOTY |"
+            echo "| Bleep | $BLEEP |"
+            echo "| Boomkat | $BOOMKAT |"
+            echo "| Bandcamp Daily | $BANDCAMP |"
+            echo "| Stereogum | $STEREOGUM |"
+            echo "| Twgeema | $TWGEEMA |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          # AOTY can trigger a bot check, and weekly Bleep/Boomkat editions may
+          # be absent or change layout. Their scripts preserve the last good
+          # files, so these are health warnings rather than pipeline failures.
+          # The independently maintained daily/monthly feeds remain required.
+          for result in "$BANDCAMP" "$STEREOGUM" "$TWGEEMA"; do
+            if [[ "$result" != "success" ]]; then
+              echo "One or more required curated scrapers failed"
+              exit 1
+            fi
+          done
+
+  update-label-watchlist:
+    # The label scan performs many catalogue lookups and must not hold the fast
+    # feeds hostage. A timeout leaves the last good label file untouched.
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+      - name: Install browser
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
       - name: Fetch experimental label watchlist
         id: labels
         timeout-minutes: 15
         run: node scripts/fetch-label-watchlist.mjs
-        continue-on-error: true
       - name: Publish label watchlist
         if: steps.labels.outcome == 'success'
         run: |
@@ -114,36 +161,14 @@ jobs:
           git commit -m "Update curated label watchlist"
           git pull --rebase origin main
           git push
-      - name: Report scraper health
+      - name: Report label scraper health
         if: always()
         env:
-          AOTY: ${{ steps.aoty.outcome }}
-          BLEEP: ${{ steps.bleep.outcome }}
-          BOOMKAT: ${{ steps.boomkat.outcome }}
-          BANDCAMP: ${{ steps.bandcamp.outcome }}
           LABELS: ${{ steps.labels.outcome }}
-          STEREOGUM: ${{ steps.stereogum.outcome }}
-          TWGEEMA: ${{ steps.twgeema.outcome }}
         run: |
           {
-            echo "## Curated scraper health"
+            echo "## Label scraper health"
             echo "| Source | Result |"
             echo "| --- | --- |"
-            echo "| Album of the Year | $AOTY |"
-            echo "| Bleep | $BLEEP |"
-            echo "| Boomkat | $BOOMKAT |"
-            echo "| Bandcamp Daily | $BANDCAMP |"
             echo "| Label watchlist | $LABELS |"
-            echo "| Stereogum | $STEREOGUM |"
-            echo "| Twgeema | $TWGEEMA |"
           } >> "$GITHUB_STEP_SUMMARY"
-
-          # Bleep may legitimately be absent before Friday's edition is live,
-          # and AOTY currently blocks automated browsers. All other sources
-          # must be healthy; otherwise the workflow must not report success.
-          for result in "$BOOMKAT" "$BANDCAMP" "$LABELS" "$STEREOGUM" "$TWGEEMA"; do
-            if [[ "$result" != "success" ]]; then
-              echo "One or more required curated scrapers failed"
-              exit 1
-            fi
-          done
