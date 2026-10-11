@@ -45,18 +45,16 @@ try {
     .catch(() => null) || new Date().toISOString();
 
   const picks = await page.locator("h3").evaluateAll((headings) => headings.map((heading) => {
-    const artist = heading.textContent?.trim() || "";
-    let node = heading.nextElementSibling;
-    while (node) {
-      const link = node.matches?.('a[href*="bandcamp.com"]')
-        ? node
-        : node.querySelector?.('a[href*="bandcamp.com"]');
-      const title = link?.textContent?.trim() || "";
-      if (title) return { artist, title };
-      if (node.matches?.("h3")) break;
-      node = node.nextElementSibling;
+    const link = heading.querySelector('a[href*="bandcamp.com"]');
+    if (!link) return null;
+    const artistParts = [];
+    for (const node of heading.childNodes) {
+      if (node.nodeName === "BR") break;
+      artistParts.push(node.textContent || "");
     }
-    return null;
+    const artist = artistParts.join("").trim();
+    const title = link.textContent?.trim() || "";
+    return artist && title ? { artist, title } : null;
   }).filter(Boolean));
 
   const unique = [...new Map(picks.map((pick) => [
@@ -75,9 +73,22 @@ try {
         await spotifyPage.goto(`https://open.spotify.com/search/${query}/albums`, {
           waitUntil: "domcontentloaded", timeout: 30_000,
         });
-        const albumLink = spotifyPage.locator('a[href*="/album/"]').first();
-        await albumLink.waitFor({ state: "attached", timeout: 15_000 });
-        spotifyId = (await albumLink.getAttribute("href"))?.match(/\/album\/([^/?]+)/)?.[1];
+        const albumLinks = spotifyPage.locator('a[href*="/album/"]');
+        await albumLinks.first().waitFor({ state: "attached", timeout: 15_000 });
+        const spotifyIds = [...new Set((await albumLinks.evaluateAll((items) =>
+          items.map((item) => item.getAttribute("href")?.match(/\/album\/([^/?]+)/)?.[1]).filter(Boolean),
+        )).slice(0, 8))];
+        for (const candidateId of spotifyIds) {
+          try {
+            const cover = await spotifyArtwork(candidateId, pick.title);
+            resolved.push({ ...pick, spotifyId: candidateId, cover, publishedAt: new Date(publishedAt).toISOString() });
+            spotifyId = candidateId;
+            break;
+          } catch {
+            // Spotify often ranks a popular but unrelated album first; try the next candidate.
+          }
+        }
+        if (spotifyId) continue;
       }
       if (!spotifyId) throw new Error("Spotify returned no album ID");
       const cover = await spotifyArtwork(spotifyId, pick.title);
