@@ -1,6 +1,6 @@
 import { chromium } from "playwright";
 import { mkdir, writeFile } from "node:fs/promises";
-import { boomkatWeeklyUrl, publicationTimestamp } from "./curated-utils.mjs";
+import { boomkatWeeklyUrl, parseBoomkatReleaseTitle, publicationTimestamp } from "./curated-utils.mjs";
 
 const normalise = (value) => value.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 
@@ -35,7 +35,7 @@ try {
     const candidate = boomkatWeeklyUrl(new Date(), weeksAgo);
     const hasRoundup = await page.goto(candidate, { waitUntil: "domcontentloaded", timeout: 90_000 })
       .then(() => page.locator("body").innerText())
-      .then((text) => /Album of the week|Single of the week/i.test(text))
+      .then((text) => /Album of the week|Single of the week|Records of the Week|Highlighted Tracks|Things We Recommend/i.test(text))
       .catch((error) => {
         console.warn(`Boomkat request failed at ${candidate}: ${error.message}`);
         return false;
@@ -62,9 +62,17 @@ try {
     if (artist && title) releases.push({ artist, title, section: lines[i] });
   }
 
+  const currentLayout = await page.locator('a[title^="View "]').evaluateAll((anchors) =>
+    anchors.map((anchor) => anchor.getAttribute("title")).filter(Boolean),
+  );
+  releases.push(...currentLayout.map((title) => ({
+    ...parseBoomkatReleaseTitle(title),
+    section: "Records of the Week",
+  })).filter(({ artist, title }) => artist && title));
+
   const recommended = await page.evaluate(() => {
     const heading = [...document.querySelectorAll("h1, h2, h3, h4, div, span")]
-      .find((element) => element.textContent?.trim() === "Recommended New Releases");
+      .find((element) => ["Recommended New Releases", "Things We Recommend"].includes(element.textContent?.trim()));
     if (!heading) return [];
     const all = [...document.querySelectorAll('a[href*="/products/"]')];
     return all.filter((anchor) =>

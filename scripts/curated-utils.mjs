@@ -40,3 +40,10 @@ export function boomkatWeeklyUrl(now = new Date(), weeksAgo = 0) {
 export function publicationTimestamp(date) {
   return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 12)).toISOString();
 }
+
+export function parseBoomkatReleaseTitle(value) {
+  const match = value?.match(/^View "(.+)" by (.+)$/);
+  if (!match) return null;
+  const [, title, artist] = match;
+  return artist.trim() && title.trim() ? { artist: artist.trim(), title: title.trim() } : null;
+}
