@@ -1,0 +1,26 @@
+{
+  "updatedAt": "2026-10-11T01:27:18.711Z",
+  "activatedAt": "2026-10-11T01:27:18.710Z",
+  "period": "September 2026",
+  "source": "https://www.twgeema.com/",
+  "releases": [
+    {
+      "rank": 1,
+      "artist": "Orbital",
+      "title": "Glastonbury 1994",
+      "spotifyId": "6Sdg4JV3orraCaCSAyAAyy",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02034726f9657b470c46b32bd1",
+      "source": "TWGEEMA #1",
+      "publishedAt": "2026-10-11T01:27:18.710Z"
+    },
+    {
+      "rank": 2,
+      "artist": "Bonobo",
+      "title": "Distance In Static",
+      "spotifyId": "2FMGW8WrG0BE0ZimHbHw2M",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02dd6e0f2e911f3d04f576aba9",
+      "source": "TWGEEMA #2",
+      "publishedAt": "2026-10-11T01:27:18.710Z"
+    }
+  ]
+}
