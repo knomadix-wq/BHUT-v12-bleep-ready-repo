@@ -1,41 +1,62 @@
 {
-  "updatedAt": "2026-08-19T02:00:00.000Z",
-  "source": "https://boomkat.com/weekly-roundup",
+  "updatedAt": "2026-10-11T01:48:33.634Z",
+  "source": "https://boomkat.com/weekly-roundup/2026-10-03",
   "releases": [
     {
-      "artist": "Nueen",
-      "title": "Swerved",
-      "section": "Single of the week",
-      "spotifyId": "2sFUiugQ90JwZhOkJIrZiP",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02f335151666ed660f1a711be8"
+      "artist": "Holy Tongue",
+      "title": "Basilikum",
+      "section": "Records of the Week",
+      "spotifyId": "7AzbIh1Tnveuy2TXbs2fin",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02548ae68b02d6db4914fde229",
+      "publishedAt": "2026-10-03T12:00:00.000Z"
     },
     {
-      "artist": "Cate Kennan",
-      "title": "Shadows",
-      "section": "Recommended New Releases",
-      "spotifyId": "5QjofTmQcJeoTeGCTavLtb",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a181b0590223934290e3fe4a"
+      "artist": "Cop Tears",
+      "title": "The Rules Of The Game",
+      "section": "Records of the Week",
+      "spotifyId": "1Ksn8YGzQgWkynigCb6zR5",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bcbdfc0aa4f6dffe151d7e9f",
+      "publishedAt": "2026-10-03T12:00:00.000Z"
     },
     {
-      "artist": "Charanjit Singh",
-      "title": "Synthesizing - Ten Ragas to a Disco Beat",
-      "section": "Recommended New Releases",
-      "spotifyId": "1xXm4sanFkm9tVZglqTq60",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e027443f8328a2f0d3f3141bef5"
+      "artist": "Gavsborg & Pele Fyah",
+      "title": "Black Roses",
+      "section": "Records of the Week",
+      "spotifyId": "38v29u1BgAaTtIPdejipFi",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02de94a38fe8cb075144623781",
+      "publishedAt": "2026-10-03T12:00:00.000Z"
     },
     {
-      "artist": "YL Hooi",
-      "title": "Untitled",
-      "section": "Recommended New Releases",
-      "spotifyId": "1aVKHYdh9Qqv0lKulUturf",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02550205050f35b877cdb525c2"
+      "artist": "DJ Jeff the Lastborn",
+      "title": "Kadodi Season",
+      "section": "Records of the Week",
+      "spotifyId": "7dJFgPn3AX8W37ZN5e5eqt",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023dc0337920759783a307a881",
+      "publishedAt": "2026-10-03T12:00:00.000Z"
     },
     {
-      "artist": "Nondi_",
-      "title": "Nondi...",
-      "section": "Recommended New Releases",
-      "spotifyId": "5gTVBk1Ny9S6Ki5cCkyOz2",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02bb8a389e22e85014278629e6"
+      "artist": "Thomas Bush",
+      "title": "Random Constraint Satisfaction Problems",
+      "section": "Records of the Week",
+      "spotifyId": "0tqhBDkQwI2BrF5invUvrP",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b222e0b06af5fb3ff9abe86c",
+      "publishedAt": "2026-10-03T12:00:00.000Z"
+    },
+    {
+      "artist": "Richard",
+      "title": "Loving You To Death",
+      "section": "Records of the Week",
+      "spotifyId": "1EIcymwDpPt7yj88cRtHiA",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028e29fb08608ac067c7c3f7e8",
+      "publishedAt": "2026-10-03T12:00:00.000Z"
+    },
+    {
+      "artist": "LS Plus",
+      "title": "If You Call My Name",
+      "section": "Records of the Week",
+      "spotifyId": "6qZZLPu1GNSWaIqokAjynn",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b94ebadae99ae307476731f7",
+      "publishedAt": "2026-10-03T12:00:00.000Z"
     }
   ]
 }
