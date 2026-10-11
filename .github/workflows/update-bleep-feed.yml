@@ -26,7 +26,7 @@ on:
 
 concurrency:
   group: curated-feed-update
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -62,10 +62,6 @@ jobs:
         id: bandcamp
         run: node scripts/fetch-bandcamp-electronic.mjs
         continue-on-error: true
-      - name: Fetch experimental label watchlist
-        id: labels
-        run: node scripts/fetch-label-watchlist.mjs
-        continue-on-error: true
       - name: Fetch Stereogum Album of the Week
         id: stereogum
         run: node scripts/fetch-stereogum-aotw.mjs
@@ -74,13 +70,12 @@ jobs:
         id: twgeema
         run: node scripts/fetch-twgeema-monthly.mjs
         continue-on-error: true
-      - name: Commit updated feed
+      - name: Publish fast curated feeds
         run: |
           feed_files=(
             data/bleep-weekly.json
             data/boomkat-weekly.json
             data/bandcamp-electronic.json
-            data/label-watchlist.json
             data/stereogum-aotw.json
             data/twgeema-monthly.json
             data/aoty-electronic.json
@@ -99,6 +94,24 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add -- "${existing_files[@]}"
           git commit -m "Update curated weekly feeds"
+          git pull --rebase origin main
+          git push
+      - name: Fetch experimental label watchlist
+        id: labels
+        timeout-minutes: 15
+        run: node scripts/fetch-label-watchlist.mjs
+        continue-on-error: true
+      - name: Publish label watchlist
+        if: steps.labels.outcome == 'success'
+        run: |
+          if git diff --quiet -- data/label-watchlist.json; then
+            echo "Label watchlist is unchanged"
+            exit 0
+          fi
+          git config user.name "NAGA Feed Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/label-watchlist.json
+          git commit -m "Update curated label watchlist"
           git pull --rebase origin main
           git push
       - name: Report scraper health
