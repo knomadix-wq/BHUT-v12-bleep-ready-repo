@@ -18,6 +18,25 @@ export function bleepFridayUrl(now = new Date()) {
   return `https://bleep.com/newsletters/weekly-roundup-${ordinal(friday.getDate())}-${month}-${friday.getFullYear()}`;
 }
 
+export function latestSaturday(now = new Date()) {
+  const london = new Date(now.toLocaleString("en-US", { timeZone: "Europe/London" }));
+  const delta = (london.getDay() + 1) % 7;
+  london.setDate(london.getDate() - delta);
+  london.setHours(12, 0, 0, 0);
+  return london;
+}
+
+export function boomkatWeeklyUrl(now = new Date(), weeksAgo = 0) {
+  const saturday = latestSaturday(now);
+  saturday.setDate(saturday.getDate() - (weeksAgo * 7));
+  const date = [
+    saturday.getFullYear(),
+    String(saturday.getMonth() + 1).padStart(2, "0"),
+    String(saturday.getDate()).padStart(2, "0"),
+  ].join("-");
+  return `https://boomkat.com/weekly-roundup/${date}`;
+}
+
 export function publicationTimestamp(date) {
   return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 12)).toISOString();
 }

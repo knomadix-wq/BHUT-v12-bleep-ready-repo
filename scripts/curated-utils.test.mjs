@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { bleepFridayUrl, ordinal } from "./curated-utils.mjs";
+import { bleepFridayUrl, boomkatWeeklyUrl, ordinal } from "./curated-utils.mjs";
 
 test("ordinal handles normal suffixes and teen exceptions", () => {
   assert.deepEqual([1, 2, 3, 4, 11, 12, 13, 21, 22, 23].map(ordinal),
@@ -10,4 +10,10 @@ test("ordinal handles normal suffixes and teen exceptions", () => {
 test("Bleep URL uses the latest Friday", () => {
   assert.equal(bleepFridayUrl(new Date("2026-09-06T00:00:00Z")),
     "https://bleep.com/newsletters/weekly-roundup-4th-september-2026");
+});
+
+test("Boomkat URL uses the latest Saturday and supports the previous edition", () => {
+  const sunday = new Date("2026-10-11T00:00:00Z");
+  assert.equal(boomkatWeeklyUrl(sunday), "https://boomkat.com/weekly-roundup/2026-10-10");
+  assert.equal(boomkatWeeklyUrl(sunday, 1), "https://boomkat.com/weekly-roundup/2026-10-03");
 });

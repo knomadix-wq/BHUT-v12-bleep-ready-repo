@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 import { mkdir, writeFile } from "node:fs/promises";
+import { boomkatWeeklyUrl, publicationTimestamp } from "./curated-utils.mjs";
 
-const source = "https://boomkat.com/weekly-roundup";
 const normalise = (value) => value.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 
 async function spotifyArtwork(spotifyId, expectedTitle) {
@@ -29,15 +29,28 @@ try {
       "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
   });
   const page = await context.newPage();
-  await page.goto(source, { waitUntil: "domcontentloaded", timeout: 90_000 });
-  await page.waitForFunction(
-    () => /Album of the week|Single of the week/i.test(document.body?.innerText || ""),
-    undefined,
-    { timeout: 90_000 },
-  );
+  let source;
+  let editionDate;
+  for (let weeksAgo = 0; weeksAgo <= 1; weeksAgo += 1) {
+    const candidate = boomkatWeeklyUrl(new Date(), weeksAgo);
+    const hasRoundup = await page.goto(candidate, { waitUntil: "domcontentloaded", timeout: 90_000 })
+      .then(() => page.locator("body").innerText())
+      .then((text) => /Album of the week|Single of the week/i.test(text))
+      .catch((error) => {
+        console.warn(`Boomkat request failed at ${candidate}: ${error.message}`);
+        return false;
+      });
+    if (hasRoundup) {
+      source = candidate;
+      editionDate = new Date(`${candidate.slice(-10)}T12:00:00Z`);
+      break;
+    }
+    console.warn(`Boomkat roundup was unavailable at ${candidate}`);
+  }
+  if (!source) throw new Error("Current and previous Boomkat roundups were unavailable");
   const publishedAt = await page.locator('meta[property="article:published_time"], time[datetime]')
     .first().evaluate((node) => node.getAttribute("content") || node.getAttribute("datetime"))
-    .catch(() => null) || new Date().toISOString();
+    .catch(() => null) || publicationTimestamp(editionDate);
 
   const lines = (await page.locator("body").innerText())
     .split(/\r?\n/).map((line) => line.trim()).filter(Boolean);

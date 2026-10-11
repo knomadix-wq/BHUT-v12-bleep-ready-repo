@@ -31,7 +31,10 @@ try {
   const context = await browser.newContext({ locale: "en-GB", timezoneId: "Europe/London" });
   const page = await context.newPage();
   await page.goto(source, { waitUntil: "domcontentloaded", timeout: 90_000 });
-  const lines = (await page.locator("body").innerText()).split(/\r?\n/).map((v) => v.trim()).filter(Boolean);
+  const lines = (await page.locator("body").innerText())
+    .split(/\r?\n/)
+    .map((value) => value.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
   const descriptionAt = lines.findIndex((line) => /best new Electronic Music artist albums of/i.test(line));
   if (descriptionAt < 0) throw new Error("Twgeema chart heading was not found");
   const description = lines[descriptionAt];
