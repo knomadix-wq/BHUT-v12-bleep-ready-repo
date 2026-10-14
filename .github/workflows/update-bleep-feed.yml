@@ -118,16 +118,16 @@ jobs:
             echo "| Twgeema | $TWGEEMA |"
           } >> "$GITHUB_STEP_SUMMARY"
 
-          # AOTY can trigger a bot check, and weekly Bleep/Boomkat editions may
-          # be absent or change layout. Their scripts preserve the last good
-          # files, so these are health warnings rather than pipeline failures.
-          # The independently maintained daily/monthly feeds remain required.
-          for result in "$BANDCAMP" "$STEREOGUM" "$TWGEEMA"; do
-            if [[ "$result" != "success" ]]; then
-              echo "One or more required curated scrapers failed"
-              exit 1
-            fi
-          done
+          # Every scraper writes atomically only after producing a valid feed,
+          # so a source failure leaves its last good JSON in place. Surface
+          # outages as visible warnings without turning a healthy publication
+          # run red. Installation, checkout and git-publish errors remain fatal.
+          [[ "$AOTY" == "success" ]] || echo "::warning title=AOTY feed retained::Album of the Year was unavailable; keeping the last good feed"
+          [[ "$BLEEP" == "success" ]] || echo "::warning title=Bleep feed retained::Bleep was unavailable or changed layout; keeping the last good feed"
+          [[ "$BOOMKAT" == "success" ]] || echo "::warning title=Boomkat feed retained::Boomkat was unavailable or changed layout; keeping the last good feed"
+          [[ "$BANDCAMP" == "success" ]] || echo "::warning title=Bandcamp feed retained::Bandcamp Daily was unavailable; keeping the last good feed"
+          [[ "$STEREOGUM" == "success" ]] || echo "::warning title=Stereogum feed retained::Stereogum was unavailable or had no new article; keeping the last good feed"
+          [[ "$TWGEEMA" == "success" ]] || echo "::warning title=Twgeema feed retained::Twgeema was unavailable; keeping the last good feed"
 
   update-label-watchlist:
     # The label scan performs many catalogue lookups and must not hold the fast
@@ -148,6 +148,7 @@ jobs:
         id: labels
         timeout-minutes: 15
         run: node scripts/fetch-label-watchlist.mjs
+        continue-on-error: true
       - name: Publish label watchlist
         if: steps.labels.outcome == 'success'
         run: |
@@ -172,3 +173,4 @@ jobs:
             echo "| --- | --- |"
             echo "| Label watchlist | $LABELS |"
           } >> "$GITHUB_STEP_SUMMARY"
+          [[ "$LABELS" == "success" ]] || echo "::warning title=Label feed retained::Label scan timed out or failed; keeping the last good feed"
