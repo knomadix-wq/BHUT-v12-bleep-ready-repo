@@ -1,7 +1,16 @@
 {
-  "updatedAt": "2026-10-13T00:57:22.965Z",
+  "updatedAt": "2026-10-16T14:03:47.130Z",
   "source": "https://stereogum.com/category/reviews/album-of-the-week",
   "releases": [
+    {
+      "artist": "Sophia Stel",
+      "title": "the greatest album of all time",
+      "spotifyId": "604KxCjle0KCw0VXdoMNgj",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028d778398be51399568ec7528",
+      "source": "STEREOGUM AOTW",
+      "url": "https://stereogum.com/2514364/album-of-the-week-sophia-stel-the-greatest-album-of-all-time/reviews/album-of-the-week",
+      "publishedAt": "2026-10-13T14:38:41.000Z"
+    },
     {
       "artist": "Cameron Winter",
       "title": "Live at Carnegie Hall",
