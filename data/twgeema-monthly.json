@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T18:53:26.739Z",
+  "updatedAt": "2026-10-16T21:40:03.719Z",
   "activatedAt": "2026-10-11T01:27:18.710Z",
   "period": "September 2026",
   "source": "https://www.twgeema.com/",
@@ -9,7 +9,7 @@
       "artist": "Orbital",
       "title": "Glastonbury 1994",
       "spotifyId": "6Sdg4JV3orraCaCSAyAAyy",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02034726f9657b470c46b32bd1",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02034726f9657b470c46b32bd1",
       "source": "TWGEEMA #1",
       "publishedAt": "2026-10-11T01:27:18.710Z"
     },
@@ -36,7 +36,7 @@
       "artist": "Dave Angel",
       "title": "A Time And Place",
       "spotifyId": "50KOL5Oz27xk7lAHT3ljEH",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02737283bbdee50d84991ed995",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02737283bbdee50d84991ed995",
       "source": "TWGEEMA #8",
       "publishedAt": "2026-10-14T01:27:18.710Z"
     },
@@ -54,7 +54,7 @@
       "artist": ".Vril",
       "title": "KRUX",
       "spotifyId": "5iGBm9JwJgzfzRE3xSigff",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024c5abbf324b97cba29157f86",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024c5abbf324b97cba29157f86",
       "source": "TWGEEMA #10",
       "publishedAt": "2026-10-15T01:27:18.710Z"
     }
