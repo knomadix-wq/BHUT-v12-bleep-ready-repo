@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-22T00:00:00.000Z",
+  "updatedAt": "2026-10-20T23:36:04.258Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -99,6 +99,26 @@
       "spotifyId": "4zqz0CmtPzxWriY0bTdvxg",
       "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028b4bbb83b851988fc930cc3a",
       "publishedAt": "2026-08-22T00:00:00.000Z"
+    },
+    {
+      "artist": "Neutrino Effect",
+      "title": "They Shall Bring Death Upon Us",
+      "source": "IGLOO",
+      "url": "https://igloomag.com/reviews/neutrino-effect-they-shall-bring-death-upon-us-labile",
+      "publishedAt": "2026-10-20T23:05:12.000Z",
+      "spotifyId": "2AiVZe2BogTMmIk0JBuAee",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028a6cff6ec6c39ac86a328b74",
+      "discoveredAt": "2026-10-20T23:36:00.781Z"
+    },
+    {
+      "artist": "Storefront Church",
+      "title": "Blue Movie",
+      "source": "THE QUIETUS",
+      "url": "https://thequietus.com/quietus-reviews/storefront-church-blue-movie-review/",
+      "publishedAt": "2026-10-20T05:00:00.000Z",
+      "spotifyId": "4BV18vPX1VzRCr1NaIOUfa",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028b1825e7b81e7f064119dc1e",
+      "discoveredAt": "2026-10-20T23:36:04.258Z"
     }
   ]
 }
