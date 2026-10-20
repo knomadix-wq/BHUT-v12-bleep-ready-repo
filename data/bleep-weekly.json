@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-20T22:55:21.071Z",
+  "updatedAt": "2026-10-20T23:06:25.817Z",
   "source": "https://bleep.com/newsletters/weekly-roundup-9th-october-2026",
   "releases": [
     {
@@ -15,7 +15,7 @@
       "title": "Space 1.8",
       "section": "Featured Releases",
       "spotifyId": "51HFfu3GhuXa4VUnlpJJy8",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0299e60c06162fd5cb1ff6d0b8",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0299e60c06162fd5cb1ff6d0b8",
       "publishedAt": "2026-10-09T12:00:00.000Z"
     },
     {
@@ -23,7 +23,7 @@
       "title": "Memoria",
       "section": "Featured Releases",
       "spotifyId": "3ft2ciSLYU5tmxZGDVuBv3",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e026f744a6d325a6d35dfe8fd28",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e026f744a6d325a6d35dfe8fd28",
       "publishedAt": "2026-10-09T12:00:00.000Z"
     },
     {
@@ -31,15 +31,15 @@
       "title": "Psychick Youth",
       "section": "Featured Releases",
       "spotifyId": "4L7DNXZntuiA379FulMvXM",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02710565fede35a236624dacb8",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02710565fede35a236624dacb8",
       "publishedAt": "2026-10-09T12:00:00.000Z"
     },
     {
       "artist": "HAAi",
       "title": "DIGITiSE",
       "section": "Featured Releases",
-      "spotifyId": "5scldZE0Xai2ry7Dvlrwcf",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02b10916f06c679ef6053c9ac8",
+      "spotifyId": "5ERixvkjpEGIxzZpMd9Ftt",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e027367baab27ffb34152c61b84",
       "publishedAt": "2026-10-09T12:00:00.000Z"
     },
     {
@@ -47,7 +47,7 @@
       "title": "Basilikum",
       "section": "Featured Releases",
       "spotifyId": "7AzbIh1Tnveuy2TXbs2fin",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02548ae68b02d6db4914fde229",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02548ae68b02d6db4914fde229",
       "publishedAt": "2026-10-09T12:00:00.000Z"
     },
     {
@@ -55,7 +55,7 @@
       "title": "3TWI",
       "section": "Featured Albums",
       "spotifyId": "0iUMb4aBL1KbeM6ME0JCtk",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e023619c20c74af74f9eb3c7a3f",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023619c20c74af74f9eb3c7a3f",
       "publishedAt": "2026-10-09T12:00:00.000Z"
     }
   ]
