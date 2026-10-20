@@ -1,6 +1,6 @@
 import { chromium } from "playwright";
 import { mkdir, writeFile } from "node:fs/promises";
-import { boomkatWeeklyUrl, parseBoomkatReleaseTitle, publicationTimestamp } from "./curated-utils.mjs";
+import { boomkatWeeklyUrl, parseBoomkatMarkdown, publicationTimestamp } from "./curated-utils.mjs";
 
 const normalise = (value) => value.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 
@@ -31,62 +31,22 @@ try {
   const page = await context.newPage();
   let source;
   let editionDate;
-  for (let weeksAgo = 0; weeksAgo <= 1; weeksAgo += 1) {
+  let releases = [];
+  for (let weeksAgo = 0; weeksAgo <= 3; weeksAgo += 1) {
     const candidate = boomkatWeeklyUrl(new Date(), weeksAgo);
-    const hasRoundup = await page.goto(candidate, { waitUntil: "domcontentloaded", timeout: 90_000 })
-      .then(() => page.locator("body").innerText())
-      .then((text) => /Album of the week|Single of the week|Records of the Week|Highlighted Tracks|Things We Recommend/i.test(text))
-      .catch((error) => {
-        console.warn(`Boomkat request failed at ${candidate}: ${error.message}`);
-        return false;
-      });
-    if (hasRoundup) {
+    const response = await fetch(`https://r.jina.ai/http://${candidate}`, { headers: { Accept: "text/plain" } });
+    const markdown = response.ok ? await response.text() : "";
+    const parsed = parseBoomkatMarkdown(markdown);
+    if (parsed.length) {
       source = candidate;
       editionDate = new Date(`${candidate.slice(-10)}T12:00:00Z`);
+      releases = parsed;
       break;
     }
     console.warn(`Boomkat roundup was unavailable at ${candidate}`);
   }
   if (!source) throw new Error("Current and previous Boomkat roundups were unavailable");
-  const publishedAt = await page.locator('meta[property="article:published_time"], time[datetime]')
-    .first().evaluate((node) => node.getAttribute("content") || node.getAttribute("datetime"))
-    .catch(() => null) || publicationTimestamp(editionDate);
-
-  const lines = (await page.locator("body").innerText())
-    .split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
-  const releases = [];
-  for (let i = 0; i < lines.length; i += 1) {
-    if (!/^(?:Album|Albums|Single) of the week$/i.test(lines[i])) continue;
-    const artist = lines[i + 1] || "";
-    const title = lines[i + 2] || "";
-    if (artist && title) releases.push({ artist, title, section: lines[i] });
-  }
-
-  const currentLayout = await page.locator('a[title^="View "]').evaluateAll((anchors) =>
-    anchors.map((anchor) => anchor.getAttribute("title")).filter(Boolean),
-  );
-  releases.push(...currentLayout.map((title) => ({
-    ...parseBoomkatReleaseTitle(title),
-    section: "Records of the Week",
-  })).filter(({ artist, title }) => artist && title));
-
-  const recommended = await page.evaluate(() => {
-    const heading = [...document.querySelectorAll("h1, h2, h3, h4, div, span")]
-      .find((element) => ["Recommended New Releases", "Things We Recommend"].includes(element.textContent?.trim()));
-    if (!heading) return [];
-    const all = [...document.querySelectorAll('a[href*="/products/"]')];
-    return all.filter((anchor) =>
-      Boolean(heading.compareDocumentPosition(anchor) & Node.DOCUMENT_POSITION_FOLLOWING),
-    ).map((anchor) => {
-      let container = anchor;
-      while (container.parentElement && container.parentElement.innerText.trim().split(/\n+/).length < 2) {
-        container = container.parentElement;
-      }
-      const parts = container.innerText.split(/\n+/).map((part) => part.trim()).filter(Boolean);
-      return { artist: parts[0] || "", title: parts[1] || "", section: "Recommended New Releases" };
-    });
-  });
-  releases.push(...recommended.filter(({ artist, title }) => artist && title));
+  const publishedAt = publicationTimestamp(editionDate);
   const unique = [...new Map(
     releases.map((item) => [`${normalise(item.artist)}|${normalise(item.title)}`, item]),
   ).values()].slice(0, 12);

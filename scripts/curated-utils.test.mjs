@@ -1,6 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { bleepFridayUrl, boomkatWeeklyUrl, ordinal, parseBoomkatReleaseTitle } from "./curated-utils.mjs";
+import {
+  bleepFridayUrl, boomkatWeeklyUrl, ordinal, parseBleepMarkdown,
+  parseBoomkatMarkdown, parseBoomkatReleaseTitle,
+} from "./curated-utils.mjs";
 
 test("ordinal handles normal suffixes and teen exceptions", () => {
   assert.deepEqual([1, 2, 3, 4, 11, 12, 13, 21, 22, 23].map(ordinal),
@@ -28,4 +31,18 @@ test("Boomkat release links expose artist and title in the current layout", () =
     title: 'Three Movements from "Some Kind of Seasoning"',
   });
   assert.equal(parseBoomkatReleaseTitle("Weekly Roundup"), null);
+});
+
+test("Bleep text fallback extracts only structured roundup releases", () => {
+  const markdown = `Release of the Week\nView on Bleep\nArtist One\nAlbum One\nLabel\n· Vinyl · Download\nDescription`;
+  assert.deepEqual(parseBleepMarkdown(markdown), [
+    { artist: "Artist One", title: "Album One", section: "Release of the Week" },
+  ]);
+});
+
+test("Boomkat text fallback extracts title attributes", () => {
+  const markdown = `[cover](url "View \\"Album One\\" by Artist One")`;
+  assert.deepEqual(parseBoomkatMarkdown(markdown), [
+    { artist: "Artist One", title: "Album One", section: "Records of the Week" },
+  ]);
 });

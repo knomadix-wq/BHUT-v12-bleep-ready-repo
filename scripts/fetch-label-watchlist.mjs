@@ -58,7 +58,7 @@ try {
     );
     const firstKnown = releases.findIndex((release) => knownUrls.has(release.url));
     const unseen = firstKnown < 0 ? releases : releases.slice(0, firstKnown);
-    candidates.push(...unseen
+    candidates.push(...unseen.slice(0, 1)
       .map((release) => ({ ...release, source: label.name })));
   }
 

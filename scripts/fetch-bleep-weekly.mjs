@@ -1,9 +1,9 @@
 import { chromium } from "playwright";
 import { mkdir, writeFile } from "node:fs/promises";
-import { bleepFridayUrl, latestFriday, publicationTimestamp } from "./curated-utils.mjs";
+import { bleepFridayUrl, latestFriday, parseBleepMarkdown, publicationTimestamp } from "./curated-utils.mjs";
 
-const roundupFriday = latestFriday();
-const source = bleepFridayUrl();
+let roundupFriday;
+let source;
 const verifiedSpotifyAlbums = new Map([
   ["topdown dialectic|false lp a", "1R570SkqASVYyKJJQAzV5v"],
 ]);
@@ -35,35 +35,25 @@ try {
       "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
   });
   const page = await context.newPage();
-  await page.goto(source, { waitUntil: "domcontentloaded", timeout: 90_000 });
-  await page.waitForFunction(
-    () => /Release of the Week|Featured Releases|Featured Albums/i.test(document.body?.innerText || ""),
-    undefined,
-    { timeout: 90_000 },
-  );
-
-  // Only accept Bleep's structured roundup metadata. Generic card/body text includes format and
-  // purchase controls (for example "LP Download"), which must never be treated as an artist.
-  const releases = await page.evaluate(() => {
-    // Store-wide Record of the Month cards are promotions, not weekly-roundup content.
-    const sectionNames = /^(Release of the Week|Featured Releases|Featured Albums)$/i;
-    const formatOnly = /^(LP|CD|Vinyl|Cassette|Download|MP3|FLAC)(\s+(LP|CD|Vinyl|Cassette|Download|MP3|FLAC))*$/i;
-    return [...document.querySelectorAll("dd.artist")].map((artistNode) => {
-      let card = artistNode.parentElement;
-      while (card && !card.querySelector("dd.release-title")) card = card.parentElement;
-      const titleNode = card?.querySelector("dd.release-title");
-      let previous = card;
-      let section = "";
-      while (previous && !section) {
-        const headings = [...previous.querySelectorAll?.("h1,h2,h3,h4,h5,h6") || []];
-        section = headings.map((node) => node.textContent?.trim() || "").find((text) => sectionNames.test(text)) || "";
-        previous = previous.previousElementSibling || previous.parentElement;
-      }
-      const artist = artistNode.textContent?.trim() || "";
-      const title = titleNode?.textContent?.trim() || "";
-      return section && artist && title && !formatOnly.test(artist) ? { artist, title, section } : null;
-    }).filter(Boolean);
-  });
+  let releases = [];
+  for (let weeksAgo = 0; weeksAgo <= 3 && !releases.length; weeksAgo += 1) {
+    const candidateDate = latestFriday();
+    candidateDate.setDate(candidateDate.getDate() - (weeksAgo * 7));
+    const candidate = bleepFridayUrl(new Date(), weeksAgo);
+    const proxy = `https://r.jina.ai/http://${candidate}`;
+    const response = await fetch(proxy, { headers: { Accept: "text/plain" } });
+    const markdown = response.ok ? await response.text() : "";
+    if (/404|page not found/i.test(markdown.slice(0, 300)) || !/Release of the Week|Featured Releases|Featured Albums/i.test(markdown)) {
+      console.warn(`Bleep roundup was unavailable at ${candidate}`);
+      continue;
+    }
+    releases = parseBleepMarkdown(markdown);
+    if (releases.length) {
+      source = candidate;
+      roundupFriday = candidateDate;
+    }
+  }
+  if (!source) throw new Error("No Bleep roundup was published in the last four Fridays");
 
   const unique = [...new Map(
     releases.map((item) => [`${item.artist.toLowerCase()}|${item.title.toLowerCase()}`, item]),
