@@ -1,62 +1,38 @@
 {
-  "updatedAt": "2026-10-14T01:48:46.246Z",
-  "source": "https://boomkat.com/weekly-roundup/2026-10-03",
+  "updatedAt": "2026-10-20T22:55:45.357Z",
+  "source": "https://boomkat.com/weekly-roundup/2026-10-10",
   "releases": [
     {
-      "artist": "Holy Tongue",
-      "title": "Basilikum",
+      "artist": "A Large Sheet of Muscle",
+      "title": "CHINESE BENEFITS",
       "section": "Records of the Week",
-      "spotifyId": "7AzbIh1Tnveuy2TXbs2fin",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02548ae68b02d6db4914fde229",
-      "publishedAt": "2026-10-03T12:00:00.000Z"
+      "spotifyId": "5DvWieD6AMa1FsSASG3v0J",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021e988abd6dc593da1a234658",
+      "publishedAt": "2026-10-10T12:00:00.000Z"
     },
     {
-      "artist": "Cop Tears",
-      "title": "The Rules Of The Game",
+      "artist": "2K88 & Lauren Duffus & Rainy Miller & Bianca Scout",
+      "title": "Everything Always Changes, For We're Truly Here",
       "section": "Records of the Week",
-      "spotifyId": "1Ksn8YGzQgWkynigCb6zR5",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bcbdfc0aa4f6dffe151d7e9f",
-      "publishedAt": "2026-10-03T12:00:00.000Z"
+      "spotifyId": "4r6fyflHmA1FEaRDsRvcDQ",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02beb1b2e06cf46fee49f32da1",
+      "publishedAt": "2026-10-10T12:00:00.000Z"
     },
     {
-      "artist": "Gavsborg & Pele Fyah",
-      "title": "Black Roses",
+      "artist": "fka boursin",
+      "title": "From Space Between",
       "section": "Records of the Week",
-      "spotifyId": "38v29u1BgAaTtIPdejipFi",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02de94a38fe8cb075144623781",
-      "publishedAt": "2026-10-03T12:00:00.000Z"
+      "spotifyId": "0IKhvqvPzWrxO7H1JUCAhc",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e025e410db07b552b3e2de09cb3",
+      "publishedAt": "2026-10-10T12:00:00.000Z"
     },
     {
-      "artist": "DJ Jeff the Lastborn",
-      "title": "Kadodi Season",
+      "artist": "Various Artists",
+      "title": "American Dub Electronics",
       "section": "Records of the Week",
-      "spotifyId": "7dJFgPn3AX8W37ZN5e5eqt",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023dc0337920759783a307a881",
-      "publishedAt": "2026-10-03T12:00:00.000Z"
-    },
-    {
-      "artist": "Thomas Bush",
-      "title": "Random Constraint Satisfaction Problems",
-      "section": "Records of the Week",
-      "spotifyId": "0tqhBDkQwI2BrF5invUvrP",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02b222e0b06af5fb3ff9abe86c",
-      "publishedAt": "2026-10-03T12:00:00.000Z"
-    },
-    {
-      "artist": "Richard",
-      "title": "Loving You To Death",
-      "section": "Records of the Week",
-      "spotifyId": "1EIcymwDpPt7yj88cRtHiA",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028e29fb08608ac067c7c3f7e8",
-      "publishedAt": "2026-10-03T12:00:00.000Z"
-    },
-    {
-      "artist": "LS Plus",
-      "title": "If You Call My Name",
-      "section": "Records of the Week",
-      "spotifyId": "6qZZLPu1GNSWaIqokAjynn",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b94ebadae99ae307476731f7",
-      "publishedAt": "2026-10-03T12:00:00.000Z"
+      "spotifyId": "6AwBhTb30oRIH35Og6SdKG",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0266cbf34648240903cda17cb1",
+      "publishedAt": "2026-10-10T12:00:00.000Z"
     }
   ]
 }
