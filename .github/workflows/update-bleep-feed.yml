@@ -13,6 +13,7 @@ on:
       - "scripts/fetch-stereogum-aotw.mjs"
       - "scripts/fetch-twgeema-monthly.mjs"
       - "scripts/fetch-aoty-electronic.mjs"
+      - "scripts/fetch-editorial-rss.mjs"
       - "scripts/aoty-utils.mjs"
       - "scripts/curated-utils.mjs"
       - "scripts/curated-utils.test.mjs"
@@ -133,7 +134,7 @@ jobs:
     # The label scan performs many catalogue lookups and must not hold the fast
     # feeds hostage. A timeout leaves the last good label file untouched.
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 30
     continue-on-error: true
     steps:
       - uses: actions/checkout@v6
@@ -149,8 +150,14 @@ jobs:
         timeout-minutes: 15
         run: node scripts/fetch-label-watchlist.mjs
         continue-on-error: true
+      - name: Fetch Igloo and Quietus reviews
+        id: editorial
+        if: always() && !cancelled()
+        timeout-minutes: 10
+        run: node scripts/fetch-editorial-rss.mjs
+        continue-on-error: true
       - name: Publish label watchlist
-        if: steps.labels.outcome == 'success'
+        if: always() && !cancelled() && (steps.labels.outcome == 'success' || steps.editorial.outcome == 'success')
         run: |
           if git diff --quiet -- data/label-watchlist.json; then
             echo "Label watchlist is unchanged"
@@ -166,11 +173,14 @@ jobs:
         if: always()
         env:
           LABELS: ${{ steps.labels.outcome }}
+          EDITORIAL: ${{ steps.editorial.outcome }}
         run: |
           {
             echo "## Label scraper health"
             echo "| Source | Result |"
             echo "| --- | --- |"
             echo "| Label watchlist | $LABELS |"
+            echo "| Igloo / Quietus | $EDITORIAL |"
           } >> "$GITHUB_STEP_SUMMARY"
           [[ "$LABELS" == "success" ]] || echo "::warning title=Label feed retained::Label scan timed out or failed; keeping the last good feed"
+          [[ "$EDITORIAL" == "success" ]] || echo "::warning title=Editorial feed retained::Igloo / Quietus importer failed; keeping previous releases"
