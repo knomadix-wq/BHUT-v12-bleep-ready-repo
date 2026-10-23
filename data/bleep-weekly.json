@@ -1,62 +1,62 @@
 {
-  "updatedAt": "2026-10-22T21:53:35.959Z",
-  "source": "https://bleep.com/newsletters/weekly-roundup-9th-october-2026",
+  "updatedAt": "2026-10-23T14:18:01.805Z",
+  "source": "https://bleep.com/newsletters/weekly-roundup-23rd-october-2026",
   "releases": [
     {
-      "artist": "µ-Ziq",
-      "title": "Tango N’Vectif",
+      "artist": "Civilistjävel!",
+      "title": "Älvgång",
       "section": "Release of the Week",
-      "spotifyId": "2wzY1cOs3hOXnYX1FuCu5X",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a4524f0a73adaf4e6c5fbabd",
-      "publishedAt": "2026-10-09T12:00:00.000Z"
+      "spotifyId": "4CFuuTKucDetRoH81wFQ7N",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02bbfd06c981ce500d92d082ac",
+      "publishedAt": "2026-10-23T12:00:00.000Z"
     },
     {
-      "artist": "Nala Sinephro",
-      "title": "Space 1.8",
+      "artist": "Djrum",
+      "title": "DJ-Kicks: Djrum",
       "section": "Featured Releases",
-      "spotifyId": "51HFfu3GhuXa4VUnlpJJy8",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0299e60c06162fd5cb1ff6d0b8",
-      "publishedAt": "2026-10-09T12:00:00.000Z"
+      "spotifyId": "3637Bps0b1qKRCV6aK6PiD",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e023db7ea09c015de448cf6a217",
+      "publishedAt": "2026-10-23T12:00:00.000Z"
     },
     {
-      "artist": "Carmen Villain",
-      "title": "Memoria",
+      "artist": "MLO",
+      "title": "lo",
       "section": "Featured Releases",
-      "spotifyId": "3ft2ciSLYU5tmxZGDVuBv3",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e026f744a6d325a6d35dfe8fd28",
-      "publishedAt": "2026-10-09T12:00:00.000Z"
+      "spotifyId": "7vw541PDjwms7c7aBaGW4O",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02359448d2f73cb29f71aa4694",
+      "publishedAt": "2026-10-23T12:00:00.000Z"
     },
     {
-      "artist": "The Black Dog",
-      "title": "Psychick Youth",
+      "artist": "Psychick Warriors Ov Gaia",
+      "title": "Ov Biospheres And Sacred Grooves: A Document Ov New Edge Folk Classic",
       "section": "Featured Releases",
-      "spotifyId": "4L7DNXZntuiA379FulMvXM",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02710565fede35a236624dacb8",
-      "publishedAt": "2026-10-09T12:00:00.000Z"
+      "spotifyId": "3MWD5HeJsQvWuU8M9Mk38v",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d24895ff2e9072b146463bae",
+      "publishedAt": "2026-10-23T12:00:00.000Z"
     },
     {
-      "artist": "HAAi",
-      "title": "DIGITiSE",
+      "artist": "Coil",
+      "title": "How To Destroy Angels",
       "section": "Featured Releases",
-      "spotifyId": "5ERixvkjpEGIxzZpMd9Ftt",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e027367baab27ffb34152c61b84",
-      "publishedAt": "2026-10-09T12:00:00.000Z"
+      "spotifyId": "5VM55zrU1xuAVVEt2jsHMr",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02984a87c113ce1ecbf969e243",
+      "publishedAt": "2026-10-23T12:00:00.000Z"
     },
     {
-      "artist": "Holy Tongue",
-      "title": "Basilikum",
-      "section": "Featured Releases",
-      "spotifyId": "7AzbIh1Tnveuy2TXbs2fin",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02548ae68b02d6db4914fde229",
-      "publishedAt": "2026-10-09T12:00:00.000Z"
-    },
-    {
-      "artist": "Fatima Al Qadiri",
-      "title": "3TWI",
+      "artist": "William Basinski",
+      "title": "Passing the Cup of Sorrows",
       "section": "Featured Albums",
-      "spotifyId": "0iUMb4aBL1KbeM6ME0JCtk",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e023619c20c74af74f9eb3c7a3f",
-      "publishedAt": "2026-10-09T12:00:00.000Z"
+      "spotifyId": "6KuXDpGHxQIYtLclM2Nihz",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c52bab2d5ca6fa8e258d1ae0",
+      "publishedAt": "2026-10-23T12:00:00.000Z"
+    },
+    {
+      "artist": "Daito Manabe",
+      "title": "dm studies 000 - 004",
+      "section": "Featured Albums",
+      "spotifyId": "4gcgW4EH3nvXHpaLKDFCLf",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028545cb42127485a05c842674",
+      "publishedAt": "2026-10-23T12:00:00.000Z"
     }
   ]
 }

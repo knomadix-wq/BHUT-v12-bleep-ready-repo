@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-22T21:55:09.924Z",
+  "updatedAt": "2026-10-23T14:19:49.479Z",
   "activatedAt": "2026-10-11T01:27:18.710Z",
   "period": "September 2026",
   "source": "https://www.twgeema.com/",
@@ -9,7 +9,7 @@
       "artist": "Orbital",
       "title": "Glastonbury 1994",
       "spotifyId": "6Sdg4JV3orraCaCSAyAAyy",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02034726f9657b470c46b32bd1",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02034726f9657b470c46b32bd1",
       "source": "TWGEEMA #1",
       "publishedAt": "2026-10-11T01:27:18.710Z"
     },
@@ -23,20 +23,11 @@
       "publishedAt": "2026-10-11T01:27:18.710Z"
     },
     {
-      "rank": 5,
-      "artist": "Yunx",
-      "title": "Iconiconical",
-      "spotifyId": "7DhG7Pwl4OremQ50PKSnYk",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e025e1eb4912ebf4ce2d3fd30eb",
-      "source": "TWGEEMA #5",
-      "publishedAt": "2026-10-13T01:27:18.710Z"
-    },
-    {
       "rank": 7,
       "artist": "Ghost Dubs",
       "title": "Oblique",
       "spotifyId": "70V6rPyiSPc4pOrJErMI9J",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028eef94706e741a3020ac6abd",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028eef94706e741a3020ac6abd",
       "source": "TWGEEMA #7",
       "publishedAt": "2026-10-14T01:27:18.710Z"
     },
@@ -45,7 +36,7 @@
       "artist": "Dave Angel",
       "title": "A Time And Place",
       "spotifyId": "50KOL5Oz27xk7lAHT3ljEH",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02737283bbdee50d84991ed995",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02737283bbdee50d84991ed995",
       "source": "TWGEEMA #8",
       "publishedAt": "2026-10-14T01:27:18.710Z"
     },
@@ -54,7 +45,7 @@
       "artist": "John Beltran",
       "title": "Sunrise And The Life We Live",
       "spotifyId": "31ThyB8ak2l02Q771fQKez",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0221c2ec336a97e5a63ea01219",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0221c2ec336a97e5a63ea01219",
       "source": "TWGEEMA #9",
       "publishedAt": "2026-10-15T01:27:18.710Z"
     },
@@ -63,7 +54,7 @@
       "artist": ".Vril",
       "title": "KRUX",
       "spotifyId": "5iGBm9JwJgzfzRE3xSigff",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024c5abbf324b97cba29157f86",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024c5abbf324b97cba29157f86",
       "source": "TWGEEMA #10",
       "publishedAt": "2026-10-15T01:27:18.710Z"
     }
