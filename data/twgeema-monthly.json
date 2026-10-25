@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T21:10:05.664Z",
+  "updatedAt": "2026-10-25T21:12:02.664Z",
   "activatedAt": "2026-10-11T01:27:18.710Z",
   "period": "September 2026",
   "source": "https://www.twgeema.com/",
@@ -9,7 +9,7 @@
       "artist": "Orbital",
       "title": "Glastonbury 1994",
       "spotifyId": "6Sdg4JV3orraCaCSAyAAyy",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02034726f9657b470c46b32bd1",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02034726f9657b470c46b32bd1",
       "source": "TWGEEMA #1",
       "publishedAt": "2026-10-11T01:27:18.710Z"
     },
@@ -18,7 +18,7 @@
       "artist": "Bonobo",
       "title": "Distance In Static",
       "spotifyId": "2FMGW8WrG0BE0ZimHbHw2M",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02dd6e0f2e911f3d04f576aba9",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02dd6e0f2e911f3d04f576aba9",
       "source": "TWGEEMA #2",
       "publishedAt": "2026-10-11T01:27:18.710Z"
     },
@@ -27,7 +27,7 @@
       "artist": "Ghost Dubs",
       "title": "Oblique",
       "spotifyId": "70V6rPyiSPc4pOrJErMI9J",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028eef94706e741a3020ac6abd",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028eef94706e741a3020ac6abd",
       "source": "TWGEEMA #7",
       "publishedAt": "2026-10-14T01:27:18.710Z"
     },
@@ -36,7 +36,7 @@
       "artist": "Dave Angel",
       "title": "A Time And Place",
       "spotifyId": "50KOL5Oz27xk7lAHT3ljEH",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02737283bbdee50d84991ed995",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02737283bbdee50d84991ed995",
       "source": "TWGEEMA #8",
       "publishedAt": "2026-10-14T01:27:18.710Z"
     },
