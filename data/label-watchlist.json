@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-27T22:19:08.814Z",
+  "updatedAt": "2026-10-28T22:51:36.628Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -139,6 +139,16 @@
       "spotifyId": "53a19c7TkUcgvZ1lnPLQCr",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0293c812017763535bb202b703",
       "discoveredAt": "2026-10-27T22:19:08.814Z"
+    },
+    {
+      "artist": "Dis Fig",
+      "title": "What To Make Of These Mortal Hands",
+      "source": "THE QUIETUS",
+      "url": "https://thequietus.com/quietus-reviews/dis-fig-what-to-make-of-these-mortal-hands-review/",
+      "publishedAt": "2026-10-28T09:46:22.000Z",
+      "spotifyId": "3yKyFJwczUuyNdu67GyLNy",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02377c8650ff35ae6b476b4a47",
+      "discoveredAt": "2026-10-28T22:50:57.518Z"
     }
   ]
 }
