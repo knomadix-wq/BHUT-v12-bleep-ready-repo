@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-28T22:51:36.628Z",
+  "updatedAt": "2026-10-29T23:00:37.585Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -149,6 +149,16 @@
       "spotifyId": "3yKyFJwczUuyNdu67GyLNy",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02377c8650ff35ae6b476b4a47",
       "discoveredAt": "2026-10-28T22:50:57.518Z"
+    },
+    {
+      "artist": "Ajna",
+      "title": "Mysterium Tremendum",
+      "source": "IGLOO",
+      "url": "https://igloomag.com/reviews/ajna-mysterium-tremendum-winter-light",
+      "publishedAt": "2026-10-29T20:31:57.000Z",
+      "spotifyId": "4TcZr92J9noMpdbkBq6Qml",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023cddc12035395729df39d19c",
+      "discoveredAt": "2026-10-29T23:00:03.231Z"
     }
   ]
 }
