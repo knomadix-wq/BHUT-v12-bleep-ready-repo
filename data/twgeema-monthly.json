@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-28T22:49:35.069Z",
+  "updatedAt": "2026-10-29T22:58:42.641Z",
   "activatedAt": "2026-10-11T01:27:18.710Z",
   "period": "September 2026",
   "source": "https://www.twgeema.com/",
@@ -14,13 +14,13 @@
       "publishedAt": "2026-10-11T01:27:18.710Z"
     },
     {
-      "rank": 2,
+      "rank": 3,
       "artist": "Bonobo",
       "title": "Distance In Static",
       "spotifyId": "2FMGW8WrG0BE0ZimHbHw2M",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02dd6e0f2e911f3d04f576aba9",
-      "source": "TWGEEMA #2",
-      "publishedAt": "2026-10-11T01:27:18.710Z"
+      "source": "TWGEEMA #3",
+      "publishedAt": "2026-10-12T01:27:18.710Z"
     },
     {
       "rank": 7,

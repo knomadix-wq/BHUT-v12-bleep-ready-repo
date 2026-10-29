@@ -1,29 +1,45 @@
 {
-  "updatedAt": "2026-10-28T22:48:00.737Z",
+  "updatedAt": "2026-10-29T22:57:14.870Z",
   "source": "https://boomkat.com/weekly-roundup/2026-10-24",
   "releases": [
     {
-      "artist": "Space Afrika",
-      "title": "Quiet Storm",
+      "artist": "gyrofield",
+      "title": "Great Jobs",
       "section": "Records of the Week",
-      "spotifyId": "0Mo9RknPGyKOfXR6zUNMYB",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02743f273dc40c1b7a5fcd30f8",
+      "spotifyId": "3jbgcdnegykMKrBlZXR9b2",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e027943952a281cd17264bbb5c0",
       "publishedAt": "2026-10-24T12:00:00.000Z"
     },
     {
-      "artist": "Civilistjävel!",
-      "title": "Älvgång",
+      "artist": "BFTT",
+      "title": "Loving (Pullman Close)",
       "section": "Records of the Week",
-      "spotifyId": "4CFuuTKucDetRoH81wFQ7N",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02bbfd06c981ce500d92d082ac",
+      "spotifyId": "1OizrBfUOT8Cbx03IN40uJ",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0231c3b3e0eb73e9857f79f185",
       "publishedAt": "2026-10-24T12:00:00.000Z"
     },
     {
-      "artist": "Mohammad Syfkhan",
-      "title": "I Love You Ireland",
+      "artist": "Pelican Daughters",
+      "title": "The Low Bar",
       "section": "Records of the Week",
-      "spotifyId": "1SjHXtuQj2S07nJhrmnUEK",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e029443801c9eccb962a600ea36",
+      "spotifyId": "5z5NjwF3ubhjASTmRdx3XM",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e022dd697d48b5191f89b2ef688",
+      "publishedAt": "2026-10-24T12:00:00.000Z"
+    },
+    {
+      "artist": "Ring",
+      "title": "Ring",
+      "section": "Records of the Week",
+      "spotifyId": "3Il2ad1NGO9zoY1FIVBuHD",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02344de893922b3605a638d40f",
+      "publishedAt": "2026-10-24T12:00:00.000Z"
+    },
+    {
+      "artist": "CORNELIUS",
+      "title": "REFRACTIONS",
+      "section": "Records of the Week",
+      "spotifyId": "71PA5dNWPzfnGfHg1hYeWm",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e025b7ba65d73f083ce260f0f49",
       "publishedAt": "2026-10-24T12:00:00.000Z"
     }
   ]
