@@ -1,62 +1,62 @@
 {
-  "updatedAt": "2026-10-29T22:56:45.085Z",
-  "source": "https://bleep.com/newsletters/weekly-roundup-23rd-october-2026",
+  "updatedAt": "2026-10-30T16:00:20.368Z",
+  "source": "https://bleep.com/newsletters/weekly-roundup-30th-october-2026",
   "releases": [
     {
-      "artist": "Civilistjävel!",
-      "title": "Älvgång",
-      "section": "Release of the Week",
-      "spotifyId": "4CFuuTKucDetRoH81wFQ7N",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bbfd06c981ce500d92d082ac",
-      "publishedAt": "2026-10-23T12:00:00.000Z"
+      "artist": "Warrington-Runcorn New Town Development Plan",
+      "title": "Industrial Growth",
+      "section": "Featured Releases",
+      "spotifyId": "6kskOn2ZC1SJyWjSSfjedD",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d4942eb9d0d755b508254d73",
+      "publishedAt": "2026-10-30T12:00:00.000Z"
     },
     {
-      "artist": "Djrum",
-      "title": "DJ-Kicks: Djrum",
+      "artist": "Andy Stott",
+      "title": "Late Loop",
       "section": "Featured Releases",
-      "spotifyId": "3637Bps0b1qKRCV6aK6PiD",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023db7ea09c015de448cf6a217",
-      "publishedAt": "2026-10-23T12:00:00.000Z"
-    },
-    {
-      "artist": "MLO",
-      "title": "lo",
-      "section": "Featured Releases",
-      "spotifyId": "4MTFOFZPAkcVKhnk76J6EK",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0297caf214c674cd2d6b0f4f14",
-      "publishedAt": "2026-10-23T12:00:00.000Z"
-    },
-    {
-      "artist": "Psychick Warriors Ov Gaia",
-      "title": "Ov Biospheres And Sacred Grooves: A Document Ov New Edge Folk Classic",
-      "section": "Featured Releases",
-      "spotifyId": "3MWD5HeJsQvWuU8M9Mk38v",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d24895ff2e9072b146463bae",
-      "publishedAt": "2026-10-23T12:00:00.000Z"
+      "spotifyId": "5ma4Jeo1KwJXQpBOKkq2PF",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a5d591caf6b4200c78b52a3e",
+      "publishedAt": "2026-10-30T12:00:00.000Z"
     },
     {
       "artist": "Coil",
-      "title": "How To Destroy Angels",
+      "title": "Gold Is The Metal (With The Broadest Shoulders) (2026 Remaster)",
       "section": "Featured Releases",
-      "spotifyId": "5VM55zrU1xuAVVEt2jsHMr",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02984a87c113ce1ecbf969e243",
-      "publishedAt": "2026-10-23T12:00:00.000Z"
+      "spotifyId": "22biCGgkvRBdcVNBFNhbTh",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e020975f84700ba86c5f99de461",
+      "publishedAt": "2026-10-30T12:00:00.000Z"
     },
     {
-      "artist": "William Basinski",
-      "title": "Passing the Cup of Sorrows",
+      "artist": "Cornelius",
+      "title": "Refractions",
+      "section": "Featured Releases",
+      "spotifyId": "71PA5dNWPzfnGfHg1hYeWm",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e025b7ba65d73f083ce260f0f49",
+      "publishedAt": "2026-10-30T12:00:00.000Z"
+    },
+    {
+      "artist": "ML Buch",
+      "title": "Suntub extras",
+      "section": "Featured Releases",
+      "spotifyId": "4KNwV3X50PCNjxxjLgjvah",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029b55a216340b34981eda5cfe",
+      "publishedAt": "2026-10-30T12:00:00.000Z"
+    },
+    {
+      "artist": "Acid Casuals",
+      "title": "Omni",
       "section": "Featured Albums",
-      "spotifyId": "6KuXDpGHxQIYtLclM2Nihz",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c52bab2d5ca6fa8e258d1ae0",
-      "publishedAt": "2026-10-23T12:00:00.000Z"
+      "spotifyId": "2XC3fPBhNkjnLR5GRNSZ6J",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b331c7858dcf89f6a79879c3",
+      "publishedAt": "2026-10-30T12:00:00.000Z"
     },
     {
       "artist": "Daito Manabe",
       "title": "dm studies 000 - 004",
       "section": "Featured Albums",
       "spotifyId": "4gcgW4EH3nvXHpaLKDFCLf",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028545cb42127485a05c842674",
-      "publishedAt": "2026-10-23T12:00:00.000Z"
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e028545cb42127485a05c842674",
+      "publishedAt": "2026-10-30T12:00:00.000Z"
     }
   ]
 }
