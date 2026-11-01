@@ -34,7 +34,8 @@ permissions:
 
 jobs:
   update-fast-feeds:
-    runs-on: ubuntu-latest
+    # Playwright 1.55.0 supports Ubuntu 24.04, not the moving ubuntu-latest image.
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
@@ -123,17 +124,20 @@ jobs:
           # so a source failure leaves its last good JSON in place. Surface
           # outages as visible warnings without turning a healthy publication
           # run red. Installation, checkout and git-publish errors remain fatal.
-          [[ "$AOTY" == "success" ]] || echo "::warning title=AOTY feed retained::Album of the Year was unavailable; keeping the last good feed"
-          [[ "$BLEEP" == "success" ]] || echo "::warning title=Bleep feed retained::Bleep was unavailable or changed layout; keeping the last good feed"
-          [[ "$BOOMKAT" == "success" ]] || echo "::warning title=Boomkat feed retained::Boomkat was unavailable or changed layout; keeping the last good feed"
-          [[ "$BANDCAMP" == "success" ]] || echo "::warning title=Bandcamp feed retained::Bandcamp Daily was unavailable; keeping the last good feed"
-          [[ "$STEREOGUM" == "success" ]] || echo "::warning title=Stereogum feed retained::Stereogum was unavailable or had no new article; keeping the last good feed"
-          [[ "$TWGEEMA" == "success" ]] || echo "::warning title=Twgeema feed retained::Twgeema was unavailable; keeping the last good feed"
+          for source in AOTY BLEEP BOOMKAT BANDCAMP STEREOGUM TWGEEMA; do
+            outcome="${!source}"
+            case "$outcome" in
+              success) ;;
+              failure) echo "::warning title=$source scraper failed::$source failed; previous feed retained. See the fetch step for the cause." ;;
+              *) echo "::notice title=$source scraper not completed::$source outcome: ${outcome:-not run}. This does not indicate a source-site outage; check setup and cancellation steps." ;;
+            esac
+          done
 
   update-label-watchlist:
     # The label scan performs many catalogue lookups and must not hold the fast
     # feeds hostage. A timeout leaves the last good label file untouched.
-    runs-on: ubuntu-latest
+    # Keep both browser jobs on the same supported image.
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     continue-on-error: true
     steps:
@@ -182,5 +186,11 @@ jobs:
             echo "| Label watchlist | $LABELS |"
             echo "| Igloo / Quietus | $EDITORIAL |"
           } >> "$GITHUB_STEP_SUMMARY"
-          [[ "$LABELS" == "success" ]] || echo "::warning title=Label feed retained::Label scan timed out or failed; keeping the last good feed"
-          [[ "$EDITORIAL" == "success" ]] || echo "::warning title=Editorial feed retained::Igloo / Quietus importer failed; keeping previous releases"
+          for source in LABELS EDITORIAL; do
+            outcome="${!source}"
+            case "$outcome" in
+              success) ;;
+              failure) echo "::warning title=$source scraper failed::$source failed; previous feed retained. See the fetch step for the cause." ;;
+              *) echo "::notice title=$source scraper not completed::$source outcome: ${outcome:-not run}. This does not indicate a source-site outage; check setup and cancellation steps." ;;
+            esac
+          done
