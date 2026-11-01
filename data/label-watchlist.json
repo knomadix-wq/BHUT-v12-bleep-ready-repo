@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-29T23:00:37.585Z",
+  "updatedAt": "2026-11-01T22:21:57.491Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -159,6 +159,16 @@
       "spotifyId": "4TcZr92J9noMpdbkBq6Qml",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023cddc12035395729df39d19c",
       "discoveredAt": "2026-10-29T23:00:03.231Z"
+    },
+    {
+      "artist": "Euan Alexander Millar-McMeeken & Henrik Meierkord",
+      "title": "Darkness Is Just Darkness",
+      "source": "IGLOO",
+      "url": "https://igloomag.com/reviews/euan-alexander-millar-mcmeeken-henrik-meierkord-darkness-is-just-darkness-audiobulb",
+      "publishedAt": "2026-11-01T19:08:07.000Z",
+      "spotifyId": "0KcCFflyfYybuRjFAfYR94",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02aafbe5816b2d8bf9b5990456",
+      "discoveredAt": "2026-11-01T22:21:32.662Z"
     }
   ]
 }
