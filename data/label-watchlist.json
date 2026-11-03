@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T01:15:39.062Z",
+  "updatedAt": "2026-11-03T23:28:20.917Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -179,6 +179,16 @@
       "spotifyId": "4marpfu9268nCndvL0MCAp",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e026daaee7e6b6177390ef7f875",
       "discoveredAt": "2026-11-03T01:15:03.601Z"
+    },
+    {
+      "artist": "Marta Salogni & Stefano Pilia",
+      "title": "Phren",
+      "source": "THE QUIETUS",
+      "url": "https://thequietus.com/quietus-reviews/marta-salogni-stefano-pilia-phren-review/",
+      "publishedAt": "2026-11-03T06:00:00.000Z",
+      "spotifyId": "1tK2bpVMhH9vVgpeJW3ARX",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e020a08b701af492708b2d756b8",
+      "discoveredAt": "2026-11-03T23:28:20.917Z"
     }
   ]
 }
