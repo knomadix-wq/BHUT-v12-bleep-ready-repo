@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T22:21:57.491Z",
+  "updatedAt": "2026-11-03T01:15:39.062Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -169,6 +169,16 @@
       "spotifyId": "0KcCFflyfYybuRjFAfYR94",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02aafbe5816b2d8bf9b5990456",
       "discoveredAt": "2026-11-01T22:21:32.662Z"
+    },
+    {
+      "artist": "The Last Path",
+      "title": "Blunt Synopsis",
+      "source": "THE QUIETUS",
+      "url": "https://thequietus.com/quietus-reviews/the-last-path-blunt-synopsis-review/",
+      "publishedAt": "2026-11-02T06:00:00.000Z",
+      "spotifyId": "4marpfu9268nCndvL0MCAp",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e026daaee7e6b6177390ef7f875",
+      "discoveredAt": "2026-11-03T01:15:03.601Z"
     }
   ]
 }
