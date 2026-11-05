@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T23:28:20.917Z",
+  "updatedAt": "2026-11-05T23:53:01.539Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -189,6 +189,16 @@
       "spotifyId": "1tK2bpVMhH9vVgpeJW3ARX",
       "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e020a08b701af492708b2d756b8",
       "discoveredAt": "2026-11-03T23:28:20.917Z"
+    },
+    {
+      "artist": "Silverwingkiller",
+      "title": "Desperate Struggle",
+      "source": "THE QUIETUS",
+      "url": "https://thequietus.com/quietus-reviews/silverwingkiller-desperate-struggle/",
+      "publishedAt": "2026-11-05T05:55:00.000Z",
+      "spotifyId": "5LqFeozf5QTEzzGk5M08CB",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02e0fee0b6369a87b789daa806",
+      "discoveredAt": "2026-11-05T23:52:30.049Z"
     }
   ]
 }
