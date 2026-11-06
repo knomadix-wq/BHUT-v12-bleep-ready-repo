@@ -1,13 +1,37 @@
 {
-  "updatedAt": "2026-11-05T23:49:40.502Z",
+  "updatedAt": "2026-11-06T16:50:38.614Z",
   "source": "https://boomkat.com/weekly-roundup/2026-10-31",
   "releases": [
+    {
+      "artist": "Dawuna",
+      "title": "Love's Arp",
+      "section": "Records of the Week",
+      "spotifyId": "4hXdSScuXDeJWbaeZ6KTPH",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02692d5986440d61df02bde426",
+      "publishedAt": "2026-10-31T12:00:00.000Z"
+    },
+    {
+      "artist": "Jabu",
+      "title": "Severn Flood Plain / Where You Run To",
+      "section": "Records of the Week",
+      "spotifyId": "5wfFHqAeNqaBZNklu9trLm",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0223e773b4e64e287459e6a59a",
+      "publishedAt": "2026-10-31T12:00:00.000Z"
+    },
+    {
+      "artist": "Eliane Radigue",
+      "title": "Occam XIII, Occam River XI, Occam V",
+      "section": "Records of the Week",
+      "spotifyId": "5sL7k1hBlY6ATkqnIHhxpq",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a9b0c7440ce14508b2a7e973",
+      "publishedAt": "2026-10-31T12:00:00.000Z"
+    },
     {
       "artist": "Niagara",
       "title": "Catedral Gótica",
       "section": "Records of the Week",
       "spotifyId": "04zFOYpC6st8jLC7utkPwS",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ed3920639776a1a5b891bad4",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02ed3920639776a1a5b891bad4",
       "publishedAt": "2026-10-31T12:00:00.000Z"
     },
     {
@@ -15,7 +39,7 @@
       "title": "333",
       "section": "Records of the Week",
       "spotifyId": "0WLG6F6qKGOAw4Fu96wfMX",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0247777d6fabc66d661ce6d24c",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0247777d6fabc66d661ce6d24c",
       "publishedAt": "2026-10-31T12:00:00.000Z"
     },
     {
@@ -23,15 +47,15 @@
       "title": "February's Album",
       "section": "Records of the Week",
       "spotifyId": "57WpnFFqfo18XVoWiiU6dL",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02427fabec5be8d89ad94e865f",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02427fabec5be8d89ad94e865f",
       "publishedAt": "2026-10-31T12:00:00.000Z"
     },
     {
       "artist": "John Coltrane",
       "title": "The Tiberi Tapes",
       "section": "Records of the Week",
-      "spotifyId": "1VkEpPavFIQ8W9wEpkqnnS",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e026ca5cb4b4b8807f72324e5e6",
+      "spotifyId": "7MRyYR1eJoCftw6inMlFGz",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c2695aa12495786569810f14",
       "publishedAt": "2026-10-31T12:00:00.000Z"
     },
     {
@@ -39,7 +63,7 @@
       "title": "Yyyyyyyyy",
       "section": "Records of the Week",
       "spotifyId": "4Td5ZK4O3GWHKuXQxEb2La",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02735d5ba5afd452c520567c46",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02735d5ba5afd452c520567c46",
       "publishedAt": "2026-10-31T12:00:00.000Z"
     },
     {
@@ -47,7 +71,7 @@
       "title": "Big City Life EDITS",
       "section": "Records of the Week",
       "spotifyId": "3ggimNXIMUP70F50ZGgPMy",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02bcf95c8cb05579c715725f3c",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bcf95c8cb05579c715725f3c",
       "publishedAt": "2026-10-31T12:00:00.000Z"
     }
   ]
