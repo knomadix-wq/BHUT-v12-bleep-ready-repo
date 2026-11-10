@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T01:45:38.340Z",
+  "updatedAt": "2026-11-10T23:24:52.983Z",
   "source": "https://boomkat.com/weekly-roundup/2026-10-31",
   "releases": [
     {
@@ -39,7 +39,7 @@
       "title": "333",
       "section": "Records of the Week",
       "spotifyId": "0WLG6F6qKGOAw4Fu96wfMX",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0247777d6fabc66d661ce6d24c",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0247777d6fabc66d661ce6d24c",
       "publishedAt": "2026-10-31T12:00:00.000Z"
     },
     {
@@ -47,7 +47,7 @@
       "title": "February's Album",
       "section": "Records of the Week",
       "spotifyId": "57WpnFFqfo18XVoWiiU6dL",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02427fabec5be8d89ad94e865f",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02427fabec5be8d89ad94e865f",
       "publishedAt": "2026-10-31T12:00:00.000Z"
     },
     {
@@ -56,6 +56,14 @@
       "section": "Records of the Week",
       "spotifyId": "7MRyYR1eJoCftw6inMlFGz",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c2695aa12495786569810f14",
+      "publishedAt": "2026-10-31T12:00:00.000Z"
+    },
+    {
+      "artist": "Sarah Davachi",
+      "title": "Book Of Carols",
+      "section": "Records of the Week",
+      "spotifyId": "35p2JcOjKy7TS5nBDd5Rk7",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023517b37be32fc0eeb84f0c82",
       "publishedAt": "2026-10-31T12:00:00.000Z"
     },
     {
@@ -71,7 +79,7 @@
       "title": "Big City Life EDITS",
       "section": "Records of the Week",
       "spotifyId": "3ggimNXIMUP70F50ZGgPMy",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02bcf95c8cb05579c715725f3c",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bcf95c8cb05579c715725f3c",
       "publishedAt": "2026-10-31T12:00:00.000Z"
     }
   ]
