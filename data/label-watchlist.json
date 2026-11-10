@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T23:53:01.539Z",
+  "updatedAt": "2026-11-10T01:49:32.320Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -199,6 +199,16 @@
       "spotifyId": "5LqFeozf5QTEzzGk5M08CB",
       "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02e0fee0b6369a87b789daa806",
       "discoveredAt": "2026-11-05T23:52:30.049Z"
+    },
+    {
+      "artist": "Ana Lua Caiano",
+      "title": "Devagar Que A Vida É Curta",
+      "source": "THE QUIETUS",
+      "url": "https://thequietus.com/quietus-reviews/ana-lua-caiano-devagar-que-a-vida-e-curta-review/",
+      "publishedAt": "2026-11-09T06:00:00.000Z",
+      "spotifyId": "6WctvU1Itl3ipep21NKQTu",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02cd0e158809eaeace3d33b886",
+      "discoveredAt": "2026-11-10T01:48:55.558Z"
     }
   ]
 }
