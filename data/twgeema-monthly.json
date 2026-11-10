@@ -1,62 +1,26 @@
 {
-  "updatedAt": "2026-11-08T22:26:23.816Z",
-  "activatedAt": "2026-10-11T01:27:18.710Z",
-  "period": "September 2026",
+  "updatedAt": "2026-11-10T01:46:55.615Z",
+  "activatedAt": "2026-11-10T01:46:55.614Z",
+  "period": "October 2026",
   "source": "https://www.twgeema.com/",
   "releases": [
     {
-      "rank": 1,
-      "artist": "Orbital",
-      "title": "Glastonbury 1994",
-      "spotifyId": "6Sdg4JV3orraCaCSAyAAyy",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02034726f9657b470c46b32bd1",
-      "source": "TWGEEMA #1",
-      "publishedAt": "2026-10-11T01:27:18.710Z"
+      "rank": 4,
+      "artist": "The Black Dog",
+      "title": "Live At Dekmantel 2026",
+      "spotifyId": "2UgeHQwUeCY8ywFicXuato",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e020a3766727a55ae813e1533d4",
+      "source": "TWGEEMA #4",
+      "publishedAt": "2026-11-11T01:46:55.614Z"
     },
     {
-      "rank": 3,
-      "artist": "Bonobo",
-      "title": "Distance In Static",
-      "spotifyId": "2FMGW8WrG0BE0ZimHbHw2M",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02dd6e0f2e911f3d04f576aba9",
-      "source": "TWGEEMA #3",
-      "publishedAt": "2026-10-12T01:27:18.710Z"
-    },
-    {
-      "rank": 7,
-      "artist": "Ghost Dubs",
-      "title": "Oblique",
-      "spotifyId": "70V6rPyiSPc4pOrJErMI9J",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028eef94706e741a3020ac6abd",
-      "source": "TWGEEMA #7",
-      "publishedAt": "2026-10-14T01:27:18.710Z"
-    },
-    {
-      "rank": 8,
-      "artist": "Dave Angel",
-      "title": "A Time And Place",
-      "spotifyId": "50KOL5Oz27xk7lAHT3ljEH",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02737283bbdee50d84991ed995",
-      "source": "TWGEEMA #8",
-      "publishedAt": "2026-10-14T01:27:18.710Z"
-    },
-    {
-      "rank": 9,
-      "artist": "John Beltran",
-      "title": "Sunrise And The Life We Live",
-      "spotifyId": "31ThyB8ak2l02Q771fQKez",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0221c2ec336a97e5a63ea01219",
-      "source": "TWGEEMA #9",
-      "publishedAt": "2026-10-15T01:27:18.710Z"
-    },
-    {
-      "rank": 10,
-      "artist": ".Vril",
-      "title": "KRUX",
-      "spotifyId": "5iGBm9JwJgzfzRE3xSigff",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024c5abbf324b97cba29157f86",
-      "source": "TWGEEMA #10",
-      "publishedAt": "2026-10-15T01:27:18.710Z"
+      "rank": 5,
+      "artist": "Man As Island",
+      "title": "AN",
+      "spotifyId": "00BYlXziRpYqYWdsV1QG93",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f7fde6ded4840049d674ef0b",
+      "source": "TWGEEMA #5",
+      "publishedAt": "2026-11-12T01:46:55.614Z"
     }
   ]
 }
