@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T23:41:45.618Z",
+  "updatedAt": "2026-11-12T00:59:24.890Z",
   "activatedAt": "2026-11-10T01:46:55.614Z",
   "period": "October 2026",
   "source": "https://www.twgeema.com/",
@@ -21,6 +21,24 @@
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f7fde6ded4840049d674ef0b",
       "source": "TWGEEMA #5",
       "publishedAt": "2026-11-12T01:46:55.614Z"
+    },
+    {
+      "rank": 6,
+      "artist": "Cujo",
+      "title": "Paranova",
+      "spotifyId": "3zilwyGAcvu16iUTKY7TVZ",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f5c3363cffe1a4daa1c248f4",
+      "source": "TWGEEMA #6",
+      "publishedAt": "2026-11-12T01:46:55.614Z"
+    },
+    {
+      "rank": 8,
+      "artist": "Clark",
+      "title": "Steep Stims II",
+      "spotifyId": "067da27Ybeqaw6BlLcHwJv",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029ea993e7b567cfb582c9d1cd",
+      "source": "TWGEEMA #8",
+      "publishedAt": "2026-11-13T01:46:55.614Z"
     }
   ]
 }
