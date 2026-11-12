@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T23:43:52.661Z",
+  "updatedAt": "2026-11-12T23:54:12.662Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -219,6 +219,16 @@
       "spotifyId": "5LVBjWEOMWfjKmavNHKQkI",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02e925e803efd4af87a5cc10f2",
       "discoveredAt": "2026-11-10T23:43:52.661Z"
+    },
+    {
+      "artist": "Vorpalgaze",
+      "title": "Trickjumps",
+      "source": "IGLOO",
+      "url": "https://igloomag.com/reviews/vorpalgaze-trickjumps-audiobulb",
+      "publishedAt": "2026-11-12T23:25:38.000Z",
+      "spotifyId": "5djtjpj9TGR18Rjzd4XdNP",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02b45f773d73f0e064662267ca",
+      "discoveredAt": "2026-11-12T23:53:29.169Z"
     }
   ]
 }
