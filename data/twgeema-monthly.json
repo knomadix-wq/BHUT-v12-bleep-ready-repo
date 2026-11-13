@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T23:42:05.804Z",
+  "updatedAt": "2026-11-13T23:51:07.968Z",
   "activatedAt": "2026-11-10T01:46:55.614Z",
   "period": "October 2026",
   "source": "https://www.twgeema.com/",
@@ -18,7 +18,7 @@
       "artist": "Man As Island",
       "title": "AN",
       "spotifyId": "00BYlXziRpYqYWdsV1QG93",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02f7fde6ded4840049d674ef0b",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f7fde6ded4840049d674ef0b",
       "source": "TWGEEMA #5",
       "publishedAt": "2026-11-12T01:46:55.614Z"
     },
@@ -54,7 +54,7 @@
       "artist": "Warrington-Runcorn New Town Development Plan",
       "title": "Industrial Growth",
       "spotifyId": "6kskOn2ZC1SJyWjSSfjedD",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d4942eb9d0d755b508254d73",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d4942eb9d0d755b508254d73",
       "source": "TWGEEMA #10",
       "publishedAt": "2026-11-14T01:46:55.614Z"
     }
