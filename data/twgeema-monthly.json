@@ -1,18 +1,9 @@
 {
-  "updatedAt": "2026-11-13T17:18:53.916Z",
+  "updatedAt": "2026-11-13T23:42:05.804Z",
   "activatedAt": "2026-11-10T01:46:55.614Z",
   "period": "October 2026",
   "source": "https://www.twgeema.com/",
   "releases": [
-    {
-      "rank": 1,
-      "artist": "Apollo North",
-      "title": "Static Split Distance",
-      "spotifyId": "3DpzG4fJwBVh9tgu7EdVVw",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cc443133e46ca7677699a5e0",
-      "source": "TWGEEMA #1",
-      "publishedAt": "2026-11-10T01:46:55.614Z"
-    },
     {
       "rank": 4,
       "artist": "The Black Dog",
@@ -27,7 +18,7 @@
       "artist": "Man As Island",
       "title": "AN",
       "spotifyId": "00BYlXziRpYqYWdsV1QG93",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f7fde6ded4840049d674ef0b",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02f7fde6ded4840049d674ef0b",
       "source": "TWGEEMA #5",
       "publishedAt": "2026-11-12T01:46:55.614Z"
     },
@@ -54,7 +45,7 @@
       "artist": "The Avalanches",
       "title": "No Bad Memories",
       "spotifyId": "3De7Ues320SIjGCaz5b6fX",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024d100df0be7285a2f1176c7a",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024d100df0be7285a2f1176c7a",
       "source": "TWGEEMA #9",
       "publishedAt": "2026-11-14T01:46:55.614Z"
     },
