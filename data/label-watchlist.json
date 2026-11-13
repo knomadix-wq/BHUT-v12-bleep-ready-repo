@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T23:44:09.048Z",
+  "updatedAt": "2026-11-13T23:52:39.149Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -239,6 +239,16 @@
       "spotifyId": "2hVrV4Wr9xa5l9HwGzMuIk",
       "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02bd81f71b8228367cd80daff0",
       "discoveredAt": "2026-11-13T23:43:28.038Z"
+    },
+    {
+      "artist": "Deuter",
+      "title": "What The Elephant Told",
+      "source": "IGLOO",
+      "url": "https://igloomag.com/reviews/deuter-what-the-elephant-told-curve-blue",
+      "publishedAt": "2026-11-12T20:00:00.000Z",
+      "spotifyId": "7wK6o1HwwCezhZ45pjpv6n",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b708e6bd655d1cca131836eb",
+      "discoveredAt": "2026-11-13T23:52:39.149Z"
     }
   ]
 }
