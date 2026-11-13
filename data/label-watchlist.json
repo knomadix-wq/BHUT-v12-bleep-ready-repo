@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T23:54:12.662Z",
+  "updatedAt": "2026-11-13T23:44:09.048Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -229,6 +229,16 @@
       "spotifyId": "5djtjpj9TGR18Rjzd4XdNP",
       "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02b45f773d73f0e064662267ca",
       "discoveredAt": "2026-11-12T23:53:29.169Z"
+    },
+    {
+      "artist": "Tara Cunningham",
+      "title": "Warm Ground",
+      "source": "THE QUIETUS",
+      "url": "https://thequietus.com/quietus-reviews/tara-cunningham-warm-ground-review/",
+      "publishedAt": "2026-11-13T06:00:00.000Z",
+      "spotifyId": "2hVrV4Wr9xa5l9HwGzMuIk",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02bd81f71b8228367cd80daff0",
+      "discoveredAt": "2026-11-13T23:43:28.038Z"
     }
   ]
 }
