@@ -1,78 +1,94 @@
 {
-  "updatedAt": "2026-11-12T23:50:18.190Z",
-  "source": "https://bleep.com/newsletters/weekly-roundup-6th-november-2026",
+  "updatedAt": "2026-11-13T17:17:06.822Z",
+  "source": "https://bleep.com/newsletters/weekly-roundup-13th-november-2026",
   "releases": [
     {
-      "artist": "Jacques Greene",
-      "title": "jg",
+      "artist": "Aphex Twin",
+      "title": "Drukqs",
       "section": "Release of the Week",
-      "spotifyId": "0eyTz4axCv1nyRSCHxDNY0",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028f8848aac92ccf33249d65bb",
-      "publishedAt": "2026-11-06T12:00:00.000Z"
+      "spotifyId": "0KFEayVJto9FySIVo4ODUn",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0299b926eff3daa4ffc41e28ec",
+      "publishedAt": "2026-11-13T12:00:00.000Z"
     },
     {
-      "artist": "Various Artists",
-      "title": "Djax-Up-Beats 1990-2005: Volume 2 - The NL Connection",
+      "artist": "Arca",
+      "title": "XXXXX",
       "section": "Featured Releases",
-      "spotifyId": "4TZETZ8XJcm9JrV0HE950a",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020c54a73d9f482ad036dd4300",
-      "publishedAt": "2026-11-06T12:00:00.000Z"
+      "spotifyId": "5L4HUwPtyxAoW27leVlZql",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02eb871f7f6c95f4dcb7f2f995",
+      "publishedAt": "2026-11-13T12:00:00.000Z"
     },
     {
-      "artist": "Larry Heard",
-      "title": "Ice Castles",
+      "artist": "Plug",
+      "title": "Robotic Futuristic",
       "section": "Featured Releases",
-      "spotifyId": "08A10xWEZdlBuvoKsmH4k9",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0274ce553fd9be4041763bfc44",
-      "publishedAt": "2026-11-06T12:00:00.000Z"
+      "spotifyId": "47HjG6m10sE2PltIwBApxX",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a8cdfb295600dc99ddf10753",
+      "publishedAt": "2026-11-13T12:00:00.000Z"
     },
     {
-      "artist": "The Black Dog",
-      "title": "Liber Eleven (Remastered)",
+      "artist": "µ-Ziq",
+      "title": "Tango N’Vectif (The Complete Sessions)",
       "section": "Featured Releases",
-      "spotifyId": "4n3kobOo0wCCVE3QT4Uc5I",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e029dfb4912953cedf1b894c6df",
-      "publishedAt": "2026-11-06T12:00:00.000Z"
+      "spotifyId": "5OB77WXYUxrCoGDNu9vXm0",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024654b73d4bf64a6f6085692f",
+      "publishedAt": "2026-11-13T12:00:00.000Z"
     },
     {
-      "artist": "Tim Reaper",
-      "title": "sfs/in vain (selected tracks)",
+      "artist": "Danny Brown",
+      "title": "Atrocity Exhibition (10 Year Anniversary Edition)",
       "section": "Featured Releases",
-      "spotifyId": "0ye7uYnxvzndnesc9D6VyQ",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ff0e07001480ffb8fb9ca75e",
-      "publishedAt": "2026-11-06T12:00:00.000Z"
+      "spotifyId": "2HgQmNeT0ZN99l56HNKYQ2",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e025e145e9e6d5a291d6f28040a",
+      "publishedAt": "2026-11-13T12:00:00.000Z"
     },
     {
-      "artist": "D'Arcangelo",
-      "title": "Eksel",
+      "artist": "Clark",
+      "title": "Steep Stims II",
       "section": "Featured Releases",
-      "spotifyId": "0pedVpn4VdvipKRR1pNDS6",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e025304d3714fba0116beca17d7",
-      "publishedAt": "2026-11-06T12:00:00.000Z"
+      "spotifyId": "067da27Ybeqaw6BlLcHwJv",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e029ea993e7b567cfb582c9d1cd",
+      "publishedAt": "2026-11-13T12:00:00.000Z"
     },
     {
-      "artist": "Jeff Mills",
-      "title": "Gamma Rays (c.1995)",
+      "artist": "Kali Malone",
+      "title": "Burning Song",
       "section": "Featured Releases",
-      "spotifyId": "62pK15PuOsNGBdOjB31M8Q",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bd52b73012faaaa8740933cf",
-      "publishedAt": "2026-11-06T12:00:00.000Z"
+      "spotifyId": "6rkiieHSmjekjpj5OZ05wQ",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e026153a93ea0494f7ef19650ab",
+      "publishedAt": "2026-11-13T12:00:00.000Z"
     },
     {
-      "artist": "Éliane Radigue",
-      "title": "Occam XIII, Occam River XI, Occam V",
-      "section": "Featured Albums",
-      "spotifyId": "5sL7k1hBlY6ATkqnIHhxpq",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a9b0c7440ce14508b2a7e973",
-      "publishedAt": "2026-11-06T12:00:00.000Z"
+      "artist": "Aaron Dilloway",
+      "title": "No Skill Comedy Mind Reading",
+      "section": "Featured Releases",
+      "spotifyId": "6Ct3ggbkGUYAznvSQ7IWwK",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02682a4b32ef199930ef0a156b",
+      "publishedAt": "2026-11-13T12:00:00.000Z"
+    },
+    {
+      "artist": "Liquid DnB-like Ambient Grime 2",
+      "title": "Haunted House, Garage & Grime",
+      "section": "Featured Releases",
+      "spotifyId": "01xj7apIyr8d0HcRP8iewr",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ae4bcd6568cfea4ea8f29eb4",
+      "publishedAt": "2026-11-13T12:00:00.000Z"
+    },
+    {
+      "artist": "Squid",
+      "title": "CROWDS",
+      "section": "Featured Releases",
+      "spotifyId": "6p5et7kxiuFX7r6ACHlffT",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0257baffb32cf6d4fed6eacd15",
+      "publishedAt": "2026-11-13T12:00:00.000Z"
     },
     {
       "artist": "Martyn",
       "title": "Music For Existing",
-      "section": "Featured Albums",
+      "section": "Featured Releases",
       "spotifyId": "04HAHgpRzwmtMfKfAa7eMG",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e027748138096cb5807b51b28e2",
-      "publishedAt": "2026-11-06T12:00:00.000Z"
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e027748138096cb5807b51b28e2",
+      "publishedAt": "2026-11-13T12:00:00.000Z"
     }
   ]
 }

@@ -1,40 +1,54 @@
 {
-  "updatedAt": "2026-11-12T23:51:19.248Z",
+  "updatedAt": "2026-11-13T17:18:06.599Z",
   "source": "https://daily.bandcamp.com/best-electronic/the-best-electronic-music-on-bandcamp-october-2026",
   "releases": [
     {
       "artist": "The Watergirls",
       "title": "The Whole of the Moon",
       "spotifyId": "0ctzKCb8R7eemt8Wo8YZkI",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e025cf959aefa5328f3b1e6dc3e",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e025cf959aefa5328f3b1e6dc3e",
+      "publishedAt": "2026-11-06T19:16:01.000Z"
+    },
+    {
+      "artist": "Chelsi Lauren x Carns Hill",
+      "title": "They Don’t Know",
+      "spotifyId": "2uWO4iJ1sL7svVwBABnNiD",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0278eeba52cf8c59bce98d6b6c",
       "publishedAt": "2026-11-06T19:16:01.000Z"
     },
     {
       "artist": "Wandour",
       "title": "Echoterrium",
       "spotifyId": "2jQWanhNf76Dp3Kpfw5yBQ",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d9fc8739ec91220ec2546283",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d9fc8739ec91220ec2546283",
       "publishedAt": "2026-11-06T19:16:01.000Z"
     },
     {
       "artist": "MA1",
       "title": "Makola",
       "spotifyId": "35iPVNYDxXcopdXogKpcy4",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0234ed92e545eb3aa912a9fe5a",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0234ed92e545eb3aa912a9fe5a",
       "publishedAt": "2026-11-06T19:16:01.000Z"
     },
     {
       "artist": "INVT",
       "title": "Versatile",
       "spotifyId": "0yBvSzDExpYZssufurNVYg",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0202255c87bf10fa9a73b249bd",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0202255c87bf10fa9a73b249bd",
       "publishedAt": "2026-11-06T19:16:01.000Z"
     },
     {
       "artist": "Nadeem Din-Gabisi",
       "title": "Commoner’s Coronation",
       "spotifyId": "4eKy57oaLt0ZoPYWdiPtlO",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0223eed7c85fc51e4ecebc0d41",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0223eed7c85fc51e4ecebc0d41",
+      "publishedAt": "2026-11-06T19:16:01.000Z"
+    },
+    {
+      "artist": "DJ Trax",
+      "title": "A Moment of Clarity",
+      "spotifyId": "4hxF9UhosvAGVj9SwhRmd1",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02614d723da8aacf5824dd4557",
       "publishedAt": "2026-11-06T19:16:01.000Z"
     },
     {
@@ -48,7 +62,7 @@
       "artist": "someday, sky",
       "title": "Rewild the Dancefloor",
       "spotifyId": "4oMQmPESy2MdWMosOMeBSv",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02aa3cc2549c09d9e4320b36f2",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02aa3cc2549c09d9e4320b36f2",
       "publishedAt": "2026-11-06T19:16:01.000Z"
     },
     {

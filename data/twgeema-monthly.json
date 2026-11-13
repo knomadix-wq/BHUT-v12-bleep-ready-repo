@@ -1,15 +1,24 @@
 {
-  "updatedAt": "2026-11-12T23:51:56.964Z",
+  "updatedAt": "2026-11-13T17:18:53.916Z",
   "activatedAt": "2026-11-10T01:46:55.614Z",
   "period": "October 2026",
   "source": "https://www.twgeema.com/",
   "releases": [
     {
+      "rank": 1,
+      "artist": "Apollo North",
+      "title": "Static Split Distance",
+      "spotifyId": "3DpzG4fJwBVh9tgu7EdVVw",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cc443133e46ca7677699a5e0",
+      "source": "TWGEEMA #1",
+      "publishedAt": "2026-11-10T01:46:55.614Z"
+    },
+    {
       "rank": 4,
       "artist": "The Black Dog",
       "title": "Live At Dekmantel 2026",
       "spotifyId": "2UgeHQwUeCY8ywFicXuato",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e020a3766727a55ae813e1533d4",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020a3766727a55ae813e1533d4",
       "source": "TWGEEMA #4",
       "publishedAt": "2026-11-11T01:46:55.614Z"
     },
@@ -36,7 +45,7 @@
       "artist": "Clark",
       "title": "Steep Stims II",
       "spotifyId": "067da27Ybeqaw6BlLcHwJv",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029ea993e7b567cfb582c9d1cd",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e029ea993e7b567cfb582c9d1cd",
       "source": "TWGEEMA #8",
       "publishedAt": "2026-11-13T01:46:55.614Z"
     },
@@ -54,7 +63,7 @@
       "artist": "Warrington-Runcorn New Town Development Plan",
       "title": "Industrial Growth",
       "spotifyId": "6kskOn2ZC1SJyWjSSfjedD",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d4942eb9d0d755b508254d73",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d4942eb9d0d755b508254d73",
       "source": "TWGEEMA #10",
       "publishedAt": "2026-11-14T01:46:55.614Z"
     }

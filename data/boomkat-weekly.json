@@ -1,21 +1,37 @@
 {
-  "updatedAt": "2026-11-12T23:50:41.184Z",
+  "updatedAt": "2026-11-13T17:17:30.966Z",
   "source": "https://boomkat.com/weekly-roundup/2026-11-07",
   "releases": [
+    {
+      "artist": "Blackhaine",
+      "title": "Saints in the Wethouse",
+      "section": "Records of the Week",
+      "spotifyId": "023yHwmTQDjCn4G5v60RGJ",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02907c0aed022cb332c0ac2c74",
+      "publishedAt": "2026-11-07T12:00:00.000Z"
+    },
     {
       "artist": "doris dana",
       "title": "hypnagogia",
       "section": "Records of the Week",
       "spotifyId": "4zPGvxxLRyQYSVL3ePgbRw",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c47327d49a63883a6dd1faa0",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02c47327d49a63883a6dd1faa0",
       "publishedAt": "2026-11-07T12:00:00.000Z"
     },
     {
       "artist": "Aphex Twin",
       "title": "Drukqs",
       "section": "Records of the Week",
-      "spotifyId": "2oJo7cB45gMVuRsaWNwDq2",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e022f175ac7dee768cefd14a01c",
+      "spotifyId": "0KFEayVJto9FySIVo4ODUn",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0299b926eff3daa4ffc41e28ec",
+      "publishedAt": "2026-11-07T12:00:00.000Z"
+    },
+    {
+      "artist": "Aaron Dilloway",
+      "title": "No Skill Comedy Mind Reading",
+      "section": "Records of the Week",
+      "spotifyId": "6Ct3ggbkGUYAznvSQ7IWwK",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02682a4b32ef199930ef0a156b",
       "publishedAt": "2026-11-07T12:00:00.000Z"
     },
     {
@@ -23,7 +39,7 @@
       "title": "Voodoo Ray EP",
       "section": "Records of the Week",
       "spotifyId": "7hDcgM91SKsxkf9y7XU3fi",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02932e48574a8ff355455db146",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02932e48574a8ff355455db146",
       "publishedAt": "2026-11-07T12:00:00.000Z"
     },
     {
@@ -31,7 +47,7 @@
       "title": "Mahogany Brown",
       "section": "Records of the Week",
       "spotifyId": "1tj2K6bkjXZFRpsE4VGyUN",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02dab944c2af90e80484c9f354",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02dab944c2af90e80484c9f354",
       "publishedAt": "2026-11-07T12:00:00.000Z"
     },
     {
@@ -39,7 +55,15 @@
       "title": "a.s.o.",
       "section": "Records of the Week",
       "spotifyId": "2W6tFk9iJhFIfOz0OYcYud",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d716684e2b8d3f90a70d067a",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d716684e2b8d3f90a70d067a",
+      "publishedAt": "2026-11-07T12:00:00.000Z"
+    },
+    {
+      "artist": "Hood",
+      "title": "Cold House (25th Anniversary Edition)",
+      "section": "Records of the Week",
+      "spotifyId": "6wfltxkggnk6VtZrJpzivd",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0234cbb30ef17cfa053551a356",
       "publishedAt": "2026-11-07T12:00:00.000Z"
     }
   ]
