@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T23:07:36.176Z",
+  "updatedAt": "2026-11-17T02:02:05.452Z",
   "source": "https://boomkat.com/weekly-roundup/2026-11-07",
   "releases": [
     {
@@ -15,7 +15,7 @@
       "title": "hypnagogia",
       "section": "Records of the Week",
       "spotifyId": "4zPGvxxLRyQYSVL3ePgbRw",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02c47327d49a63883a6dd1faa0",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c47327d49a63883a6dd1faa0",
       "publishedAt": "2026-11-07T12:00:00.000Z"
     },
     {
@@ -23,7 +23,7 @@
       "title": "Drukqs",
       "section": "Records of the Week",
       "spotifyId": "0KFEayVJto9FySIVo4ODUn",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0299b926eff3daa4ffc41e28ec",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0299b926eff3daa4ffc41e28ec",
       "publishedAt": "2026-11-07T12:00:00.000Z"
     },
     {
@@ -40,6 +40,14 @@
       "section": "Records of the Week",
       "spotifyId": "7hDcgM91SKsxkf9y7XU3fi",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02932e48574a8ff355455db146",
+      "publishedAt": "2026-11-07T12:00:00.000Z"
+    },
+    {
+      "artist": "Magdalena's Apathy",
+      "title": "Soul Tax",
+      "section": "Records of the Week",
+      "spotifyId": "3z0OTNSKiuHahMeQEgwLMv",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ec11912293a4c9f8332366e5",
       "publishedAt": "2026-11-07T12:00:00.000Z"
     },
     {
