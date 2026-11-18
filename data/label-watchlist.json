@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T23:52:39.149Z",
+  "updatedAt": "2026-11-18T01:20:20.425Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -249,6 +249,16 @@
       "spotifyId": "7wK6o1HwwCezhZ45pjpv6n",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b708e6bd655d1cca131836eb",
       "discoveredAt": "2026-11-13T23:52:39.149Z"
+    },
+    {
+      "artist": "Iceboy Violet",
+      "title": "How to Glitch Under The Map",
+      "source": "THE QUIETUS",
+      "url": "https://thequietus.com/quietus-reviews/iceboy-violet-how-to-glitch-under-the-map-review/",
+      "publishedAt": "2026-11-17T06:00:00.000Z",
+      "spotifyId": "5J2ru0uLT6p1iT5MHghDgK",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024b4e933e42b9a7a67dca74bd",
+      "discoveredAt": "2026-11-18T01:19:40.889Z"
     }
   ]
 }
