@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T00:53:27.301Z",
+  "updatedAt": "2026-11-20T17:55:23.738Z",
   "activatedAt": "2026-11-10T01:46:55.614Z",
   "period": "October 2026",
   "source": "https://www.twgeema.com/",
@@ -27,7 +27,7 @@
       "artist": "Cujo",
       "title": "Paranova",
       "spotifyId": "3zilwyGAcvu16iUTKY7TVZ",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02f5c3363cffe1a4daa1c248f4",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f5c3363cffe1a4daa1c248f4",
       "source": "TWGEEMA #6",
       "publishedAt": "2026-11-12T01:46:55.614Z"
     },
@@ -54,7 +54,7 @@
       "artist": "Warrington-Runcorn New Town Development Plan",
       "title": "Industrial Growth",
       "spotifyId": "6kskOn2ZC1SJyWjSSfjedD",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d4942eb9d0d755b508254d73",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d4942eb9d0d755b508254d73",
       "source": "TWGEEMA #10",
       "publishedAt": "2026-11-14T01:46:55.614Z"
     }

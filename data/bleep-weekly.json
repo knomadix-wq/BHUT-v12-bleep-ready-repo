@@ -1,21 +1,21 @@
 {
-  "updatedAt": "2026-11-20T00:51:55.720Z",
+  "updatedAt": "2026-11-20T17:53:49.150Z",
   "source": "https://bleep.com/newsletters/weekly-roundup-20th-november-2026",
   "releases": [
     {
-      "artist": "Boards of Canada",
-      "title": "Hi Scores",
-      "section": "Release of the Week",
-      "spotifyId": "7khd4wP2FmUO6uPVSQ9r8y",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a48a466ca8a021dea5c340a9",
+      "artist": "Lorenzo Senni",
+      "title": "All Ages",
+      "section": "Featured Releases",
+      "spotifyId": "3QmH0KVaIZ8uti1BSwpfQR",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02718a909a1449b28ae3caca56",
       "publishedAt": "2026-11-20T12:00:00.000Z"
     },
     {
       "artist": "Donato Dozzy",
       "title": "Astro",
       "section": "Featured Releases",
-      "spotifyId": "61GHN9MNg1UTwpFG4OQLo2",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e023840e1aa2cae67e71fea132a",
+      "spotifyId": "1BlClm9jah5Vzf5OlOa47q",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02ac96ab0da9fcee7fb5fda3e8",
       "publishedAt": "2026-11-20T12:00:00.000Z"
     },
     {
@@ -35,11 +35,19 @@
       "publishedAt": "2026-11-20T12:00:00.000Z"
     },
     {
+      "artist": "The Black Dog",
+      "title": "In The North",
+      "section": "Featured Albums",
+      "spotifyId": "6R4hMGoEtHcTIPiY4gfb83",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e026d72d8e9dc893a5f492b5ee4",
+      "publishedAt": "2026-11-20T12:00:00.000Z"
+    },
+    {
       "artist": "Martyn",
       "title": "Music For Existing",
       "section": "Featured Albums",
       "spotifyId": "04HAHgpRzwmtMfKfAa7eMG",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e027748138096cb5807b51b28e2",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e027748138096cb5807b51b28e2",
       "publishedAt": "2026-11-20T12:00:00.000Z"
     }
   ]
