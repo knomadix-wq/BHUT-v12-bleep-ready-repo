@@ -1,94 +1,46 @@
 {
-  "updatedAt": "2026-11-18T01:13:54.680Z",
-  "source": "https://bleep.com/newsletters/weekly-roundup-13th-november-2026",
+  "updatedAt": "2026-11-20T00:51:55.720Z",
+  "source": "https://bleep.com/newsletters/weekly-roundup-20th-november-2026",
   "releases": [
     {
-      "artist": "Aphex Twin",
-      "title": "Drukqs",
+      "artist": "Boards of Canada",
+      "title": "Hi Scores",
       "section": "Release of the Week",
-      "spotifyId": "0KFEayVJto9FySIVo4ODUn",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0299b926eff3daa4ffc41e28ec",
-      "publishedAt": "2026-11-13T12:00:00.000Z"
+      "spotifyId": "7khd4wP2FmUO6uPVSQ9r8y",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a48a466ca8a021dea5c340a9",
+      "publishedAt": "2026-11-20T12:00:00.000Z"
     },
     {
-      "artist": "Arca",
-      "title": "XXXXX",
+      "artist": "Donato Dozzy",
+      "title": "Astro",
       "section": "Featured Releases",
-      "spotifyId": "5L4HUwPtyxAoW27leVlZql",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02eb871f7f6c95f4dcb7f2f995",
-      "publishedAt": "2026-11-13T12:00:00.000Z"
+      "spotifyId": "61GHN9MNg1UTwpFG4OQLo2",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e023840e1aa2cae67e71fea132a",
+      "publishedAt": "2026-11-20T12:00:00.000Z"
     },
     {
-      "artist": "Plug",
-      "title": "Robotic Futuristic",
+      "artist": "Blawan",
+      "title": "Gi Mi Keys Back / Auto Fake",
       "section": "Featured Releases",
-      "spotifyId": "47HjG6m10sE2PltIwBApxX",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a8cdfb295600dc99ddf10753",
-      "publishedAt": "2026-11-13T12:00:00.000Z"
+      "spotifyId": "3eu159bVtGJ1ErAmIXdgt1",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bd4dd4efa1d5c625ed77cbab",
+      "publishedAt": "2026-11-20T12:00:00.000Z"
     },
     {
-      "artist": "µ-Ziq",
-      "title": "Tango N’Vectif (The Complete Sessions)",
+      "artist": "DJ Python",
+      "title": "to accomplish many things",
       "section": "Featured Releases",
-      "spotifyId": "5OB77WXYUxrCoGDNu9vXm0",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024654b73d4bf64a6f6085692f",
-      "publishedAt": "2026-11-13T12:00:00.000Z"
-    },
-    {
-      "artist": "Danny Brown",
-      "title": "Atrocity Exhibition (10 Year Anniversary Edition)",
-      "section": "Featured Releases",
-      "spotifyId": "2HgQmNeT0ZN99l56HNKYQ2",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e025e145e9e6d5a291d6f28040a",
-      "publishedAt": "2026-11-13T12:00:00.000Z"
-    },
-    {
-      "artist": "Clark",
-      "title": "Steep Stims II",
-      "section": "Featured Releases",
-      "spotifyId": "067da27Ybeqaw6BlLcHwJv",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e029ea993e7b567cfb582c9d1cd",
-      "publishedAt": "2026-11-13T12:00:00.000Z"
-    },
-    {
-      "artist": "Kali Malone",
-      "title": "Burning Song",
-      "section": "Featured Releases",
-      "spotifyId": "6rkiieHSmjekjpj5OZ05wQ",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e026153a93ea0494f7ef19650ab",
-      "publishedAt": "2026-11-13T12:00:00.000Z"
-    },
-    {
-      "artist": "Aaron Dilloway",
-      "title": "No Skill Comedy Mind Reading",
-      "section": "Featured Releases",
-      "spotifyId": "6Ct3ggbkGUYAznvSQ7IWwK",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02682a4b32ef199930ef0a156b",
-      "publishedAt": "2026-11-13T12:00:00.000Z"
-    },
-    {
-      "artist": "Liquid DnB-like Ambient Grime 2",
-      "title": "Haunted House, Garage & Grime",
-      "section": "Featured Releases",
-      "spotifyId": "01xj7apIyr8d0HcRP8iewr",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02ae4bcd6568cfea4ea8f29eb4",
-      "publishedAt": "2026-11-13T12:00:00.000Z"
-    },
-    {
-      "artist": "Squid",
-      "title": "CROWDS",
-      "section": "Featured Releases",
-      "spotifyId": "6p5et7kxiuFX7r6ACHlffT",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0257baffb32cf6d4fed6eacd15",
-      "publishedAt": "2026-11-13T12:00:00.000Z"
+      "spotifyId": "1tzYKldrnDyHBw0axFFXbT",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0241eaba80893b2e2a2fbb0ef0",
+      "publishedAt": "2026-11-20T12:00:00.000Z"
     },
     {
       "artist": "Martyn",
       "title": "Music For Existing",
-      "section": "Featured Releases",
+      "section": "Featured Albums",
       "spotifyId": "04HAHgpRzwmtMfKfAa7eMG",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e027748138096cb5807b51b28e2",
-      "publishedAt": "2026-11-13T12:00:00.000Z"
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e027748138096cb5807b51b28e2",
+      "publishedAt": "2026-11-20T12:00:00.000Z"
     }
   ]
 }

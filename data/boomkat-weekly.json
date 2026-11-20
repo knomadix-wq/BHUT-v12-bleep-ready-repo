@@ -1,78 +1,62 @@
 {
-  "updatedAt": "2026-11-18T01:14:22.283Z",
-  "source": "https://boomkat.com/weekly-roundup/2026-11-07",
+  "updatedAt": "2026-11-20T00:52:19.137Z",
+  "source": "https://boomkat.com/weekly-roundup/2026-11-14",
   "releases": [
     {
-      "artist": "Blackhaine",
-      "title": "Saints in the Wethouse",
+      "artist": "Klein",
+      "title": "My Own Fairytale",
       "section": "Records of the Week",
-      "spotifyId": "023yHwmTQDjCn4G5v60RGJ",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02907c0aed022cb332c0ac2c74",
-      "publishedAt": "2026-11-07T12:00:00.000Z"
+      "spotifyId": "6hN2H5hvPrYLrG3zYfwvSE",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f44abc5c7d01128764d052b4",
+      "publishedAt": "2026-11-14T12:00:00.000Z"
     },
     {
-      "artist": "doris dana",
-      "title": "hypnagogia",
+      "artist": "Mohammad Syfkhan",
+      "title": "I Love You Ireland",
       "section": "Records of the Week",
-      "spotifyId": "4zPGvxxLRyQYSVL3ePgbRw",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02c47327d49a63883a6dd1faa0",
-      "publishedAt": "2026-11-07T12:00:00.000Z"
+      "spotifyId": "1SjHXtuQj2S07nJhrmnUEK",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e029443801c9eccb962a600ea36",
+      "publishedAt": "2026-11-14T12:00:00.000Z"
     },
     {
-      "artist": "Aphex Twin",
-      "title": "Drukqs",
+      "artist": "Boards of Canada",
+      "title": "Hi Scores",
       "section": "Records of the Week",
-      "spotifyId": "0KFEayVJto9FySIVo4ODUn",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0299b926eff3daa4ffc41e28ec",
-      "publishedAt": "2026-11-07T12:00:00.000Z"
+      "spotifyId": "7khd4wP2FmUO6uPVSQ9r8y",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a48a466ca8a021dea5c340a9",
+      "publishedAt": "2026-11-14T12:00:00.000Z"
     },
     {
-      "artist": "Aaron Dilloway",
-      "title": "No Skill Comedy Mind Reading",
+      "artist": "AEAEA",
+      "title": "Mist",
       "section": "Records of the Week",
-      "spotifyId": "6Ct3ggbkGUYAznvSQ7IWwK",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02682a4b32ef199930ef0a156b",
-      "publishedAt": "2026-11-07T12:00:00.000Z"
+      "spotifyId": "4c7Y8c9SHr0lNmPBwejmS9",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a81e4ccb6c42eb4895c76113",
+      "publishedAt": "2026-11-14T12:00:00.000Z"
     },
     {
-      "artist": "A Guy Called Gerald",
-      "title": "Voodoo Ray EP",
+      "artist": "The Upsetters",
+      "title": "Upsetters 14 Dub Black Board Jungle",
       "section": "Records of the Week",
-      "spotifyId": "7hDcgM91SKsxkf9y7XU3fi",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02932e48574a8ff355455db146",
-      "publishedAt": "2026-11-07T12:00:00.000Z"
+      "spotifyId": "4bK35aeq9fT8ZP25gGMJqG",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a3c9b3db4f13da9c83f7884f",
+      "publishedAt": "2026-11-14T12:00:00.000Z"
     },
     {
-      "artist": "Magdalena's Apathy",
-      "title": "Soul Tax",
+      "artist": "Pete Swanson, Ilyas Ahmed",
+      "title": "Things Left Unseen",
       "section": "Records of the Week",
-      "spotifyId": "3z0OTNSKiuHahMeQEgwLMv",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ec11912293a4c9f8332366e5",
-      "publishedAt": "2026-11-07T12:00:00.000Z"
+      "spotifyId": "2QP33v0oV0FIzHy1E4T9Y6",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029fbff5b71fda49fbbd0a3772",
+      "publishedAt": "2026-11-14T12:00:00.000Z"
     },
     {
-      "artist": "Moodymann",
-      "title": "Mahogany Brown",
+      "artist": "DNGDNGDNG",
+      "title": "Vestigio",
       "section": "Records of the Week",
-      "spotifyId": "1tj2K6bkjXZFRpsE4VGyUN",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02dab944c2af90e80484c9f354",
-      "publishedAt": "2026-11-07T12:00:00.000Z"
-    },
-    {
-      "artist": "a.s.o.",
-      "title": "a.s.o.",
-      "section": "Records of the Week",
-      "spotifyId": "2W6tFk9iJhFIfOz0OYcYud",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d716684e2b8d3f90a70d067a",
-      "publishedAt": "2026-11-07T12:00:00.000Z"
-    },
-    {
-      "artist": "Hood",
-      "title": "Cold House (25th Anniversary Edition)",
-      "section": "Records of the Week",
-      "spotifyId": "6wfltxkggnk6VtZrJpzivd",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0234cbb30ef17cfa053551a356",
-      "publishedAt": "2026-11-07T12:00:00.000Z"
+      "spotifyId": "0vctNx110Y9W5DN5Nd25RF",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b13e9a1d7d96241030bed86c",
+      "publishedAt": "2026-11-14T12:00:00.000Z"
     }
   ]
 }
