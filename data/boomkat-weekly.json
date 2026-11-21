@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T17:54:18.045Z",
+  "updatedAt": "2026-11-21T00:10:18.952Z",
   "source": "https://boomkat.com/weekly-roundup/2026-11-14",
   "releases": [
     {
@@ -11,19 +11,11 @@
       "publishedAt": "2026-11-14T12:00:00.000Z"
     },
     {
-      "artist": "Mohammad Syfkhan",
-      "title": "I Love You Ireland",
-      "section": "Records of the Week",
-      "spotifyId": "1SjHXtuQj2S07nJhrmnUEK",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029443801c9eccb962a600ea36",
-      "publishedAt": "2026-11-14T12:00:00.000Z"
-    },
-    {
       "artist": "Boards of Canada",
       "title": "Hi Scores",
       "section": "Records of the Week",
       "spotifyId": "7khd4wP2FmUO6uPVSQ9r8y",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a48a466ca8a021dea5c340a9",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a48a466ca8a021dea5c340a9",
       "publishedAt": "2026-11-14T12:00:00.000Z"
     },
     {
@@ -43,11 +35,19 @@
       "publishedAt": "2026-11-14T12:00:00.000Z"
     },
     {
+      "artist": "The Upsetters",
+      "title": "Upsetters 14 Dub Black Board Jungle",
+      "section": "Records of the Week",
+      "spotifyId": "4bK35aeq9fT8ZP25gGMJqG",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a3c9b3db4f13da9c83f7884f",
+      "publishedAt": "2026-11-14T12:00:00.000Z"
+    },
+    {
       "artist": "Pete Swanson, Ilyas Ahmed",
       "title": "Things Left Unseen",
       "section": "Records of the Week",
       "spotifyId": "2QP33v0oV0FIzHy1E4T9Y6",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029fbff5b71fda49fbbd0a3772",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e029fbff5b71fda49fbbd0a3772",
       "publishedAt": "2026-11-14T12:00:00.000Z"
     },
     {
