@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T01:20:20.425Z",
+  "updatedAt": "2026-11-21T00:13:52.719Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -259,6 +259,16 @@
       "spotifyId": "5J2ru0uLT6p1iT5MHghDgK",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024b4e933e42b9a7a67dca74bd",
       "discoveredAt": "2026-11-18T01:19:40.889Z"
+    },
+    {
+      "artist": "Lottie Brazier",
+      "title": "On Course But No-One There To Salute You",
+      "source": "THE QUIETUS",
+      "url": "https://thequietus.com/quietus-reviews/lottie-brazier-on-course-but-no-one-there-to-salute-you-review/",
+      "publishedAt": "2026-11-20T06:00:00.000Z",
+      "spotifyId": "5qv5WzGR4hxMnfax4owJZN",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0257f90a1982240cc253f2840f",
+      "discoveredAt": "2026-11-21T00:13:18.213Z"
     }
   ]
 }
