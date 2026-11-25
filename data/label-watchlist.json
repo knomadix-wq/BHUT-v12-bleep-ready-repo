@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T00:13:52.719Z",
+  "updatedAt": "2026-11-25T02:49:22.487Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -269,6 +269,16 @@
       "spotifyId": "5qv5WzGR4hxMnfax4owJZN",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0257f90a1982240cc253f2840f",
       "discoveredAt": "2026-11-21T00:13:18.213Z"
+    },
+    {
+      "artist": "Trem 77",
+      "title": "Textural Colour Spectrum Sandpainting",
+      "source": "IGLOO",
+      "url": "https://igloomag.com/reviews/trem-77-textural-colour-spectrum-sandpainting",
+      "publishedAt": "2026-11-24T21:26:12.000Z",
+      "spotifyId": "3NVfjtuGBoUB84Phdq8BXc",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d6e89b8ae45d742209f430bc",
+      "discoveredAt": "2026-11-25T02:48:48.661Z"
     }
   ]
 }
