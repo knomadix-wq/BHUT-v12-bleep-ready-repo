@@ -1,69 +1,48 @@
 {
-  "updatedAt": "2026-11-25T02:45:55.065Z",
-  "source": "https://daily.bandcamp.com/best-electronic/the-best-electronic-music-on-bandcamp-october-2026",
+  "updatedAt": "2026-11-26T01:56:29.232Z",
+  "source": "https://daily.bandcamp.com/best-electronic/the-best-electronic-music-on-bandcamp-november-2026",
   "releases": [
     {
-      "artist": "The Watergirls",
-      "title": "The Whole of the Moon",
-      "spotifyId": "0ctzKCb8R7eemt8Wo8YZkI",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e025cf959aefa5328f3b1e6dc3e",
-      "publishedAt": "2026-11-06T19:16:01.000Z"
+      "artist": "NikNak",
+      "title": "Azul",
+      "spotifyId": "36B8uFzfhHBDYoypTEm6Bk",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c399f2fe297eca1de0f8bd72",
+      "publishedAt": "2026-11-25T13:50:42.000Z"
     },
     {
-      "artist": "Wandour",
-      "title": "Echoterrium",
-      "spotifyId": "2jQWanhNf76Dp3Kpfw5yBQ",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d9fc8739ec91220ec2546283",
-      "publishedAt": "2026-11-06T19:16:01.000Z"
+      "artist": "Introspekt",
+      "title": "Mutant Transmissions",
+      "spotifyId": "63J6auCoJFf8SM1HPIhHks",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e025a972e36768f6cdcaa3e379d",
+      "publishedAt": "2026-11-25T13:50:42.000Z"
     },
     {
-      "artist": "MA1",
-      "title": "Makola",
-      "spotifyId": "35iPVNYDxXcopdXogKpcy4",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0234ed92e545eb3aa912a9fe5a",
-      "publishedAt": "2026-11-06T19:16:01.000Z"
+      "artist": "tubercule electronique",
+      "title": "Arrows",
+      "spotifyId": "2Gv1VE9aZKUpfeSYVQk0GC",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0270145283b94d6e4031e9b099",
+      "publishedAt": "2026-11-25T13:50:42.000Z"
     },
     {
-      "artist": "INVT",
-      "title": "Versatile",
-      "spotifyId": "0yBvSzDExpYZssufurNVYg",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0202255c87bf10fa9a73b249bd",
-      "publishedAt": "2026-11-06T19:16:01.000Z"
+      "artist": "iO Pan",
+      "title": "When the Lid Opens",
+      "spotifyId": "2jpkFepjXaj2xjiBeV5ia1",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f368eb3c6e1154ef7d979f57",
+      "publishedAt": "2026-11-25T13:50:42.000Z"
     },
     {
-      "artist": "Nadeem Din-Gabisi",
-      "title": "Commoner’s Coronation",
-      "spotifyId": "4eKy57oaLt0ZoPYWdiPtlO",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0223eed7c85fc51e4ecebc0d41",
-      "publishedAt": "2026-11-06T19:16:01.000Z"
+      "artist": "Seo",
+      "title": "Tea Break VII",
+      "spotifyId": "53tdDKYM5d3lTPO6sahtt3",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02be34e8e0acf0b9376893a387",
+      "publishedAt": "2026-11-25T13:50:42.000Z"
     },
     {
-      "artist": "V",
-      "title": "12:55 (Ceci n’est pas une V)",
-      "spotifyId": "07RmZV7WZVelJ48A8qNcSp",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e020e89af73dda25841fad803e8",
-      "publishedAt": "2026-11-06T19:16:01.000Z"
-    },
-    {
-      "artist": "someday, sky",
-      "title": "Rewild the Dancefloor",
-      "spotifyId": "4oMQmPESy2MdWMosOMeBSv",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02aa3cc2549c09d9e4320b36f2",
-      "publishedAt": "2026-11-06T19:16:01.000Z"
-    },
-    {
-      "artist": "sonny makepeace",
-      "title": "La Sombra",
-      "spotifyId": "2f3jLrsUIACP3l7bMyv9DU",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e029acb05cdf266c77d55814621",
-      "publishedAt": "2026-11-06T19:16:01.000Z"
-    },
-    {
-      "artist": "Arthur Hnatek",
-      "title": "Undertow",
-      "spotifyId": "1AqbbnxsnAgrNYYWF3zv0y",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02cf00e53a952732a6a3d516a2",
-      "publishedAt": "2026-11-06T19:16:01.000Z"
+      "artist": "Active Systems",
+      "title": "The Blue",
+      "spotifyId": "06yKRg2VWzgDXEBNmgSFdO",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0207b71b65f0d68ab4db0c4cd3",
+      "publishedAt": "2026-11-25T13:50:42.000Z"
     }
   ]
 }
