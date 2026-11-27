@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T01:59:58.098Z",
+  "updatedAt": "2026-11-27T19:07:46.407Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -289,6 +289,16 @@
       "spotifyId": "2ZiQFtoIUqw6636GF02NSk",
       "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d75534ff0ba004cc8c4e1436",
       "discoveredAt": "2026-11-26T01:59:19.738Z"
+    },
+    {
+      "artist": "Laura Cannell",
+      "title": "Winter Rites",
+      "source": "THE QUIETUS",
+      "url": "https://thequietus.com/quietus-reviews/laura-cannell-winter-rites-review/",
+      "publishedAt": "2026-11-27T06:00:00.000Z",
+      "spotifyId": "31SXUWzzq4e043CoDkh0BG",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d7e1fd13e0a495f622c6d554",
+      "discoveredAt": "2026-11-27T19:07:02.247Z"
     }
   ]
 }
