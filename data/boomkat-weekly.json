@@ -1,7 +1,23 @@
 {
-  "updatedAt": "2026-11-27T01:54:39.154Z",
+  "updatedAt": "2026-11-27T19:04:32.138Z",
   "source": "https://boomkat.com/weekly-roundup/2026-11-21",
   "releases": [
+    {
+      "artist": "Various Artists",
+      "title": "Nothing Ever Was: Compiled By DJ Sundae",
+      "section": "Records of the Week",
+      "spotifyId": "2wvKBlaPuExq6t5rTCQKDA",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e027f9c3455ef90105c153736bc",
+      "publishedAt": "2026-11-21T12:00:00.000Z"
+    },
+    {
+      "artist": "Philip Jeck & Lol Sargent",
+      "title": "Vinyl Requiem",
+      "section": "Records of the Week",
+      "spotifyId": "43NEt8h8LGisSKLVPKLK3q",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02b689b4d57a60bb8ba10dd724",
+      "publishedAt": "2026-11-21T12:00:00.000Z"
+    },
     {
       "artist": "Tara Cunningham",
       "title": "Warm Ground",

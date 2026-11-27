@@ -1,7 +1,15 @@
 {
-  "updatedAt": "2026-11-27T01:54:15.133Z",
+  "updatedAt": "2026-11-27T19:04:07.947Z",
   "source": "https://bleep.com/newsletters/weekly-roundup-27th-november-2026",
   "releases": [
+    {
+      "artist": "Björk and THE HAMRAHLÍÐ CHOIR",
+      "title": "Björk Orkestral – with the Hamrahlíð Choir",
+      "section": "Featured Releases",
+      "spotifyId": "5jR3XT5MxW4sXxZsXdTq1g",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02dfdb2417efd398dfe034dfaa",
+      "publishedAt": "2026-11-27T12:00:00.000Z"
+    },
     {
       "artist": "Dubtribe Sound System",
       "title": "Selene Songs",
@@ -15,7 +23,15 @@
       "title": "Music For Empty Stadiums",
       "section": "Featured Releases",
       "spotifyId": "5TrIb5RT795Fuwx2Gqnv1U",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02393276e66c9f62302bceb345",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02393276e66c9f62302bceb345",
+      "publishedAt": "2026-11-27T12:00:00.000Z"
+    },
+    {
+      "artist": "Liz Harris",
+      "title": "Music For Two Films About Water",
+      "section": "Featured Releases",
+      "spotifyId": "5Xb2nhMDtEA306yFpZ44Cj",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024ca9e774a592c76e745d2cb7",
       "publishedAt": "2026-11-27T12:00:00.000Z"
     },
     {
@@ -24,6 +40,14 @@
       "section": "Featured Releases",
       "spotifyId": "5sZ0QkaVO3XjE41k8EuPc0",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0201993011e01faa10e6a3446f",
+      "publishedAt": "2026-11-27T12:00:00.000Z"
+    },
+    {
+      "artist": "supersilent",
+      "title": "15",
+      "section": "Featured Albums",
+      "spotifyId": "4u3HHGqOUPaS1JfDrLht6m",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e021a32062d5bd6b19f73a3fbb9",
       "publishedAt": "2026-11-27T12:00:00.000Z"
     }
   ]
