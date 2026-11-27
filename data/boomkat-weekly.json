@@ -1,54 +1,14 @@
 {
-  "updatedAt": "2026-11-25T02:45:22.852Z",
-  "source": "https://boomkat.com/weekly-roundup/2026-11-14",
+  "updatedAt": "2026-11-27T01:54:39.154Z",
+  "source": "https://boomkat.com/weekly-roundup/2026-11-21",
   "releases": [
     {
-      "artist": "Klein",
-      "title": "My Own Fairytale",
+      "artist": "Tara Cunningham",
+      "title": "Warm Ground",
       "section": "Records of the Week",
-      "spotifyId": "6hN2H5hvPrYLrG3zYfwvSE",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02f44abc5c7d01128764d052b4",
-      "publishedAt": "2026-11-14T12:00:00.000Z"
-    },
-    {
-      "artist": "Boards of Canada",
-      "title": "Hi Scores",
-      "section": "Records of the Week",
-      "spotifyId": "7khd4wP2FmUO6uPVSQ9r8y",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a48a466ca8a021dea5c340a9",
-      "publishedAt": "2026-11-14T12:00:00.000Z"
-    },
-    {
-      "artist": "AEAEA",
-      "title": "Mist",
-      "section": "Records of the Week",
-      "spotifyId": "5OcdlvY41jsL2yRLGebiLh",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020175091abab726067b9d6b7a",
-      "publishedAt": "2026-11-14T12:00:00.000Z"
-    },
-    {
-      "artist": "Various Artists",
-      "title": "TELLUS: The Audio Cassette Magazine Anthology, Vol. 1",
-      "section": "Records of the Week",
-      "spotifyId": "1xaKni8lr7W1TDgXFy19xH",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e021d9e9dd86a1ace57904ce033",
-      "publishedAt": "2026-11-14T12:00:00.000Z"
-    },
-    {
-      "artist": "Pete Swanson, Ilyas Ahmed",
-      "title": "Things Left Unseen",
-      "section": "Records of the Week",
-      "spotifyId": "2QP33v0oV0FIzHy1E4T9Y6",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029fbff5b71fda49fbbd0a3772",
-      "publishedAt": "2026-11-14T12:00:00.000Z"
-    },
-    {
-      "artist": "DNGDNGDNG",
-      "title": "Vestigio",
-      "section": "Records of the Week",
-      "spotifyId": "0vctNx110Y9W5DN5Nd25RF",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02b13e9a1d7d96241030bed86c",
-      "publishedAt": "2026-11-14T12:00:00.000Z"
+      "spotifyId": "2hVrV4Wr9xa5l9HwGzMuIk",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bd81f71b8228367cd80daff0",
+      "publishedAt": "2026-11-21T12:00:00.000Z"
     }
   ]
 }

@@ -1,54 +1,30 @@
 {
-  "updatedAt": "2026-11-25T02:44:55.308Z",
-  "source": "https://bleep.com/newsletters/weekly-roundup-20th-november-2026",
+  "updatedAt": "2026-11-27T01:54:15.133Z",
+  "source": "https://bleep.com/newsletters/weekly-roundup-27th-november-2026",
   "releases": [
     {
-      "artist": "Lorenzo Senni",
-      "title": "All Ages",
+      "artist": "Dubtribe Sound System",
+      "title": "Selene Songs",
       "section": "Featured Releases",
-      "spotifyId": "3QmH0KVaIZ8uti1BSwpfQR",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02718a909a1449b28ae3caca56",
-      "publishedAt": "2026-11-20T12:00:00.000Z"
+      "spotifyId": "0qB3C0H1OAmr1iT6oUokDh",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d907930ffb04540d2183f3f7",
+      "publishedAt": "2026-11-27T12:00:00.000Z"
     },
     {
-      "artist": "Donato Dozzy",
-      "title": "Astro",
+      "artist": "OR & John Talabot",
+      "title": "Music For Empty Stadiums",
       "section": "Featured Releases",
-      "spotifyId": "1BlClm9jah5Vzf5OlOa47q",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ac96ab0da9fcee7fb5fda3e8",
-      "publishedAt": "2026-11-20T12:00:00.000Z"
+      "spotifyId": "5TrIb5RT795Fuwx2Gqnv1U",
+      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02393276e66c9f62302bceb345",
+      "publishedAt": "2026-11-27T12:00:00.000Z"
     },
     {
-      "artist": "Blawan",
-      "title": "Gi Mi Keys Back / Auto Fake",
+      "artist": "Max Richter",
+      "title": "While The Flood Rages",
       "section": "Featured Releases",
-      "spotifyId": "3eu159bVtGJ1ErAmIXdgt1",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bd4dd4efa1d5c625ed77cbab",
-      "publishedAt": "2026-11-20T12:00:00.000Z"
-    },
-    {
-      "artist": "DJ Python",
-      "title": "to accomplish many things",
-      "section": "Featured Releases",
-      "spotifyId": "1tzYKldrnDyHBw0axFFXbT",
-      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0241eaba80893b2e2a2fbb0ef0",
-      "publishedAt": "2026-11-20T12:00:00.000Z"
-    },
-    {
-      "artist": "The Black Dog",
-      "title": "In The North",
-      "section": "Featured Albums",
-      "spotifyId": "6R4hMGoEtHcTIPiY4gfb83",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e026d72d8e9dc893a5f492b5ee4",
-      "publishedAt": "2026-11-20T12:00:00.000Z"
-    },
-    {
-      "artist": "Martyn",
-      "title": "Music For Existing",
-      "section": "Featured Albums",
-      "spotifyId": "04HAHgpRzwmtMfKfAa7eMG",
-      "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e027748138096cb5807b51b28e2",
-      "publishedAt": "2026-11-20T12:00:00.000Z"
+      "spotifyId": "5sZ0QkaVO3XjE41k8EuPc0",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0201993011e01faa10e6a3446f",
+      "publishedAt": "2026-11-27T12:00:00.000Z"
     }
   ]
 }
