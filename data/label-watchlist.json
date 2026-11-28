@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T19:07:46.407Z",
+  "updatedAt": "2026-11-28T01:41:20.080Z",
   "activatedAt": "2026-08-22T00:00:00.000Z",
   "sources": [
     {
@@ -299,6 +299,16 @@
       "spotifyId": "31SXUWzzq4e043CoDkh0BG",
       "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d7e1fd13e0a495f622c6d554",
       "discoveredAt": "2026-11-27T19:07:02.247Z"
+    },
+    {
+      "artist": "Brandon Joels",
+      "title": "Glass Ocean",
+      "source": "IGLOO",
+      "url": "https://igloomag.com/reviews/brandon-joels-glass-ocean",
+      "publishedAt": "2026-11-28T01:22:27.000Z",
+      "spotifyId": "6oW6mNEGo1udooRhsgmTlI",
+      "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d9fff12c347a93c5e2f7fade",
+      "discoveredAt": "2026-11-28T01:40:35.189Z"
     }
   ]
 }
